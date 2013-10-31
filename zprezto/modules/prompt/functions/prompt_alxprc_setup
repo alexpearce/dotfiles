@@ -1,0 +1,57 @@
+#
+# A theme, yo.
+#
+# Authors:
+#   Alex Pearce <alex@alexpearce.me>
+#
+
+pmodload 'helper'
+
+function prompt_alxprc_precmd {
+  setopt LOCAL_OPTIONS
+  unsetopt XTRACE KSH_ARRAYS
+
+  if (( $+functions[git-info] )); then
+    git-info
+  fi
+}
+
+function prompt_alxprc_setup {
+  setopt LOCAL_OPTIONS
+  unsetopt XTRACE KSH_ARRAYS
+  prompt_opts=(cr percent subst)
+
+  autoload -Uz add-zsh-hook
+
+  add-zsh-hook precmd prompt_alxprc_precmd
+
+  local user_host='%F{red}%n%f@%F{magenta}%m%f'
+  local current_dir='%F{blue}%~%f'
+
+  zstyle ':prezto:module:git:info:action' format ':%%B%F{yellow}%s%f%%b'
+  zstyle ':prezto:module:git:info:added' format ' %%B%F{green}+%f%%b'
+  zstyle ':prezto:module:git:info:ahead' format ' %%B%F{yellow}AHEAD%f%%b'
+  zstyle ':prezto:module:git:info:behind' format ' %%B%F{yellow}BEHIND%f%%b'
+  zstyle ':prezto:module:git:info:branch' format '%F{yellow}%b%f'
+  zstyle ':prezto:module:git:info:commit' format ':%F{green}%.7c%f'
+  zstyle ':prezto:module:git:info:deleted' format ' %%B%F{red}-%f%%b'
+  zstyle ':prezto:module:git:info:modified' format ' %%B%F{blue}*%f%%b'
+  zstyle ':prezto:module:git:info:position' format ':%F{red}%p%f'
+  zstyle ':prezto:module:git:info:renamed' format ' %%B%F{magenta}RENAMED%f%%b'
+  zstyle ':prezto:module:git:info:stashed' format ' %%B%F{cyan}STASHED%f%%b'
+  zstyle ':prezto:module:git:info:unmerged' format ' %%B%F{yellow}UNMERGED%f%%b'
+  zstyle ':prezto:module:git:info:untracked' format ' %%B%F{red}+%f%%b'
+  zstyle ':prezto:module:git:info:keys' format \
+    'rprompt' '%b%A%B%S%a%d%m%r%U%u'
+
+  PROMPT="
+${user_host} ${current_dir}
+%B>%b "
+  if [[ -z "${git_info[rprompt]}" ]]; then
+    RPROMPT='${git_info[rprompt]}'
+  fi
+  SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
+}
+
+prompt_alxprc_setup "$@"
+

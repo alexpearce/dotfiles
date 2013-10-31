@@ -1,0 +1,50 @@
+# CERN stuff
+alias kerberos="kinit apearce@CERN.CH && aklog"
+alias cern="ssh lxplus.cern.ch"
+alias cern5="ssh lxplus5.cern.ch"
+alias apvm="cern -t \"ssh apvm.cern.ch\""
+
+# Executable shortcuts
+alias root="root -l"
+alias tb="tbrowser"
+alias o="open"
+alias r="ruby"
+alias irb="pry"
+alias be="bundle exec"
+alias p="python"
+alias ip="ipython --no-banner"
+
+# Git
+alias g="git"
+alias commit="git commit -m"
+alias ga="git add"
+alias gp="git push"
+alias gd="git diff"
+alias st="git status"
+alias gitolite="cd $HOME/Sites/mu/gitolite-admin"
+
+# Shell utilities
+alias q="exit"
+alias k="clear"
+alias cdk="cd && clear"
+alias todo="ack TODO"
+
+# Handy snippets
+# image dimensions
+alias image-d="sips -g pixelWidth -g pixelHeight"
+# Quick directory server
+alias webshare='python -c "import SimpleHTTPServer;SimpleHTTPServer.test()"'
+# http://xkcd.com/1168/
+alias tarup="tar czvf"
+# Open in TeXShop
+alias texshop="open -a TeXShop"
+
+# Easy directory access
+alias afs="cd $AFS"
+
+# Open vim, one tab per file
+alias v="vim -p"
+alias gv="mvim -p"
+
+# VPS
+alias mu="ssh mu"

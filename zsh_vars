@@ -1,0 +1,11 @@
+export EDITOR=vim
+export VISUAL=vim
+export PAGER=less
+export BROWSER=open
+
+export RBENV_ROOT=/usr/local/var/rbenv
+
+# AFS
+export AFS=/afs/cern.ch/user/a/apearce
+export WORK=/afs/cern.ch/work/a/apearce
+export SCRATCH=$HOME/Physics/Data

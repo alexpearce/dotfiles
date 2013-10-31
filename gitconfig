@@ -1,0 +1,12 @@
+[user]
+  name = Alex Pearce
+  email = alex@alexpearce.me
+[credential]
+  helper = osxkeychain
+[core]
+  editor = vim
+  excludesfile = /Users/alex/.gitignore
+[color]
+  ui = true
+[push]
+  default = simple
