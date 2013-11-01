@@ -33,7 +33,8 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'completion' \
   'history-substring-search' \
-  'prompt'
+  'prompt' \
+  'alxprc'
 
 #
 # Editor

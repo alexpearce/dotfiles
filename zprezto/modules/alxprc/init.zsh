@@ -6,6 +6,10 @@ sites() { cd ~/Sites/Ruby/$1; }
 _sites() { _files -W ~/Sites/Ruby -/; }
 compdef _sites sites
 
+code() { cd ~/Code/$1; }
+_code() { _files -W ~/Code -/; }
+compdef _code code
+
 cern() { cd ~/Dropbox/Soton/Year\ 4/$1; }
 _cern() { _files -W ~/Dropbox/Soton/Year\ 4 -/; }
 compdef _cern cern
