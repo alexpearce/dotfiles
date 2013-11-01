@@ -22,7 +22,7 @@ task :install do
   else
     puts "Exiting, goodbye!"
   end
-  # install_prezto
+  install_prezto
   files = Dir['*'] - %w[Rakefile README.md zprezto]
   # Add Prezto files
   files << "zprezto/modules/alxprc/init.zsh"
