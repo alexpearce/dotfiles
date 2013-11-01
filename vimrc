@@ -45,7 +45,9 @@ set smartcase
 " Wrap lines in the buffer over 80 characters
 " set textwidth=80
 " Coloured column at 80 characters, good for wide terminals
-set colorcolumn=80
+if exists('+colorcolumn')
+  set colorcolumn=80
+endif
 
 " show trailing whitespace as -, tabs as >-
 set listchars=tab:>-,trail:-
