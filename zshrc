@@ -8,7 +8,7 @@ cuda=/Developer/NVIDIA/CUDA-5.0
 
 path=(
   # Homebrew
-  /usr/local/bin
+  $(brew --prefix)/bin
   # ROOT
   /usr/local/root/bin
   # XQuartz
