@@ -4,8 +4,8 @@ execute pathogen#infect()
 " Automatic indentation
 filetype plugin indent on
 
-" 14pt Monaco
-set guifont=Consolas:h15
+" 13pt Consolas
+set guifont=Consolas:h13
 
 " Automatically cd in to the directory the buffer lives in
 set autochdir
