@@ -33,6 +33,7 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'completion' \
   'history-substring-search' \
+  'git' \
   'prompt' \
   'alxprc'
 

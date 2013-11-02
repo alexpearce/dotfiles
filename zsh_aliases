@@ -22,6 +22,9 @@ alias gp="git push"
 alias gd="git diff"
 alias st="git status"
 alias gitolite="cd $HOME/Sites/mu/gitolite-admin"
+# SVN *shudder*
+alias sst="svn status"
+alias sdiff="svn diff | less"
 
 # Shell utilities
 alias q="exit"
