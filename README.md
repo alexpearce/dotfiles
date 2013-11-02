@@ -9,7 +9,7 @@ Usage
 Pull the repo along with all it's submodules
 
 ```bash
-git clone --recursive https://github.com/alexpearce/dotfiles.git $HOME/.dotfiles
+git clone --recursive git@github.com:alexpearce/dotfiles.git $HOME/.dotfiles
 ```
 
 Deploy!
