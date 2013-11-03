@@ -31,6 +31,8 @@ if [[ "`uname`" == "Darwin" ]]; then
 
   # rbenv
   if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+else
+  export PATH=$HOME/usr/bin:$PATH
 fi
 
 # Source environment vars
