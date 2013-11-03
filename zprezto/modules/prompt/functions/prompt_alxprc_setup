@@ -28,21 +28,22 @@ function prompt_alxprc_setup {
   local user_host='%F{red}%n%f@%F{magenta}%m%f'
   local current_dir='%F{blue}%~%f'
 
+  zstyle ':prezto:module:git:info' verbose 'yes'
   zstyle ':prezto:module:git:info:action' format ':%%B%F{yellow}%s%f%%b'
   zstyle ':prezto:module:git:info:added' format ' %%B%F{green}+%f%%b'
-  zstyle ':prezto:module:git:info:ahead' format ' %%B%F{yellow}AHEAD%f%%b'
-  zstyle ':prezto:module:git:info:behind' format ' %%B%F{yellow}BEHIND%f%%b'
-  zstyle ':prezto:module:git:info:branch' format '%F{yellow}%b%f'
+  zstyle ':prezto:module:git:info:ahead' format ' %%B%F{yellow}⬆%f%%b'
+  zstyle ':prezto:module:git:info:behind' format ' %%B%F{yellow}⬇%f%%b'
+  zstyle ':prezto:module:git:info:branch' format ':%F{green}%b%f'
   zstyle ':prezto:module:git:info:commit' format ':%F{green}%.7c%f'
   zstyle ':prezto:module:git:info:deleted' format ' %%B%F{red}-%f%%b'
   zstyle ':prezto:module:git:info:modified' format ' %%B%F{blue}*%f%%b'
   zstyle ':prezto:module:git:info:position' format ':%F{red}%p%f'
-  zstyle ':prezto:module:git:info:renamed' format ' %%B%F{magenta}RENAMED%f%%b'
-  zstyle ':prezto:module:git:info:stashed' format ' %%B%F{cyan}STASHED%f%%b'
-  zstyle ':prezto:module:git:info:unmerged' format ' %%B%F{yellow}UNMERGED%f%%b'
-  zstyle ':prezto:module:git:info:untracked' format ' %%B%F{red}+%f%%b'
+  zstyle ':prezto:module:git:info:renamed' format ' %%B%F{magenta}R%f%%b'
+  zstyle ':prezto:module:git:info:stashed' format ' %%B%F{cyan}✭%f%%b'
+  zstyle ':prezto:module:git:info:unmerged' format ' %%B%F{yellow}═%f%%b'
+  zstyle ':prezto:module:git:info:untracked' format ' %%B%F{white}U%f%%b'
   zstyle ':prezto:module:git:info:keys' format \
-    'rprompt' '%b%A%B%S%a%d%m%r%U%u'
+    'rprompt' '%A%B%S%a%d%m%r%U%u'
 
   PROMPT="
 ${user_host} ${current_dir}
