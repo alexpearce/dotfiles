@@ -10,3 +10,6 @@
 [submodule "vim/bundle/syntastic"]
 	path = vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
+[submodule "vim/bundle/CSApprox"]
+	path = vim/bundle/CSApprox
+	url = git@github.com:godlygeek/csapprox.git

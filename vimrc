@@ -22,7 +22,6 @@ set showcmd
 " Theme
 set t_Co=256
 colorscheme pyte
-" colorscheme mayansmoke
 
 " Line numbers
 set number
