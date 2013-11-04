@@ -1,5 +1,6 @@
 # CERN stuff
 alias kerberos="kinit apearce@CERN.CH && aklog"
+alias kscreen="pagsh.krb -c 'kinit && screen'"
 alias cern="ssh lxplus.cern.ch"
 alias cern5="ssh lxplus5.cern.ch"
 alias apvm="cern -t \"ssh apvm.cern.ch\""
