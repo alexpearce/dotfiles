@@ -73,6 +73,10 @@ nnoremap <leader><space> :noh<cr>
 " quick comment toggling
 map <leader>c gc
 
+" quick make
+map <leader>mm :make<CR>
+map <leader>mc :make clean<CR>
+
 " Disable F1 help
 :nmap <F1> :echo<CR>
 :imap <F1> <C-o>:echo<CR>
