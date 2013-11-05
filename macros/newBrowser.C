@@ -1,0 +1,3 @@
+void newBrowser() {
+  new TBrowser;
+}

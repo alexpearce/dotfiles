@@ -23,7 +23,9 @@ task :install do
     puts "Exiting, goodbye!"
   end
   install_prezto
-  files = Dir['*'] - %w[Rakefile README.md zprezto]
+  files = Dir['*'] - %w[Rakefile README.md zprezto macros]
+  # Add ROOT macros
+  files << "macros/newBrowser.C"
   # Add Prezto files
   files << "zprezto/modules/alxprc/init.zsh"
   files << "zprezto/modules/prompt/functions/prompt_alxprc_setup"
