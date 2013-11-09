@@ -90,3 +90,6 @@ let g:vim_markdown_folding_disabled=1
 
 " Disable LaTeX syntax checking (lacheck is very opinated about style)
 let g:syntastic_ignore_files=["tex"]
+let g:syntastic_cpp_checkers=["gcc"]
+let g:syntastic_cpp_compiler_options="`root-config --cflags` `root-config --glibs`"
+let g:syntastic_cpp_check_header=1
