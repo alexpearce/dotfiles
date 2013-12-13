@@ -12,8 +12,6 @@ if [[ "`uname`" == "Darwin" ]]; then
   path=(
     # Homebrew
     $(brew --prefix)/bin
-    # ROOT
-    /usr/local/root/bin
     # XQuartz
     /opt/X11/bin
     # TeXLive
@@ -25,9 +23,6 @@ if [[ "`uname`" == "Darwin" ]]; then
     /bin
     /sbin
   )
-
-  # PyROOT
-  export PYTHONPATH=/usr/local/root/lib:$PYTHONPATH
 
   # rbenv
   if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
