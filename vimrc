@@ -31,6 +31,8 @@ set shiftwidth=2
 set expandtab
 " Make delete key work as expected
 set backspace=indent,eol,start
+" No folding
+set nofoldenable
 
 " Have some context around the current line always on screen
 set scrolloff=3
@@ -51,6 +53,9 @@ endif
 " show trailing whitespace as -, tabs as >-
 set listchars=tab:>-,trail:-
 set list
+
+" Disable swp files
+set noswapfile
 
 if has("autocmd")
   " Makefiles require actual tabs
