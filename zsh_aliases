@@ -42,6 +42,7 @@ alias webshare='python -c "import SimpleHTTPServer;SimpleHTTPServer.test()"'
 alias tarup="tar czvf"
 # Open in TeXShop
 alias texshop="open -a TeXShop"
+alias ts="texshop"
 
 # Easy directory access
 alias afs="cd $AFS"
