@@ -24,6 +24,9 @@ if [[ "`uname`" == "Darwin" ]]; then
     /sbin
   )
 
+  # PyROOT
+  export PYTHONPATH=$(brew --prefix root)/lib/root
+
   # rbenv
   if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 else
