@@ -7,9 +7,6 @@ filetype plugin indent on
 " 13pt Consolas
 set guifont=Consolas:h13
 
-" Automatically cd in to the directory the buffer lives in
-set autochdir
-
 " Don't need vi compatibility
 set nocompatible
 " Syntax highlighting
@@ -87,7 +84,11 @@ map <leader>mc :make clean<CR>
 :imap <F1> <C-o>:echo<CR>
 
 " Don't autocomplete filenames that match these patterns
-set wildignore=.svn,.git,*.o,*.jpg,*.png,*.pdf,*.aux,*.bbl,*.blg,*.out,*.toc
+set wildignore=.svn,.git
+set wildignore+=*.o,*.pyc
+set wildignore+=*.jpg,*.png,*.pdf
+set wildignore+=*.aux,*.bbl,*.blg,*.out,*.toc
+set wildignore+=vendor,_site
 
 " No code folding in LaTeX or Markdown
 let g:Tex_AutoFolding = 0
