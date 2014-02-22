@@ -59,23 +59,10 @@ tbrowser () {
   fi
 }
 
-diary () {
-  if [ -z $1 ]; then
-    doc=~/Sites/Ruby/diary/entries/`date +%Y-%m-%d`.md
-    if [ -f $doc ]; then
-      echo -n "Diary entry for today, `date "+%A %d/%m/%Y"`, exists. Open it? (y/n) "
-      read ans
-      if [ $ans = n ]; then
-        return 0
-      fi
-    else
-      echo "Opening diary for today, `date "+%A %d/%m/%Y"`"
-      echo "`date +%d/%m/%Y`\n==========\n" > $doc
-    fi
-    $EDITOR $doc
-  else
-    $EDITOR ~/Sites/Ruby/diary/entries/$1
-  fi
+# Cleanly closes an application
+# http://apple.stackexchange.com/a/5461
+quit () {
+  for app in $*; do
+    osascript -e 'quit app "'$app'"'
+  done
 }
-_diary() { _files -W ~/Sites/Ruby/diary/entries -/; }
-compdef _diary diary
