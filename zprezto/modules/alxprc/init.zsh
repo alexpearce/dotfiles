@@ -10,10 +10,6 @@ code() { cd ~/Code/$1; }
 _code() { _files -W ~/Code -/; }
 compdef _code code
 
-cern() { cd ~/Dropbox/Soton/Year\ 4/$1; }
-_cern() { _files -W ~/Dropbox/Soton/Year\ 4 -/; }
-compdef _cern cern
-
 # Creates a directory and then cd's in to it
 mkcd() {
   mkdir $1;
@@ -58,6 +54,8 @@ tbrowser () {
     root -l $* $HOME/.macros/newBrowser.C
   fi
 }
+_tbrowser() { _files -g "*.root"; }
+compdef _tbrowser tbrowser
 
 # Cleanly closes an application
 # http://apple.stackexchange.com/a/5461
