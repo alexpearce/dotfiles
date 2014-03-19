@@ -5,7 +5,7 @@ set guioptions-=T
 " No scrollbars
 set guioptions-=r
 
-set lines=40 columns=84
+set lines=37 columns=84
 
 " Increased line height for better readability
 set linespace=2

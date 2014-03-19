@@ -79,6 +79,14 @@ map <leader>c gc
 map <leader>mm :make<CR>
 map <leader>mc :make clean<CR>
 
+" quicker command-t
+" https://wincent.com/forums/command-t/topics/471
+map <leader>l :CommandT<CR>
+
+" simple pasting from the system clipboard
+" http://tilvim.com/2014/03/18/a-better-paste.html
+map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
+
 " Disable F1 help
 :nmap <F1> :echo<CR>
 :imap <F1> <C-o>:echo<CR>
