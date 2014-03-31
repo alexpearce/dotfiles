@@ -64,6 +64,9 @@ if has("autocmd")
   " Disable hard wrapping in Markdown and LaTeX
   au FileType markdown set textwidth=0
   au FileType tex set textwidth=0
+
+  " Spellchecking in LaTeX
+  au FileType tex set spelllang=en_gb spell
 endif
 
 " change the leader key to ,
