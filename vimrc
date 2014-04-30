@@ -61,12 +61,8 @@ if has("autocmd")
   " Python style uses 4 spaces as tabs
   au FileType python set softtabstop=4 tabstop=4 shiftwidth=4
 
-  " Disable hard wrapping in Markdown and LaTeX
-  au FileType markdown set textwidth=0
-  au FileType tex set textwidth=0
-
-  " Spellchecking in LaTeX
-  au FileType tex set spelllang=en_gb spell
+  " Spellchecking in LaTeX and Markdown
+  au FileType tex,markdown set spelllang=en_gb spell
 endif
 
 " change the leader key to ,
@@ -94,12 +90,16 @@ map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
 :nmap <F1> :echo<CR>
 :imap <F1> <C-o>:echo<CR>
 
+" Scroll up and down visible lines, not buffer lines
+:noremap j gj
+:noremap k gk
+
 " Don't autocomplete filenames that match these patterns
 set wildignore=.svn,.git
 set wildignore+=*.o,*.pyc
 set wildignore+=*.jpg,*.png,*.pdf
 set wildignore+=*.aux,*.bbl,*.blg,*.out,*.toc
-set wildignore+=vendor,_site,tmp
+set wildignore+=vendor,_site,tmp,node_modules
 
 " No code folding in LaTeX or Markdown
 let g:Tex_AutoFolding = 0
