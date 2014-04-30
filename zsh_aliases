@@ -59,7 +59,6 @@ alias afs="cd $AFS"
 
 # Open vim, one tab per file
 alias v="vim -p"
-alias gv="gvim -p"
 
 # VPS
 alias mu="ssh mu"
