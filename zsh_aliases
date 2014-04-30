@@ -15,13 +15,23 @@ alias be="bundle exec"
 alias p="python"
 alias ip="ipython --no-banner"
 
+# tmux
+# Enable 256 colours https://stackoverflow.com/questions/10158508
+export TERM="xterm-256color"
+alias t="tmux -2"
+alias tn="tmux new -s"
+alias ta="tmux attach -t"
+alias td="tmux detach"
+alias ts="tmux switch -t"
+
 # Git
+alias git="hub"
 alias g="git"
 alias commit="git commit -m"
 alias ga="git add"
 alias gp="git push"
 alias gd="git diff"
-alias st="git status"
+alias st="git status -sb"
 alias gitolite="cd $HOME/Sites/mu/gitolite-admin"
 # SVN *shudder*
 alias sst="svn status"
@@ -42,7 +52,7 @@ alias webshare='python -c "import SimpleHTTPServer;SimpleHTTPServer.test()"'
 alias tarup="tar czvf"
 # Open in TeXShop
 alias texshop="open -a TeXShop"
-alias ts="texshop"
+alias txs="texshop"
 
 # Easy directory access
 alias afs="cd $AFS"
