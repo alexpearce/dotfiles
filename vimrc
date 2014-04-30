@@ -17,8 +17,8 @@ set encoding=utf-8
 set showcmd
 
 " Theme
-set t_Co=256
-colorscheme pyte
+set background=dark
+colorscheme base16-ocean
 
 " Line numbers
 set number
