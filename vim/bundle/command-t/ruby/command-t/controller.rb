@@ -1,4 +1,4 @@
-# Copyright 2010-2013 Wincent Colaiuta. All rights reserved.
+# Copyright 2010-2014 Wincent Colaiuta. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -95,7 +95,7 @@ module CommandT
     def refresh
       return unless @active_finder && @active_finder.respond_to?(:flush)
       @active_finder.flush
-      list_matches
+      list_matches!
     end
 
     def flush
@@ -109,7 +109,7 @@ module CommandT
       key = ::VIM::evaluate('a:arg').to_i.chr
       if @focus == @prompt
         @prompt.add! key
-        list_matches
+        @needs_update = true
       else
         @match_window.find key
       end
@@ -118,14 +118,14 @@ module CommandT
     def backspace
       if @focus == @prompt
         @prompt.backspace!
-        list_matches
+        @needs_update = true
       end
     end
 
     def delete
       if @focus == @prompt
         @prompt.delete!
-        list_matches
+        @needs_update = true
       end
     end
 
@@ -155,7 +155,7 @@ module CommandT
 
     def clear
       @prompt.clear!
-      list_matches
+      list_matches!
     end
 
     def cursor_left
@@ -182,7 +182,24 @@ module CommandT
       @match_window.unload
     end
 
+    def list_matches(options = {})
+      return unless @needs_update || options[:force]
+
+      @matches = @active_finder.sorted_matches_for(
+        @prompt.abbrev,
+        :limit   => match_limit,
+        :threads => CommandT::Util.processor_count
+      )
+      @match_window.matches = @matches
+
+      @needs_update = false
+    end
+
   private
+
+    def list_matches!
+      list_matches(:force => true)
+    end
 
     def show
       @initial_window   = $curwin
@@ -192,34 +209,36 @@ module CommandT
         :match_window_at_top  => get_bool('g:CommandTMatchWindowAtTop'),
         :match_window_reverse => get_bool('g:CommandTMatchWindowReverse'),
         :min_height           => min_height,
+        :debounce_interval    => get_number('g:CommandTInputDebounce', 50),
         :prompt               => @prompt
       @focus            = @prompt
       @prompt.focus
       register_for_key_presses
+      set_up_autocmds
       clear # clears prompt and lists matches
     end
 
     def max_height
-      @max_height ||= get_number('g:CommandTMaxHeight') || 0
+      @max_height ||= get_number('g:CommandTMaxHeight', 0)
     end
 
     def min_height
       @min_height ||= begin
-        min_height = get_number('g:CommandTMinHeight') || 0
+        min_height = get_number('g:CommandTMinHeight', 0)
         min_height = max_height if max_height != 0 && min_height > max_height
         min_height
       end
     end
 
-    def get_number name
-      VIM::exists?(name) ? ::VIM::evaluate("#{name}").to_i : nil
+    def get_number(name, default = nil)
+      VIM::exists?(name) ? ::VIM::evaluate("#{name}").to_i : default
     end
 
-    def get_bool name
+    def get_bool(name)
       VIM::exists?(name) ? ::VIM::evaluate("#{name}").to_i != 0 : nil
     end
 
-    def get_string name
+    def get_string(name)
       VIM::exists?(name) ? ::VIM::evaluate("#{name}").to_s : nil
     end
 
@@ -333,6 +352,13 @@ module CommandT
       end
     end
 
+    def set_up_autocmds
+      ::VIM::command 'augroup Command-T'
+      ::VIM::command 'au!'
+      ::VIM::command 'autocmd CursorHold <buffer> :call CommandTListMatches()'
+      ::VIM::command 'augroup END'
+    end
+
     # Returns the desired maximum number of matches, based on available
     # vertical space and the g:CommandTMaxHeight option.
     def match_limit
@@ -340,15 +366,6 @@ module CommandT
       limit = 1 if limit < 0
       limit = [limit, max_height].min if max_height > 0
       limit
-    end
-
-    def list_matches
-      @matches = @active_finder.sorted_matches_for(
-        @prompt.abbrev,
-        :limit   => match_limit,
-        :threads => CommandT::Util.processor_count
-      )
-      @match_window.matches = @matches
     end
 
     def buffer_finder
@@ -363,7 +380,8 @@ module CommandT
         :always_show_dot_files  => get_bool('g:CommandTAlwaysShowDotFiles'),
         :never_show_dot_files   => get_bool('g:CommandTNeverShowDotFiles'),
         :scan_dot_directories   => get_bool('g:CommandTScanDotDirectories'),
-        :wild_ignore            => get_string('g:CommandTWildIgnore')
+        :wild_ignore            => get_string('g:CommandTWildIgnore'),
+        :scanner                => get_string('g:CommandTFileScanner')
     end
 
     def jump_finder

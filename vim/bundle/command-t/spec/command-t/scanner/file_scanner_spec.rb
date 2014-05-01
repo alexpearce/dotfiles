@@ -1,4 +1,4 @@
-# Copyright 2010-2013 Wincent Colaiuta. All rights reserved.
+# Copyright 2010-2014 Wincent Colaiuta. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -26,57 +26,14 @@ require 'command-t/scanner/file_scanner'
 
 describe CommandT::FileScanner do
   before do
-    @dir = File.join(File.dirname(__FILE__), '..', '..', '..', 'fixtures')
-    @all_fixtures = %w(
-      bar/abc bar/xyz baz bing foo/alpha/t1 foo/alpha/t2 foo/beta
-    )
-    @scanner = CommandT::FileScanner.new @dir
-
-    stub(::VIM).evaluate(/exists/) { 1 }
-    stub(::VIM).evaluate(/expand\(.+\)/) { '0' }
-    stub(::VIM).evaluate(/wildignore/) { '' }
-  end
-
-  describe 'paths method' do
-    it 'returns a list of regular files' do
-      @scanner.paths.should =~ @all_fixtures
-    end
+    dir = File.join(File.dirname(__FILE__), '..', '..', '..', 'fixtures')
+    @scanner = CommandT::FileScanner.new(dir)
   end
 
   describe 'flush method' do
     it 'forces a rescan on next call to paths method' do
-      first = @scanner.paths
-      @scanner.flush
-      @scanner.paths.object_id.should_not == first.object_id
-    end
-  end
-
-  describe 'path= method' do
-    it 'allows repeated applications of scanner at different paths' do
-      @scanner.paths.should =~ @all_fixtures
-
-      # drill down 1 level
-      @scanner.path = File.join(@dir, 'foo')
-      @scanner.paths.should =~ %w(alpha/t1 alpha/t2 beta)
-
-      # and another
-      @scanner.path = File.join(@dir, 'foo', 'alpha')
-      @scanner.paths.should =~ %w(t1 t2)
-    end
-  end
-
-  describe "'wildignore' exclusion" do
-    it "calls on VIM's expand() function for pattern filtering" do
-      @scanner = CommandT::FileScanner.new @dir
-      mock(::VIM).evaluate(/expand\(.+\)/).times(10)
-      @scanner.paths
-    end
-  end
-
-  describe ':max_depth option' do
-    it 'does not descend below "max_depth" levels' do
-      @scanner = CommandT::FileScanner.new @dir, :max_depth => 1
-      @scanner.paths.should =~ %w(bar/abc bar/xyz baz bing foo/beta)
+      expect { @scanner.flush }.
+        to change { @scanner.instance_variable_get('@paths').object_id }
     end
   end
 end

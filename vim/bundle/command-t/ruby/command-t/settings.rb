@@ -1,4 +1,4 @@
-# Copyright 2010 Wincent Colaiuta. All rights reserved.
+# Copyright 2010-2014 Wincent Colaiuta. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -24,54 +24,105 @@
 module CommandT
   # Convenience class for saving and restoring global settings.
   class Settings
+    # Settings which apply globally and so must be manually saved and restored
+    GLOBAL_SETTINGS = %w[
+      equalalways
+      hlsearch
+      insertmode
+      report
+      showcmd
+      sidescroll
+      sidescrolloff
+      timeout
+      timeoutlen
+      updatetime
+    ]
+
+    # Settings which can be made locally to the Command-T buffer or window
+    LOCAL_SETTINGS = %w[
+      bufhidden
+      buflisted
+      buftype
+      colorcolumn
+      concealcursor
+      conceallevel
+      cursorline
+      foldcolumn
+      foldlevel
+      list
+      modifiable
+      number
+      relativenumber
+      spell
+      swapfile
+      synmaxcol
+      textwidth
+      wrap
+    ]
+
+    KNOWN_SETTINGS = GLOBAL_SETTINGS + LOCAL_SETTINGS
+
     def initialize
-      save
+      @settings = []
     end
 
-    def save
-      @timeoutlen     = get_number 'timeoutlen'
-      @report         = get_number 'report'
-      @sidescroll     = get_number 'sidescroll'
-      @sidescrolloff  = get_number 'sidescrolloff'
-      @timeout        = get_bool 'timeout'
-      @equalalways    = get_bool 'equalalways'
-      @hlsearch       = get_bool 'hlsearch'
-      @insertmode     = get_bool 'insertmode'
-      @showcmd        = get_bool 'showcmd'
+    def set(setting, value)
+      raise "Unknown setting #{setting}" unless KNOWN_SETTINGS.include?(setting)
+
+      case value
+      when TrueClass, FalseClass
+        @settings.push([setting, get_bool(setting)]) if global?(setting)
+        set_bool setting, value
+      when Numeric
+        @settings.push([setting, get_number(setting)]) if global?(setting)
+        set_number setting, value
+      when String
+        @settings.push([setting, get_string(setting)]) if global?(setting)
+        set_string setting, value
+      end
     end
 
     def restore
-      set_number 'timeoutlen', @timeoutlen
-      set_number 'report', @report
-      set_number 'sidescroll', @sidescroll
-      set_number 'sidescrolloff', @sidescrolloff
-      set_bool 'timeout', @timeout
-      set_bool 'equalalways', @equalalways
-      set_bool 'hlsearch', @hlsearch
-      set_bool 'insertmode', @insertmode
-      set_bool 'showcmd', @showcmd
+      @settings.each do |setting, value|
+        case value
+        when TrueClass, FalseClass
+          set_bool setting, value
+        when Numeric
+          set_number setting, value
+        when String
+          set_string setting, value
+        end
+      end
     end
 
   private
 
-    def get_number setting
-      ::VIM::evaluate("&#{setting}").to_i
+    def global?(setting)
+      GLOBAL_SETTINGS.include?(setting)
     end
 
-    def get_bool setting
+    def get_bool(setting)
       ::VIM::evaluate("&#{setting}").to_i == 1
     end
 
-    def set_number setting, value
-      ::VIM::set_option "#{setting}=#{value}"
+    def get_number(setting)
+      ::VIM::evaluate("&#{setting}").to_i
     end
 
-    def set_bool setting, value
-      if value
-        ::VIM::set_option setting
-      else
-        ::VIM::set_option "no#{setting}"
-      end
+    def get_string(name)
+      ::VIM::evaluate("&#{name}").to_s
     end
+
+    def set_bool(setting, value)
+      command = global?(setting) ? 'set' : 'setlocal'
+      setting = value ? setting : "no#{setting}"
+      ::VIM::command "#{command} #{setting}"
+    end
+
+    def set_number(setting, value)
+      command = global?(setting) ? 'set' : 'setlocal'
+      ::VIM::command "#{command} #{setting}=#{value}"
+    end
+    alias set_string set_number
   end # class Settings
 end # module CommandT
