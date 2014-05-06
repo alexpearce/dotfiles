@@ -4,9 +4,6 @@ execute pathogen#infect()
 " Automatic indentation
 filetype plugin indent on
 
-" 13pt Consolas
-set guifont=Consolas:h13
-
 " Don't need vi compatibility
 set nocompatible
 " Syntax highlighting
