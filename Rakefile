@@ -23,7 +23,7 @@ task :install do
     puts "Exiting, goodbye!"
   end
   install_prezto
-  files = Dir['*'] - %w[Rakefile README.md zprezto macros]
+  files = Dir['*'] - %w[Rakefile README.md zprezto macros terminfo]
   # Add ROOT macros
   files << "macros/newBrowser.C"
   # Add Prezto files
