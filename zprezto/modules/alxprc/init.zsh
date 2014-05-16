@@ -10,6 +10,10 @@ code() { cd ~/Code/$1; }
 _code() { _files -W ~/Code -/; }
 compdef _code code
 
+physics() { cd ~/Physics/$1; }
+_physics() { _files -W ~/Physics -/; }
+compdef _physics physics
+
 # Creates a directory and then cd's in to it
 mkcd() {
   mkdir $1;
