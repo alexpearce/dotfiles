@@ -1,11 +1,12 @@
+" Don't need vi compatibility
+set nocompatible
+
 " Pathogen plugin manager
 execute pathogen#infect()
 
 " Automatic indentation
 filetype plugin indent on
 
-" Don't need vi compatibility
-set nocompatible
 " Syntax highlighting
 syntax enable
 " UTF-8 encoding
@@ -51,6 +52,10 @@ set list
 " Disable swp files
 set noswapfile
 
+" Enable the mouse in the terminal
+set mouse=a
+set ttymouse=xterm2
+
 if has("autocmd")
   " Makefiles require actual tabs
   au FileType make set noexpandtab
@@ -60,6 +65,11 @@ if has("autocmd")
 
   " Spellchecking in LaTeX and Markdown
   au FileType tex,markdown set spelllang=en_gb spell
+
+  " I often type `#` to start a comment, as alt-3, then hit space
+  " alt-space is a UTF non-breaking space character, which can give encoding errors
+  highlight UTFSpaceComment ctermfg=White ctermbg=1
+  au BufNewFile,BufRead * :syn match UTFSpaceComment '.\%uA0'
 endif
 
 " change the leader key to ,
@@ -107,3 +117,8 @@ let g:syntastic_ignore_files=["tex"]
 let g:syntastic_cpp_checkers=["gcc"]
 let g:syntastic_cpp_compiler_options="`root-config --cflags` `root-config --glibs`"
 let g:syntastic_cpp_check_header=1
+
+" Get command-t and tmux to play nice
+let g:CommandTCancelMap = ['<ESC>', '<C-c>']
+let g:CommandTSelectNextMap = ['<C-j>', '<ESC>OB']
+let g:CommandTSelectPrevMap = ['<C-k>', '<ESC>OA']
