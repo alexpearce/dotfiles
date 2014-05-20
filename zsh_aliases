@@ -26,7 +26,9 @@ alias td="tmux detach"
 alias ts="tmux switch -t"
 
 # Git
-alias git="hub"
+if [[ "`uname`" == "Darwin" ]]; then
+  alias git="hub"
+fi
 alias g="git"
 alias commit="git commit -m"
 alias ga="git add"
