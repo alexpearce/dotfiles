@@ -20,10 +20,6 @@ if [[ "`uname`" == "Darwin" ]]; then
   export ROOTSYS=$(brew --prefix root)
   export PYTHONPATH=$ROOTSYS/lib/root:$PYTHONPATH
 
-  # Go
-  # http://golang.org/doc/code.html
-  export GOPATH=$HOME/Code/Go
-
   path=(
     # Homebrew
     $(brew --prefix)/bin
@@ -31,9 +27,6 @@ if [[ "`uname`" == "Darwin" ]]; then
     /opt/X11/bin
     # TeXLive
     /usr/texbin
-    # Go
-    $GOPATH/bin
-    $(brew --prefix)/Cellar/go/1.2.1/libexec/bin
     # System defaults
     /usr/{s,}bin
     /bin

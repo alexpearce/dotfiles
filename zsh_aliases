@@ -1,4 +1,4 @@
-# CERN stuff
+# CERN stuff
 alias kerberos="kinit apearce@CERN.CH && aklog"
 alias ktmux="pagsh.krb -c 'kinit && tmux'"
 alias cern="ssh lxplus.cern.ch"
@@ -57,7 +57,7 @@ alias tarup="tar czvf"
 alias texshop="open -a TeXShop"
 alias txs="texshop"
 
-# Easy directory access
+# Easy directory access
 alias afs="cd $AFS"
 
 # Open vim, one tab per file
