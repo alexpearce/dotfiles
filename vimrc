@@ -20,6 +20,7 @@ colorscheme base16-ocean
 
 " Line numbers
 set number
+set relativenumber
 " Tabs as two spaces
 set tabstop=2
 set shiftwidth=2
@@ -28,6 +29,9 @@ set expandtab
 set backspace=indent,eol,start
 " No folding
 set nofoldenable
+
+" Share OS X clipboard
+set clipboard=unnamed
 
 " Have some context around the current line always on screen
 set scrolloff=3
@@ -85,10 +89,6 @@ map <leader>c gc
 map <leader>mm :make<CR>
 map <leader>mc :make clean<CR>
 
-" quicker command-t
-" https://wincent.com/forums/command-t/topics/471
-map <leader>l :CommandT<CR>
-
 " simple pasting from the system clipboard
 " http://tilvim.com/2014/03/18/a-better-paste.html
 map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
@@ -117,8 +117,3 @@ let g:syntastic_ignore_files=["tex"]
 let g:syntastic_cpp_checkers=["gcc"]
 let g:syntastic_cpp_compiler_options="`root-config --cflags` `root-config --glibs`"
 let g:syntastic_cpp_check_header=1
-
-" Get command-t and tmux to play nice
-let g:CommandTCancelMap = ['<ESC>', '<C-c>']
-let g:CommandTSelectNextMap = ['<C-j>', '<ESC>OB']
-let g:CommandTSelectPrevMap = ['<C-k>', '<ESC>OA']
