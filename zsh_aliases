@@ -65,3 +65,6 @@ alias v="vim -p"
 
 # VPS
 alias mu="ssh mu"
+
+# Use like bundle exec
+alias npm-exec='PATH=$(npm bin):$PATH'

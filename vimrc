@@ -106,7 +106,7 @@ set wildignore=.svn,.git
 set wildignore+=*.o,*.pyc
 set wildignore+=*.jpg,*.png,*.pdf
 set wildignore+=*.aux,*.bbl,*.blg,*.out,*.toc
-set wildignore+=vendor,_site,tmp,node_modules
+set wildignore+=vendor,_site,tmp,node_modules,bower_components
 
 " No code folding in LaTeX or Markdown
 let g:Tex_AutoFolding = 0
