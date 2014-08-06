@@ -1,0 +1,18 @@
+# Beamer frame with title
+# \begin{frame}{My title}...\end{frame}
+snippet frame
+	\begin{frame}{${1}}
+		${2}
+	\end{frame}
+# Graphics
+snippet graphic
+	\includegraphics[width=${1}\textwidth]{${2}}
+# Columns
+snippet cols
+	\begin{columns}
+		\column{${1}\textwidth}
+		${2}
+	\end{columns}
+snippet col
+	\column{${1}\textwidth}
+	${2}
