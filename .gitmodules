@@ -1,21 +1,6 @@
 [submodule "vim/bundle/snipmate"]
 	path = vim/bundle/snipmate
 	url = https://github.com/msanders/snipmate.vim.git
-[submodule "vim/bundle/vim-commentary"]
-	path = vim/bundle/vim-commentary
-	url = https://github.com/tpope/vim-commentary.git
-[submodule "vim/bundle/vim-markdown"]
-	path = vim/bundle/vim-markdown
-	url = https://github.com/plasticboy/vim-markdown.git
-[submodule "vim/bundle/syntastic"]
-	path = vim/bundle/syntastic
-	url = https://github.com/scrooloose/syntastic.git
-[submodule "vim/bundle/CSApprox"]
-	path = vim/bundle/CSApprox
-	url = git@github.com:godlygeek/csapprox.git
-[submodule "vim/bundle/golang"]
-	path = vim/bundle/golang
-	url = git@github.com:jnwhiteh/vim-golang.git
 [submodule "vim/bundle/vim-latex"]
 	path = vim/bundle/vim-latex
 	url = git://git.code.sf.net/p/vim-latex/vim-latex
