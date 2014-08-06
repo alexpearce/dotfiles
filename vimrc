@@ -1,46 +1,51 @@
+""""""""""""""""""""""""""""""""""""""""
+" General configuration
+""""""""""""""""""""""""""""""""""""""""
+
 " Don't need vi compatibility
 set nocompatible
 
-" Pathogen plugin manager
+" UTF-8 encoding
+set encoding=utf-8
+
+" Load all plugins under $HOME/.vim/bundle
 execute pathogen#infect()
 
-" Automatic indentation
+" Enable filetype detection
 filetype plugin indent on
+
+" Disable swp files
+set noswapfile
+
+" Enable the mouse in the terminal
+set mouse=a
+set ttymouse=xterm2
+
+""""""""""""""""""""""""""""""""""""""""
+" UI
+""""""""""""""""""""""""""""""""""""""""
 
 " Syntax highlighting
 syntax enable
-" UTF-8 encoding
-set encoding=utf-8
-" Display useful info in the command bar
+
+" Show the executing command
 set showcmd
 
 " Theme
 set background=dark
 colorscheme base16-ocean
 
-" Line numbers
+" Show relative line number as absolute line number at the cursor position,
+" but relative line number above and below the cursor
 set number
 set relativenumber
-" Tabs as two spaces
-set tabstop=2
-set shiftwidth=2
-set expandtab
-" Make delete key work as expected
-set backspace=indent,eol,start
-" No folding
-set nofoldenable
-
-" Share OS X clipboard
-set clipboard=unnamed
 
 " Have some context around the current line always on screen
 set scrolloff=3
+set sidescrolloff=5
 
-" Smart case searching
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
+" Try to display very long lines, rather than showing @
+set display+=lastline
 
 " Wrap lines in the buffer over 80 characters
 " set textwidth=80
@@ -53,13 +58,72 @@ endif
 set listchars=tab:>-,trail:-
 set list
 
-" Disable swp files
-set noswapfile
+" Smart case searching
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
 
-" Enable the mouse in the terminal
-set mouse=a
-set ttymouse=xterm2
+""""""""""""""""""""""""""""""""""""""""
+" Coding style
+""""""""""""""""""""""""""""""""""""""""
 
+" Tabs as two spaces
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
+""""""""""""""""""""""""""""""""""""""""
+" Movement
+""""""""""""""""""""""""""""""""""""""""
+
+" Make delete key work as expected
+set backspace=indent,eol,start
+
+""""""""""""""""""""""""""""""""""""""""
+" OS X compatibility
+""""""""""""""""""""""""""""""""""""""""
+
+" Share OS X clipboard
+set clipboard=unnamed
+
+""""""""""""""""""""""""""""""""""""""""
+" Mappings
+""""""""""""""""""""""""""""""""""""""""
+
+" change the leader key to ,
+let mapleader=","
+
+" clear search highlighting with ,<space>
+nnoremap <leader><space> :noh<cr>
+
+" quick make
+map <leader>mm :make<CR>
+map <leader>mc :make clean<CR>
+
+" simple pasting from the system clipboard
+" http://tilvim.com/2014/03/18/a-better-paste.html
+map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
+
+" Scroll up and down visible lines, not buffer lines
+:noremap j gj
+:noremap k gk
+
+" Don't autocomplete filenames that match these patterns
+" Version control
+set wildignore=.svn,.git
+" Compiled formats
+set wildignore+=*.o,*.pyc
+" Images
+set wildignore+=*.jpg,*.png,*.pdf
+" Auxilary LaTeX files
+set wildignore+=*.aux,*.bbl,*.blg,*.out,*.toc
+" Web development
+set wildignore+=vendor,_site,tmp,node_modules,bower_components
+
+""""""""""""""""""""""""""""""""""""""""
+" Filetype specific
+""""""""""""""""""""""""""""""""""""""""
 if has("autocmd")
   " Makefiles require actual tabs
   au FileType make set noexpandtab
@@ -75,45 +139,3 @@ if has("autocmd")
   highlight UTFSpaceComment ctermfg=White ctermbg=1
   au BufNewFile,BufRead * :syn match UTFSpaceComment '.\%uA0'
 endif
-
-" change the leader key to ,
-let mapleader=","
-
-" clear search highlighting with ,<space>
-nnoremap <leader><space> :noh<cr>
-
-" quick comment toggling
-map <leader>c gc
-
-" quick make
-map <leader>mm :make<CR>
-map <leader>mc :make clean<CR>
-
-" simple pasting from the system clipboard
-" http://tilvim.com/2014/03/18/a-better-paste.html
-map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
-
-" Disable F1 help
-:nmap <F1> :echo<CR>
-:imap <F1> <C-o>:echo<CR>
-
-" Scroll up and down visible lines, not buffer lines
-:noremap j gj
-:noremap k gk
-
-" Don't autocomplete filenames that match these patterns
-set wildignore=.svn,.git
-set wildignore+=*.o,*.pyc
-set wildignore+=*.jpg,*.png,*.pdf
-set wildignore+=*.aux,*.bbl,*.blg,*.out,*.toc
-set wildignore+=vendor,_site,tmp,node_modules,bower_components
-
-" No code folding in LaTeX or Markdown
-let g:Tex_AutoFolding = 0
-let g:vim_markdown_folding_disabled=1
-
-" Disable LaTeX syntax checking (lacheck is very opinated about style)
-let g:syntastic_ignore_files=["tex"]
-let g:syntastic_cpp_checkers=["gcc"]
-let g:syntastic_cpp_compiler_options="`root-config --cflags` `root-config --glibs`"
-let g:syntastic_cpp_check_header=1
