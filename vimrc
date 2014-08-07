@@ -8,9 +8,6 @@ set nocompatible
 " UTF-8 encoding
 set encoding=utf-8
 
-" Load all plugins under $HOME/.vim/bundle
-execute pathogen#infect()
-
 " Enable filetype detection
 filetype plugin indent on
 
