@@ -54,6 +54,9 @@ task :install do
       link_file(file, dotfile)
     end
   end
+  puts "\nYou should first install Vundle and load the default plugins with"
+  puts "  git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim"
+  puts "  vim +PluginInstall +qa"
   puts "\nYou should now install Homebrew with"
   puts "  curl -fsSL https://raw.github.com/mxcl/homebrew/go"
 end

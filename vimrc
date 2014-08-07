@@ -8,15 +8,37 @@ set nocompatible
 " UTF-8 encoding
 set encoding=utf-8
 
-" Enable filetype detection
-filetype plugin indent on
-
 " Disable swp files
 set noswapfile
 
 " Enable the mouse in the terminal
 set mouse=a
 set ttymouse=xterm2
+
+""""""""""""""""""""""""""""""""""""""""
+" Plugins
+""""""""""""""""""""""""""""""""""""""""
+
+" Vundle configuration
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" Vundle must manage itself
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'kien/ctrlp.vim'
+Plugin 'msanders/snipmate.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-surround'
+Plugin 'vim-scripts/matchit.zip'
+Plugin 'vim-scripts/cern_root.vim'
+
+call vundle#end()
+
+" Enable filetype detection must be after Vundle config
+filetype plugin indent on
 
 """"""""""""""""""""""""""""""""""""""""
 " UI
