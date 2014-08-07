@@ -2,9 +2,13 @@ html() { cd ~/Sites/HTML/$1; }
 _html() { _files -W ~/Sites/HTML -/; }
 compdef _html html
 
-sites() { cd ~/Sites/Ruby/$1; }
-_sites() { _files -W ~/Sites/Ruby -/; }
-compdef _sites sites
+sitesr() { cd ~/Sites/Ruby/$1; }
+_sitesr() { _files -W ~/Sites/Ruby -/; }
+compdef _sitesr sitesr
+
+sitesp() { cd ~/Sites/Python/$1; }
+_sitesp() { _files -W ~/Sites/Python -/; }
+compdef _sitesp sitesp
 
 code() { cd ~/Code/$1; }
 _code() { _files -W ~/Code -/; }
