@@ -20,3 +20,9 @@ let g:Tex_IgnoredWarnings =
 
 " Don't spellcheck comments
 let g:tex_comment_nospell=1
+
+" Ignore some warnings from chktex, namely
+" #1: Spaces after macros (we use xspace in macros)
+" #24: Spaces before labels (doesn't seem to be a problem)
+" See http://www.ctan.org/tex-archive/support/chktex
+let g:syntastic_tex_chktex_args="-n1 -n24"
