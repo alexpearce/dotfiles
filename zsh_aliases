@@ -44,7 +44,9 @@ alias sdiff="svn diff | less"
 alias q="exit"
 alias k="clear"
 alias cdk="cd && clear"
-alias todo="ack TODO"
+alias todo="ag TODO"
+# I do this all the time
+alias :q="exit"
 
 # Handy snippets
 # image dimensions
