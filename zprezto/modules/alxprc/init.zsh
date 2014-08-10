@@ -18,12 +18,6 @@ physics() { cd ~/Physics/$1; }
 _physics() { _files -W ~/Physics -/; }
 compdef _physics physics
 
-# Creates a directory and then cd's in to it
-mkcd() {
-  mkdir $1;
-  cd $1;
-}
-
 # Extracts an archive
 extract () {
   if [ -z $1 ]
@@ -66,7 +60,7 @@ _tbrowser() { _files -g "*.root"; }
 compdef _tbrowser tbrowser
 
 # Cleanly closes an application
-# http://apple.stackexchange.com/a/5461
+# http://apple.stackexchange.com/a/5461
 quit () {
   for app in $*; do
     osascript -e 'quit app "'$app'"'

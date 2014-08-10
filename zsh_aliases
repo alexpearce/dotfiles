@@ -10,20 +10,11 @@ alias charmcpv="cd ~/Documents/LHCb/Presentations/CharmCPV"
 # Executable shortcuts
 alias root="root -l"
 alias tb="tbrowser"
-alias o="open"
 alias r="ruby"
 alias irb="pry"
 alias be="bundle exec"
 alias p="python"
 alias ip="ipython --no-banner"
-
-# tmux
-# Enable 256 colours https://stackoverflow.com/questions/10158508
-alias t="tmux -2"
-alias tn="tmux new -s"
-alias ta="tmux attach -t"
-alias td="tmux detach"
-alias ts="tmux switch -t"
 
 # Git
 if [[ "`uname`" == "Darwin" ]]; then
@@ -51,16 +42,8 @@ alias :q="exit"
 # Handy snippets
 # image dimensions
 alias image-d="sips -g pixelWidth -g pixelHeight"
-# Quick directory server
-alias webshare='python -c "import SimpleHTTPServer;SimpleHTTPServer.test()"'
 # http://xkcd.com/1168/
 alias tarup="tar czvf"
-# Open in TeXShop
-alias texshop="open -a TeXShop"
-alias txs="texshop"
-
-# Easy directory access
-alias afs="cd $AFS"
 
 # Open vim, one tab per file
 alias v="vim -p"
@@ -69,4 +52,7 @@ alias v="vim -p"
 alias mu="ssh mu"
 
 # Use like bundle exec
-alias npm-exec='PATH=$(npm bin):$PATH'
+alias npm-exec="PATH=$(npm bin):$PATH"
+
+# Use to quick pipe to pager, e.g. `svn diff L`
+alias -g L="| less"
