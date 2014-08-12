@@ -32,6 +32,7 @@ Plugin 'msanders/snipmate.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-markdown'
 Plugin 'vim-scripts/matchit.zip'
 Plugin 'vim-scripts/cern_root.vim'
 
