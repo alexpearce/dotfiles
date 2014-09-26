@@ -52,7 +52,7 @@ syntax enable
 set showcmd
 
 " Theme
-set background=dark
+set background=light
 colorscheme base16-ocean
 
 " Show relative line number as absolute line number at the cursor position,
