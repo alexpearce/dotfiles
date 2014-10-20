@@ -27,14 +27,18 @@ call vundle#begin()
 " Vundle must manage itself
 Plugin 'gmarik/Vundle.vim'
 
+Plugin 'davidhalter/jedi-vim'
+Plugin 'ehamberg/vim-cute-python'
 Plugin 'kien/ctrlp.vim'
 Plugin 'msanders/snipmate.vim'
+Plugin 'othree/html5.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-markdown'
 Plugin 'vim-scripts/matchit.zip'
 Plugin 'vim-scripts/cern_root.vim'
+Plugin 'vim-scripts/TeX-PDF'
 
 call vundle#end()
 
