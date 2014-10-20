@@ -14,9 +14,9 @@ code() { cd ~/Code/$1; }
 _code() { _files -W ~/Code -/; }
 compdef _code code
 
-physics() { cd ~/Physics/$1; }
-_physics() { _files -W ~/Physics -/; }
-compdef _physics physics
+phys() { cd ~/Physics/$1; }
+_phys() { _files -W ~/Physics -/; }
+compdef _phys phys
 
 # Extracts an archive
 extract () {
