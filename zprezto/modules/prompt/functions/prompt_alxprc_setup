@@ -14,6 +14,9 @@ function prompt_alxprc_precmd {
   if (( $+functions[git-info] )); then
     git-info
   fi
+  if (( $+functions[python-info] )); then
+    python-info
+  fi
 }
 
 function prompt_alxprc_setup {
@@ -28,6 +31,10 @@ function prompt_alxprc_setup {
   local user_host='%F{red}%n%f@%F{magenta}%m%f'
   local current_dir='%F{blue}%~%f'
 
+  # Virtualenv prompt styling
+  zstyle ':prezto:module:python:info:virtualenv' format '%F{yellow}%v%f'
+
+  # Git prompt styling
   zstyle ':prezto:module:git:info' verbose 'yes'
   zstyle ':prezto:module:git:info:action' format ':%%B%F{yellow}%s%f%%b'
   zstyle ':prezto:module:git:info:added' format ' %%B%F{green}+%f%%b'
@@ -43,10 +50,13 @@ function prompt_alxprc_setup {
   zstyle ':prezto:module:git:info:unmerged' format ' %%B%F{yellow}═%f%%b'
   zstyle ':prezto:module:git:info:untracked' format ' %%B%F{white}U%f%%b'
   zstyle ':prezto:module:git:info:keys' format \
-    'rprompt' '%b%A%B%S%a%d%m%r%U%u'
+    'prompt'  '%b' \
+    'rprompt' '%A%B%S%a%d%m%r%U%u%B'
 
+  local git='${git_info[prompt]}'
+  local virtualenv='${python_info[virtualenv]}'
   PROMPT="
-${user_host} ${current_dir}
+${user_host} ${current_dir} ${git} ${virtualenv}
 %B>%b "
   if [[ -z "${git_info[rprompt]}" ]]; then
     RPROMPT='${git_info[rprompt]}'
