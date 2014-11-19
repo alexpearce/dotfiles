@@ -8,6 +8,8 @@ if [[ "`uname`" == "Darwin" ]]; then
   # PyROOT
   export ROOTSYS=$(brew --prefix root)
   export PYTHONPATH=$ROOTSYS/lib/root:$PYTHONPATH
+else
+  export PATH=$HOME/usr/bin:$PATH
 fi
 
 #
