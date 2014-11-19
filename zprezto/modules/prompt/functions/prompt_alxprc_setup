@@ -11,9 +11,11 @@ function prompt_alxprc_precmd {
   setopt LOCAL_OPTIONS
   unsetopt XTRACE KSH_ARRAYS
 
+  # Get git information
   if (( $+functions[git-info] )); then
     git-info
   fi
+  # Get virtualenv information
   if (( $+functions[python-info] )); then
     python-info
   fi
@@ -28,41 +30,26 @@ function prompt_alxprc_setup {
 
   add-zsh-hook precmd prompt_alxprc_precmd
 
-  local user_host='%F{red}%n%f@%F{magenta}%m%f'
-  local current_dir='%F{blue}%~%f'
-
   # Virtualenv prompt styling
-  zstyle ':prezto:module:python:info:virtualenv' format '%F{yellow}%v%f '
+  zstyle ':prezto:module:python:info:virtualenv' format '%F{242}%v%f '
 
   # Git prompt styling
   zstyle ':prezto:module:git:info' verbose 'yes'
-  zstyle ':prezto:module:git:info:action' format ':%%B%F{yellow}%s%f%%b'
-  zstyle ':prezto:module:git:info:added' format ' %%B%F{green}+%f%%b'
-  zstyle ':prezto:module:git:info:ahead' format ' %%B%F{yellow}⬆%f%%b'
-  zstyle ':prezto:module:git:info:behind' format ' %%B%F{yellow}⬇%f%%b'
-  zstyle ':prezto:module:git:info:branch' format '%F{green}%b%f'
-  zstyle ':prezto:module:git:info:commit' format ':%F{green}%.7c%f'
-  zstyle ':prezto:module:git:info:deleted' format ' %%B%F{red}-%f%%b'
-  zstyle ':prezto:module:git:info:modified' format ' %%B%F{blue}*%f%%b'
-  zstyle ':prezto:module:git:info:position' format ':%F{red}%p%f'
-  zstyle ':prezto:module:git:info:renamed' format ' %%B%F{magenta}R%f%%b'
-  zstyle ':prezto:module:git:info:stashed' format ' %%B%F{cyan}✭%f%%b'
-  zstyle ':prezto:module:git:info:unmerged' format ' %%B%F{yellow}═%f%%b'
-  zstyle ':prezto:module:git:info:untracked' format ' %%B%F{white}U%f%%b'
+  zstyle ':prezto:module:git:info:ahead' format ' %F{yellow}⇡%f'
+  zstyle ':prezto:module:git:info:behind' format ' %F{yellow}⇣%f'
+  zstyle ':prezto:module:git:info:branch' format '%F{242}%b%f'
+  zstyle ':prezto:module:git:info:modified' format '%F{magenta}*%f'
+  zstyle ':prezto:module:git:info:stashed' format '%{red}^%f'
   zstyle ':prezto:module:git:info:keys' format \
-    'prompt'  '%b ' \
-    'rprompt' '%A%B%S%a%d%m%r%U%u%B'
+    'prompt'  '%b%m%S%A%B%c ' \
+    'rprompt' ''
 
-  local git='${git_info[prompt]}'
-  local virtualenv='${python_info[virtualenv]}'
-  PROMPT="
-${user_host} ${current_dir} ${git}${virtualenv}
-%B>%b "
-  if [[ -z "${git_info[rprompt]}" ]]; then
-    RPROMPT='${git_info[rprompt]}'
-  fi
+  # Define prompts
+  PROMPT='
+${SSH_TTY:+"%F{red}%n%f@%F{magenta}%m%f "}%F{blue}%~%f ${git_info[prompt]}
+%B>%b '
+  RPROMPT='${python_info[virtualenv]}'
   SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 }
 
 prompt_alxprc_setup "$@"
-
