@@ -1,11 +1,12 @@
-export EDITOR=vim
-export VISUAL=vim
-export PAGER=less
-export BROWSER=open
+# Ensure that a non-login, non-interactive shell has a defined environment.
+if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprofile"
+fi
 
-export RBENV_ROOT=/usr/local/var/rbenv
-
+#
 # AFS
+#
+
 export AFS=/afs/cern.ch/user/a/apearce
 export WORK=/afs/cern.ch/work/a/apearce
 if [[ "`uname`" == "Darwin" ]]; then
