@@ -31,7 +31,7 @@ function prompt_alxprc_setup {
   add-zsh-hook precmd prompt_alxprc_precmd
 
   # Virtualenv prompt styling
-  zstyle ':prezto:module:python:info:virtualenv' format '%F{242}%v%f '
+  zstyle ':prezto:module:python:info:virtualenv' format '%F{242}%v%f'
 
   # Git prompt styling
   zstyle ':prezto:module:git:info' verbose 'yes'
