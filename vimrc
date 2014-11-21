@@ -157,6 +157,8 @@ if has("autocmd")
 
   " Spellchecking in LaTeX and Markdown
   au FileType tex,markdown set spelllang=en_gb spell
+  " No color column for text formats
+  au FileType tex,markdown set colorcolumn=
 
   " I often type `#` to start a comment, as alt-3, then hit space
   " alt-space is a UTF non-breaking space character, which can give encoding errors
