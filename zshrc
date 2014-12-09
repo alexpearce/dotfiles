@@ -1,8 +1,3 @@
-# Source Prezto
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
-
 # OS X only
 if [[ "`uname`" == "Darwin" ]]; then
   # PyROOT
@@ -10,6 +5,11 @@ if [[ "`uname`" == "Darwin" ]]; then
   export PYTHONPATH=$ROOTSYS/lib/root:$PYTHONPATH
 else
   export PATH=$HOME/usr/bin:$PATH
+fi
+
+# Source Prezto
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
 #
