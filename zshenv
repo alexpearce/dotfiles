@@ -4,6 +4,12 @@ if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
 fi
 
 #
+# Ruby
+#
+
+export RBENV_ROOT=/usr/local/var/rbenv
+
+#
 # AFS
 #
 
