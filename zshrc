@@ -1,7 +1,7 @@
 # OS X only
 if [[ "`uname`" == "Darwin" ]]; then
   # PyROOT
-  export ROOTSYS=$(brew --prefix root)
+  export ROOTSYS=$(brew --prefix root6)
   export PYTHONPATH=$ROOTSYS/lib/root:$PYTHONPATH
 else
   export PATH=$HOME/usr/bin:$PATH
