@@ -29,14 +29,19 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'davidhalter/jedi-vim'
 Plugin 'ehamberg/vim-cute-python'
+Plugin 'junegunn/vim-easy-align'
 Plugin 'kien/ctrlp.vim'
 Plugin 'msanders/snipmate.vim'
+Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'othree/html5.vim'
+Plugin 'raichoo/haskell-vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-markdown'
+Plugin 'tpope/vim-repeat'
 Plugin 'vim-scripts/matchit.zip'
 Plugin 'vim-scripts/cern_root.vim'
 Plugin 'vim-scripts/TeX-PDF'
@@ -55,6 +60,7 @@ syntax enable
 
 " Show the executing command
 set showcmd
+set noshowmode
 
 " Theme
 set background=dark
@@ -88,6 +94,9 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
+
+" Allow a greater number of tabs to be opened (default: 10)
+set tabpagemax=20
 
 """"""""""""""""""""""""""""""""""""""""
 " Coding style
@@ -145,6 +154,8 @@ set wildignore+=*.jpg,*.png,*.pdf
 set wildignore+=*.aux,*.bbl,*.blg,*.out,*.toc
 " Web development
 set wildignore+=vendor,_site,tmp,node_modules,bower_components
+" Script outputs
+set wildignore+=output
 
 """"""""""""""""""""""""""""""""""""""""
 " Filetype specific
