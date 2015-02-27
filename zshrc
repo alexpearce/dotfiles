@@ -53,3 +53,10 @@ alias tarup="tar czvf"
 
 # Open vim, one tab per file
 alias v="vim -p"
+
+ctrlp() {
+  </dev/tty vim -c CtrlP
+}
+zle -N ctrlp
+
+bindkey "^p" ctrlp
