@@ -22,7 +22,8 @@ zstyle ':prezto:load' pmodule \
   'python' \
   'tmux' \
   'history-substring-search' \
-  'prompt'
+  'prompt' \
+  'alxprc'
 
 #
 # Editor
