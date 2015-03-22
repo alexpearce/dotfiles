@@ -29,6 +29,7 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'davidhalter/jedi-vim'
 Plugin 'ehamberg/vim-cute-python'
+Plugin 'Glench/Vim-Jinja2-Syntax'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'kien/ctrlp.vim'
 Plugin 'msanders/snipmate.vim'
