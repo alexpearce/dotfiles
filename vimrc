@@ -144,6 +144,10 @@ map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
 :noremap j gj
 :noremap k gk
 
+" Navigate tabs with shift-{h,l}
+noremap <S-l> gt
+noremap <S-h> gT
+
 " Don't autocomplete filenames that match these patterns
 " Version control
 set wildignore=.svn,.git
