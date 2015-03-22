@@ -79,13 +79,6 @@ set sidescrolloff=5
 " Try to display very long lines, rather than showing @
 set display+=lastline
 
-" Wrap lines in the buffer over 80 characters
-" set textwidth=80
-" Coloured column at 80 characters, good for wide terminals
-if exists('+colorcolumn')
-  set colorcolumn=80
-endif
-
 " show trailing whitespace as -, tabs as >-
 set listchars=tab:>-,trail:-
 set list
@@ -170,12 +163,11 @@ if has("autocmd")
   au FileType make set noexpandtab
 
   " Python style uses 4 spaces as tabs
-  au FileType python set softtabstop=4 tabstop=4 shiftwidth=4
+  " Coloured column at 80 characters, good for wide terminals
+  au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 colorcolumn=80
 
   " Spellchecking in LaTeX and Markdown
   au FileType tex,markdown set spelllang=en_gb spell
-  " No color column for text formats
-  au FileType tex,markdown set colorcolumn=
 
   " I often type `#` to start a comment, as alt-3, then hit space
   " alt-space is a UTF non-breaking space character, which can give encoding errors
