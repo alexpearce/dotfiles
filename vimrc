@@ -49,6 +49,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'vim-scripts/matchit.zip'
 Plugin 'vim-scripts/cern_root.vim'
 Plugin 'vim-scripts/TeX-PDF'
+Plugin 'w0ng/vim-hybrid'
 
 call vundle#end()
 
@@ -70,8 +71,9 @@ set showcmd
 set noshowmode
 
 " Theme
-set background=dark
-colorscheme base16-ocean
+let g:hybrid_use_Xresources = 1
+colorscheme hybrid
+
 
 " Show relative line number as absolute line number at the cursor position,
 " but relative line number above and below the cursor
