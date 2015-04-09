@@ -1,0 +1,20 @@
+# Files and folders ignored by ag when searching
+# Uses same format as gitignore
+*.
+*.pyc
+*.jpg
+*.png
+*.pdf
+*.aux
+*.bbl
+*.blg
+*.out
+*.toc
+/.svn
+/.git
+/vendor
+/_site
+/tmp
+/node_modules
+/bower_components
+/output
