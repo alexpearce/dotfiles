@@ -30,6 +30,8 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'ehamberg/vim-cute-python'
 Plugin 'Glench/Vim-Jinja2-Syntax'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'JulesWang/css.vim'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'kien/ctrlp.vim'
 Plugin 'msanders/snipmate.vim'
@@ -96,6 +98,11 @@ set smartcase
 " Allow a greater number of tabs to be opened (default: 10)
 set tabpagemax=20
 
+" Enable folding, but don't pre-fold things when opening a file
+set foldenable
+set foldlevelstart=10
+set foldmethod=indent
+
 """"""""""""""""""""""""""""""""""""""""
 " Coding style
 """"""""""""""""""""""""""""""""""""""""
@@ -126,6 +133,9 @@ set clipboard=unnamed
 " change the leader key to ,
 let mapleader=","
 
+" Exit insert mode by typing jk
+inoremap jk <esc>
+
 " clear search highlighting with ,<space>
 nnoremap <leader><space> :noh<cr>
 
@@ -144,6 +154,12 @@ map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
 " Navigate tabs with shift-{h,l}
 noremap <S-l> gt
 noremap <S-h> gT
+
+" Fold/unfold with <space>
+nnoremap <space> za
+
+" Search with ag.vim
+nnoremap <leader>a :Ag
 
 " Don't autocomplete filenames that match these patterns
 " Version control
