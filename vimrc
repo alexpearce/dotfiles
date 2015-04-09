@@ -37,6 +37,7 @@ Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'othree/html5.vim'
 Plugin 'raichoo/haskell-vim'
 Plugin 'Raimondi/delimitMate'
+Plugin 'rking/ag.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
@@ -51,6 +52,9 @@ call vundle#end()
 
 " Enable filetype detection must be after Vundle config
 filetype plugin indent on
+
+" Have ctrlp vim plugin use ag command for finding
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
 """"""""""""""""""""""""""""""""""""""""
 " UI
