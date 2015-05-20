@@ -27,6 +27,7 @@ call vundle#begin()
 " Vundle must manage itself
 Plugin 'gmarik/Vundle.vim'
 
+Plugin 'alexpearce/vim-hybrid'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'ehamberg/vim-cute-python'
 Plugin 'gee-forr/vitality.vim'
@@ -50,7 +51,6 @@ Plugin 'tpope/vim-repeat'
 Plugin 'vim-scripts/matchit.zip'
 Plugin 'vim-scripts/cern_root.vim'
 Plugin 'vim-scripts/TeX-PDF'
-Plugin 'w0ng/vim-hybrid'
 
 call vundle#end()
 
