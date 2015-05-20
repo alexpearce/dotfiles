@@ -29,6 +29,7 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'davidhalter/jedi-vim'
 Plugin 'ehamberg/vim-cute-python'
+Plugin 'gee-forr/vitality.vim'
 Plugin 'Glench/Vim-Jinja2-Syntax'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'JulesWang/css.vim'
