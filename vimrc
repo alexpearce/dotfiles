@@ -180,6 +180,10 @@ set wildignore+=output
 """"""""""""""""""""""""""""""""""""""""
 " Filetype specific
 """"""""""""""""""""""""""""""""""""""""
+" Always use the 'tex' filetype for .tex files, rather than the dated
+" 'plaintex' filetype
+let g:tex_flavor = "latex"
+
 if has("autocmd")
   " Makefiles require actual tabs
   au FileType make set noexpandtab
