@@ -191,6 +191,10 @@ if has("autocmd")
   " Spellchecking in LaTeX and Markdown
   au FileType tex,markdown set spelllang=en_gb spell
 
+  " Wrap Python, LaTeX, and Markdown automatically at 80 characters, allowing
+  " sentences to start on new lines
+  au FileType python,tex,markdown set formatoptions+=atw textwidth=79
+
   " I often type `#` to start a comment, as alt-3, then hit space
   " alt-space is a UTF non-breaking space character, which can give encoding errors
   highlight UTFSpaceComment ctermfg=White ctermbg=1
