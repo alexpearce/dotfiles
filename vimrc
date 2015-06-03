@@ -28,6 +28,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'alexpearce/vim-hybrid'
+Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'ehamberg/vim-cute-python'
 Plugin 'gee-forr/vitality.vim'
