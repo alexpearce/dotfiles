@@ -133,14 +133,14 @@ set clipboard=unnamed
 " Mappings
 """"""""""""""""""""""""""""""""""""""""
 
-" change the leader key to ,
-let mapleader=","
+" change the leader key to space
+let mapleader="\<Space>"
 
 " Exit insert mode by typing jk
 inoremap jk <esc>
 
-" clear search highlighting with ,<space>
-nnoremap <leader><space> :noh<cr>
+" clear search highlighting with <space>,
+nnoremap <leader>, :noh<cr>
 
 " quick make
 map <leader>mm :make<CR>
