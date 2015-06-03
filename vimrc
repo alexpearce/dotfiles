@@ -163,9 +163,9 @@ noremap <S-l> gt
 noremap <S-h> gT
 
 " Quickly save, quit, or save-and-quit
-map <leader>w :w
-map <leader>x :x
-map <leader>q :q
+map <leader>w :w<CR>
+map <leader>x :x<CR>
+map <leader>q :q<CR>
 
 " Fold/unfold with <space>
 nnoremap <space> za
