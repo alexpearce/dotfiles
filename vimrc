@@ -137,6 +137,9 @@ set clipboard=unnamed
 " change the leader key to space
 let mapleader="\<Space>"
 
+" Stop command window from popping u
+map q: :q
+
 " Exit insert mode by typing jk
 inoremap jk <esc>
 
@@ -158,6 +161,11 @@ map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
 " Navigate tabs with shift-{h,l}
 noremap <S-l> gt
 noremap <S-h> gT
+
+" Quickly save, quit, or save-and-quit
+map <leader>w :w
+map <leader>x :x
+map <leader>q :q
 
 " Fold/unfold with <space>
 nnoremap <space> za
