@@ -102,11 +102,6 @@ set smartcase
 " Allow a greater number of tabs to be opened (default: 10)
 set tabpagemax=20
 
-" Enable folding, but don't pre-fold things when opening a file
-set foldenable
-set foldlevelstart=10
-set foldmethod=indent
-
 """"""""""""""""""""""""""""""""""""""""
 " Coding style
 """"""""""""""""""""""""""""""""""""""""
@@ -167,11 +162,8 @@ map <leader>w :w<CR>
 map <leader>x :x<CR>
 map <leader>q :q<CR>
 
-" Fold/unfold with <space>
-nnoremap <space> za
-
 " Search with ag.vim
-nnoremap <leader>a :Ag
+nnoremap <leader>a :Ag<Space>
 
 " Don't autocomplete filenames that match these patterns
 " Version control
