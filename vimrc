@@ -27,8 +27,8 @@ call vundle#begin()
 " Vundle must manage itself
 Plugin 'gmarik/Vundle.vim'
 
+Plugin 'airblade/vim-gitgutter'
 Plugin 'alexpearce/vim-hybrid'
-Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'ehamberg/vim-cute-python'
 Plugin 'gee-forr/vitality.vim'
@@ -45,12 +45,8 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'rking/ag.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-markdown'
-Plugin 'tpope/vim-repeat'
-Plugin 'vim-scripts/matchit.zip'
-Plugin 'vim-scripts/cern_root.vim'
 Plugin 'vim-scripts/TeX-PDF'
 
 call vundle#end()
