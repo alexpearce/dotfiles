@@ -2,6 +2,9 @@
 " General configuration
 """"""""""""""""""""""""""""""""""""""""
 
+" Vim is not compatible with fish
+set shell=/bin/sh
+
 " Don't need vi compatibility
 set nocompatible
 
@@ -29,6 +32,7 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'airblade/vim-gitgutter'
 Plugin 'alexpearce/vim-hybrid'
+Plugin 'dag/vim-fish'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'ehamberg/vim-cute-python'
 Plugin 'gee-forr/vitality.vim'
