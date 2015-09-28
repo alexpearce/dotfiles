@@ -30,7 +30,7 @@ call vundle#begin()
 " Vundle must manage itself
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'airblade/vim-gitgutter'
+" Plugin 'airblade/vim-gitgutter'
 Plugin 'alexpearce/vim-hybrid'
 Plugin 'dag/vim-fish'
 Plugin 'davidhalter/jedi-vim'
@@ -48,6 +48,7 @@ Plugin 'raichoo/haskell-vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'rking/ag.vim'
 Plugin 'scrooloose/syntastic'
+Plugin 'SirVer/ultisnips'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-markdown'
@@ -60,6 +61,11 @@ filetype plugin indent on
 
 " Have ctrlp vim plugin use ag command for finding
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsEditSplit="vertical"
 
 """"""""""""""""""""""""""""""""""""""""
 " UI
