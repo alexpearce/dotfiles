@@ -1,37 +1,36 @@
-# Function aliases
-alias o open
-alias g git
-alias gx gitx
-alias p python
-alias ip "ipython --no-banner"
-alias r "root -l"
+# Alias commands to include common flags
+alias ipython "ipython --no-banner"
+alias root "root -l"
 alias vim "vim -p"
-alias v vim
 
 alias rm "rm -i"
+alias cp "cp -i"
 alias mv "mv -i"
+alias mkdir "mkdir -p"
 
-alias gia "git add"
-alias gb "git branch"
-alias gco "git checkout"
-alias gc "git commit"
-alias gcm "git commit -m"
-alias gwd "git diff"
-alias gws "git status"
-alias gs "git stash"
-alias gsp "git stash pop"
-alias gsx "git stash drop"
+# Abbreviate commonly used functions
+# An abbreviation will expand after <space> or <Enter> is hit
+abbr o open
+abbr g git
+abbr gx gitx
+abbr gho "github_open ."
+abbr ghoi "github_open issues"
+abbr ghopr "github_open pulls"
+abbr p python
+abbr ip ipython
+abbr r root
+abbr tb tbrowser
+abbr v vim
 
-alias kerb "kinit -l 24h apearce@CERN.CH; and aklog"
-alias cern "ssh lxplus.cern.ch"
+abbr gia "git add"
+abbr gb "git branch"
+abbr gco "git checkout"
+abbr gc "git commit"
+abbr gcm "git commit -m"
+abbr gwd "git diff"
+abbr gws "git status"
+abbr gs "git stash"
+abbr gsp "git stash pop"
+abbr gsx "git stash drop"
 
-set -x AFS /afs/cern.ch/user/a/apearce
-set -x WORK /afs/cern.ch/work/a/apearce
-
-function ctrlp -d "Launch CtrlP inside Vim"
-  vim -c CtrlP
-end
-
-function fish_user_key_bindings -d "Set custom key bindings"
-  bind \cp ctrlp
-end
+abbr cern "ssh lxplus.cern.ch"
