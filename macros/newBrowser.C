@@ -1,3 +1,6 @@
+#include <TApplication.h>
+#include <TBrowser.h>
+
 void newBrowser();
 int main(int argc, char *argv[]);
 
@@ -10,6 +13,15 @@ void newBrowser() {
 }
 
 int main(int argc, char *argv[]) {
+  TApplication *app = gApplication;
+  bool ownApp = false;
+  if (!app) {
+    ownApp = true;
+    app = new TApplication("app", &argc, argv);
+  }
   TBrowser *browser = new TBrowser;
+  if (ownApp) {
+    app->Run();
+  }
   return 0;
 }
