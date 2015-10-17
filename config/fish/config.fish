@@ -3,10 +3,6 @@ if set -q $TMUX
   tmux attach ^/dev/null; or tmux
 end
 
-# Set paths for ROOT
-set -x ROOTSYS (brew --prefix root6)
-set -x PYTHONPATH $ROOTSYS/lib/root $PYTHONPATH
-
 # Set up virtualfish (use it like virtualenvwrapper)
 eval (python -m virtualfish compat_aliases)
 
