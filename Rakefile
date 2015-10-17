@@ -23,9 +23,9 @@ task :install do
     puts "Exiting, goodbye!"
   end
   install_prezto
-  files = Dir['*'] - %w[Rakefile README.md zprezto macros terminfo tmux-start.sh]
-  # Add ROOT macros
-  files << "macros/newBrowser.C"
+  files = Dir['*'] - %w[Rakefile README.md zprezto bin terminfo tmux-start.sh]
+  # Add executables
+  files << "bin/tbrowser"
   # Add Prezto files
   files << "zprezto/modules/alxprc/init.zsh"
   files << "zprezto/modules/prompt/functions/prompt_alxprc_setup"
