@@ -12,8 +12,8 @@ source $source_dir/folder_commands.fish
 source $source_dir/git.fish
 
 # This file is sourced twice on fish start-up, once interactively
-# and then once non-interactively. This wrapper prevents our PATH
-# manipulation being repeated
+# and then once non-interactively. This wrapper prevents things
+# like PATH manipulation being repeated
 if status --is-interactive
-  set PATH ~/.bin $PATH
+  source $source_dir/env.fish
 end
