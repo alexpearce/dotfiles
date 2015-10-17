@@ -3,8 +3,8 @@ if set -q $TMUX
   tmux attach ^/dev/null; or tmux
 end
 
-# Set up virtualfish (use it like virtualenvwrapper)
-eval (python -m virtualfish compat_aliases)
+# Set up virtualfish (virtualenvwrapper for fish, try `vf` command)
+eval (python -m virtualfish auto_activation)
 
 set -l source_dir (dirname (status -f))
 source $source_dir/aliases.fish
