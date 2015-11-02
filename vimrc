@@ -196,6 +196,9 @@ if has("autocmd")
   " Makefiles require actual tabs
   au FileType make set noexpandtab
 
+  " Don't create backup files when editing crontabs
+  au filetype crontab setlocal nobackup nowritebackup
+
   " Python style uses 4 spaces as tabs
   " Coloured column at 80 characters, good for wide terminals
   au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 colorcolumn=80
