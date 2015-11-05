@@ -1,11 +1,23 @@
+function is_ssh -d "Test whether session is under SSH"
+  test -n "$SSH_CLIENT" -o -n "$SSH_TTY"
+end
+function is_cern -d "Test whether host is a CERN machine"
+  # Most CERN machines have a hostname ending in cern.ch
+  test (hostname | grep cern.ch)
+  # But not the ones in the LHCb online network
+  or test (hostname | grep "(gw|plus)[0-9]+")
+end
+
 # Start tmux automatically if we're not connecting over SSH,
 # attaching to an existing session if possible
-if begin; set -q $TMUX; not test -n "$SSH_CLIENT" -o -n "$SSH_TTY"; end
+if begin; set -q $TMUX; not is_ssh; end
   tmux attach ^/dev/null; or tmux
 end
 
 # Set up virtualfish (virtualenvwrapper for fish, try `vf` command)
-eval (python -m virtualfish auto_activation)
+if not is_cern
+  eval (python -m virtualfish auto_activation)
+end
 
 set -l source_dir (dirname (status -f))
 source $source_dir/aliases.fish
@@ -17,4 +29,7 @@ source $source_dir/git.fish
 # like PATH manipulation being repeated
 if status --is-interactive
   source $source_dir/env.fish
+  if is_cern
+    source $source_dir/env_cern.fish
+  end
 end
