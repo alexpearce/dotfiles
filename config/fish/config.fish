@@ -1,5 +1,6 @@
-# Start tmux automatically, attaching to an existing session if possible
-if set -q $TMUX
+# Start tmux automatically if we're not connecting over SSH,
+# attaching to an existing session if possible
+if begin; set -q $TMUX; not test -n "$SSH_CLIENT" -o -n "$SSH_TTY"; end
   tmux attach ^/dev/null; or tmux
 end
 
