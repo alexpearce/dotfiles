@@ -1,7 +1,7 @@
 # Alias commands to include common flags
 alias ipython "ipython --no-banner"
 alias root "root -l"
-alias vim "vim -p"
+alias vim "nvim -p"
 
 alias rm "rm -i"
 alias cp "cp -i"

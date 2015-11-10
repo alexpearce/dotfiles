@@ -16,7 +16,9 @@ set noswapfile
 
 " Enable the mouse in the terminal
 set mouse=a
-set ttymouse=xterm2
+if !has("nvim")
+  set ttymouse=xterm2
+endif
 
 """"""""""""""""""""""""""""""""""""""""
 " Plugins
@@ -30,7 +32,7 @@ call vundle#begin()
 " Vundle must manage itself
 Plugin 'gmarik/Vundle.vim'
 
-" Plugin 'airblade/vim-gitgutter'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'alexpearce/vim-hybrid'
 Plugin 'dag/vim-fish'
 Plugin 'davidhalter/jedi-vim'
@@ -107,6 +109,10 @@ set smartcase
 
 " Allow a greater number of tabs to be opened (default: 10)
 set tabpagemax=20
+
+if has("nvim")
+  set laststatus=1
+endif
 
 """"""""""""""""""""""""""""""""""""""""
 " Coding style
