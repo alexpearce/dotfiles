@@ -6,22 +6,28 @@ This is my collection of [configuration files](http://dotfiles.github.io/).
 Usage
 -----
 
-Pull the repo along with all it's submodules
+The `fish` dotfiles depend on [the fish shell](http://fishshell.com),
+so install that first:
 
 ```bash
-git clone --recursive git@github.com:alexpearce/dotfiles.git $HOME/.dotfiles
+$ brew install fish
+# Add /usr/local/bin/fish to /etc/shells, then do
+$ chsh -s /usr/local/bin/fish
 ```
 
-Deploy!
+Pull the repository, and then create the symbolic links using [GNU
+stow](https://www.gnu.org/software/stow/).
 
 ```bash
-cd ~/.dotfiles
-rake install
+$ git clone git@github.com:alexpearce/dotfiles.git ~/.dotfiles
+$ cd ~/.dotfiles
+$ stow fish vim tmux # plus whatever else you'd like
 ```
 
-There are two terminfo files in the `terminfo` directory.
-These are for [enabling italics in iTerm2, vim, and tmux](https://alexpearce.me/2014/05/italics-in-iterm2-vim-tmux/).
-Currently they are not added automatically.
+There are two terminfo files in the `terminfo` directory.  These are for
+[enabling italics in iTerm2, vim, and
+tmux](https://alexpearce.me/2014/05/italics-in-iterm2-vim-tmux/).
+They are not added automatically.
 
 License
 -------
