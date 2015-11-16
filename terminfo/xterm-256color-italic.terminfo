@@ -1,5 +1,0 @@
-# A xterm-256color based TERMINFO that adds the escape sequences for italic.
-# https://gist.github.com/sos4nt/3187620
-xterm-256color-italic|xterm with 256 colors and italic,
-  sitm=\E[3m, ritm=\E[23m,
-  use=xterm-256color,
