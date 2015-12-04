@@ -3,9 +3,9 @@ function is_ssh -d "Test whether session is under SSH"
 end
 function is_cern -d "Test whether host is a CERN machine"
   # Most CERN machines have a hostname ending in cern.ch
-  test (hostname | grep cern.ch)
+  test (hostname | grep -E cern\.ch)
   # But not the ones in the LHCb online network
-  or test (hostname | grep "(gw|plus)[0-9]+")
+  or test (hostname | grep -E "(gw|plus)[0-9]+")
 end
 
 # Start tmux automatically if we're not connecting over SSH,
