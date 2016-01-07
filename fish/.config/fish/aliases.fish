@@ -10,6 +10,12 @@ alias cp "cp -i"
 alias mv "mv -i"
 alias mkdir "mkdir -p"
 
+# EOS on lxplus
+alias eos="/afs/cern.ch/project/eos/installation/0.3.15/bin/eos.select"
+alias eosumount="/afs/cern.ch/project/eos/installation/0.3.15/bin/eos.select -b fuse umount"
+alias eosmount="/afs/cern.ch/project/eos/installation/0.3.15/bin/eos.select -b fuse mount"
+alias eosforceumount="killall eosfsd 2>/dev/null; killall -9 eosfsd 2>/dev/null; fusermount -u "
+
 # Abbreviate commonly used functions
 # An abbreviation will expand after <space> or <Enter> is hit
 abbr o open

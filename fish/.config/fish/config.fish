@@ -31,8 +31,9 @@ if status --is-interactive
   source $source_dir/env.fish
   if is_cern
     source $source_dir/env_cern.fish
+  else
+    # Set paths for ROOT
+    set -x ROOTSYS (brew --prefix root6)
+    set -x PYTHONPATH $ROOTSYS/lib/root $PYTHONPATH
   end
-  # Set paths for ROOT
-  set -x ROOTSYS (brew --prefix root6)
-  set -x PYTHONPATH $ROOTSYS/lib/root $PYTHONPATH
 end
