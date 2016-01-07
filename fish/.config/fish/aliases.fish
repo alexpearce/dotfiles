@@ -23,6 +23,7 @@ abbr ip ipython
 abbr r root
 abbr tb tbrowser
 abbr v vim
+abbr ospdf "open -a Skim *.pdf"
 
 abbr gia "git add"
 abbr gb "git branch"
@@ -36,3 +37,5 @@ abbr gsp "git stash pop"
 abbr gsx "git stash drop"
 
 abbr cern "ssh lxplus.cern.ch"
+
+abbr docker-init "eval (docker-machine env default --shell=fish)"
