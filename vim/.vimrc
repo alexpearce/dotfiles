@@ -36,11 +36,11 @@ Plug 'ehamberg/vim-cute-python'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'JulesWang/css.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'othree/html5.vim'
 Plug 'raichoo/haskell-vim'
-Plug 'rking/ag.vim'
 Plug 'scrooloose/syntastic'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-commentary'
@@ -50,8 +50,18 @@ Plug 'vim-scripts/TeX-PDF'
 
 call plug#end()
 
-" Have ctrlp vim plugin use ag command for finding
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+" Search from the git repo root, if we're in a repo, else the cwd
+function FuzzyFind()
+  " Contains a null-byte that is stripped.
+  let gitparent=system('git rev-parse --show-toplevel')[:-2]
+  if empty(matchstr(gitparent, '^fatal:.*'))
+    silent execute ':FZF -m ' . gitparent
+  else
+    silent execute ':FZF -m .'
+  endif
+endfunction
+
+nnoremap <c-p> :call FuzzyFind()<cr>
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
