@@ -3,7 +3,7 @@ alias ipython "ipython --no-banner"
 alias root "root -l"
 # Only use Neovim if the command is known
 # There must be a nicer way of doing this...
-which nvim > /dev/null ^ /dev/null; and alias vim "nvim -p"
+which nvim > /dev/null ^ /dev/null; and alias vim "nvim -p"; or alias vim "vim -p"
 
 alias rm "rm -i"
 alias cp "cp -i"
