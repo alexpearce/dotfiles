@@ -24,42 +24,31 @@ endif
 " Plugins
 """"""""""""""""""""""""""""""""""""""""
 
-" Vundle configuration
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Plugin configuration
+" vim-plug does `filetype plugin indent on` for us
+call plug#begin('~/.vim/bundle')
 
-" Vundle must manage itself
-Plugin 'gmarik/Vundle.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'alexpearce/vim-hybrid'
+Plug 'dag/vim-fish'
+Plug 'davidhalter/jedi-vim'
+Plug 'ehamberg/vim-cute-python'
+Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'JulesWang/css.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'othree/html5.vim'
+Plug 'raichoo/haskell-vim'
+Plug 'rking/ag.vim'
+Plug 'scrooloose/syntastic'
+Plug 'SirVer/ultisnips'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-markdown'
+Plug 'vim-scripts/TeX-PDF'
 
-Plugin 'airblade/vim-gitgutter'
-Plugin 'alexpearce/vim-hybrid'
-Plugin 'dag/vim-fish'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'ehamberg/vim-cute-python'
-Plugin 'gee-forr/vitality.vim'
-Plugin 'Glench/Vim-Jinja2-Syntax'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'JulesWang/css.vim'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'msanders/snipmate.vim'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'othree/html5.vim'
-Plugin 'raichoo/haskell-vim'
-Plugin 'Raimondi/delimitMate'
-Plugin 'rking/ag.vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'SirVer/ultisnips'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-markdown'
-Plugin 'vim-scripts/TeX-PDF'
-
-call vundle#end()
-
-" Enable filetype detection must be after Vundle config
-filetype plugin indent on
+call plug#end()
 
 " Have ctrlp vim plugin use ag command for finding
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
