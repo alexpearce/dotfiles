@@ -6,8 +6,8 @@ This is my collection of [configuration files](http://dotfiles.github.io/).
 Usage
 -----
 
-Pull the repository, and then create the symbolic links using [GNU
-stow](https://www.gnu.org/software/stow/).
+Pull the repository, and then create the symbolic links [using GNU
+stow](https://alexpearce.me/2016/02/managing-dotfiles-with-stow/).
 
 ```bash
 $ git clone git@github.com:alexpearce/dotfiles.git ~/.dotfiles
@@ -24,18 +24,18 @@ $ brew install fish
 $ chsh -s /usr/local/bin/fish
 ```
 
-The Vim dotfiles depend on [Vundle](https://github.com/VundleVim/Vundle.vim) 
-for installing Vim plugins:
+The Vim dotfiles depend on [vim-plug](https://github.com/junegunn/vim-plug) for 
+installing Vim plugins:
 
 ```bash
-$ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-$ vim +PluginInstall +qa
+$ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+$ vim +PlugInstall +qa
 ```
 
 There are two terminfo files in the `terminfo` directory.  These are for
 [enabling italics in iTerm2, vim, and
 tmux](https://alexpearce.me/2014/05/italics-in-iterm2-vim-tmux/).
-They are not added automatically.
 
 License
 -------
