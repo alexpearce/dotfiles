@@ -4,6 +4,7 @@ from __future__ import print_function
 
 import argparse
 import sys
+import os
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('files', metavar='file', nargs='+',
@@ -20,13 +21,15 @@ if args.verbose:
     log.getLogger().setLevel(log.INFO)
 
 nfailed = 0
+good_files = []
 for i, fname in enumerate(args.files):
     gname = 'f{0}'.format(i)
-    tfile = ROOT.TFile(fname)
+    tfile = ROOT.TFile.Open(fname)
     if not tfile.IsZombie():
         # Print this, rather than log it, so users know what the file's called
         print('Loaded {0!r} as {1!r}'.format(fname, gname))
-        globals()[gname] = ROOT.TFile(fname)
+        globals()[gname] = tfile
+        good_files.append(gname)
     else:
         print('Could not load file {0!r}'.format(fname))
         nfailed += 1
@@ -35,7 +38,31 @@ if nfailed == len(args.files):
     print('Could not load any input files, exiting')
     sys.exit(1)
 
-_tbrowser = ROOT.TBrowser()
+
+def get_trees(tdir, basepath='/'):
+    """Return a flat list of all TTrees in the TDirectory."""
+    trees = []
+    for key in tdir.GetListOfKeys():
+        kname = key.GetName()
+        path = os.path.join(basepath, kname)
+        obj = key.ReadObj()
+        if obj.Class() == ROOT.TDirectoryFile.Class():
+            trees += get_trees(tdir.Get(kname), path)
+        elif obj.Class() == ROOT.TTree.Class():
+            trees.append((path, obj))
+    return trees
+
+
+# Attach the TTrees to the TFile instance as attributes, with names as
+# their paths in the TFile with slashes replaced by underscores
+for fname in good_files:
+    f = globals()[fname]
+    for tname, tree in get_trees(f):
+        foo = tname[1:].replace('/', '_')
+        setattr(f, foo, tree)
+        print('Loaded {0!r} as {1!r}'.format(tname, fname + '.' + foo))
+
+_browser = ROOT.TBrowser()
 
 try:
     from IPython import embed
