@@ -38,15 +38,17 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'JulesWang/css.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
+Plug 'neovimhaskell/haskell-vim'
 Plug 'othree/html5.vim'
-Plug 'raichoo/haskell-vim'
 Plug 'scrooloose/syntastic'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-markdown'
 Plug 'vim-scripts/TeX-PDF'
+Plug 'ibab/vim-snakemake'
 
 call plug#end()
 
@@ -62,6 +64,10 @@ function FuzzyFind()
 endfunction
 
 nnoremap <c-p> :call FuzzyFind()<cr>
+
+" Use ag to perform the search, so that .gitignore files and the like are
+" respected
+let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
