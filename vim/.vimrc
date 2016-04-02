@@ -170,12 +170,16 @@ map <leader>mc :make clean<CR>
 map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
 
 " Scroll up and down visible lines, not buffer lines
-:noremap j gj
-:noremap k gk
+noremap j gj
+noremap k gk
 
 " Navigate tabs with shift-{h,l}
 noremap <S-l> gt
 noremap <S-h> gT
+
+" Create splits
+nnoremap <Leader>- :split<CR>
+nnoremap <Leader>\| :vsplit<CR>
 
 " Quickly save, quit, or save-and-quit
 map <leader>w :w<CR>
