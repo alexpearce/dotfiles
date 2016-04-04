@@ -203,6 +203,18 @@ set wildignore+=vendor,_site,tmp,node_modules,bower_components
 " Script outputs
 set wildignore+=output
 
+" Quickly enable and disable hard wrapping
+" I often find this useful for editing LaTeX, when I usually want the lines to
+" have fewer than 80 characters, but ocassionally want longer lines
+function ToggleWrapping()
+  if &l:formatoptions =~ "t"
+    set formatoptions-=t
+  else
+    set formatoptions+=t
+  endif
+endfunction
+nnoremap <leader>t :call ToggleWrapping()<cr>
+
 """"""""""""""""""""""""""""""""""""""""
 " Filetype specific
 """"""""""""""""""""""""""""""""""""""""
