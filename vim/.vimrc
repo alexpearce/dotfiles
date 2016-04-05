@@ -29,6 +29,7 @@ endif
 call plug#begin('~/.vim/bundle')
 
 Plug 'airblade/vim-gitgutter'
+Plug 'alexpearce/gruvbox'
 Plug 'dag/vim-fish'
 Plug 'davidhalter/jedi-vim'
 Plug 'ehamberg/vim-cute-python'
@@ -39,7 +40,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
-Plug 'morhetz/gruvbox'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'othree/html5.vim'
 Plug 'scrooloose/syntastic'
@@ -86,10 +86,8 @@ set showcmd
 set noshowmode
 
 " Theme
-" TODO colour tab bar
 set background=dark
 let g:gruvbox_italic=1
-let g:gruvbox_color_column="bg0"
 colorscheme gruvbox
 
 
