@@ -46,8 +46,6 @@ Plug 'scrooloose/syntastic'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-markdown'
-Plug 'vim-scripts/TeX-PDF'
 Plug 'ibab/vim-snakemake'
 
 call plug#end()
@@ -153,15 +151,11 @@ let mapleader="\<Space>"
 " Stop command window from popping u
 map q: :q
 
-" Exit insert mode by typing jk
-inoremap jk <esc>
-
 " clear search highlighting with <space>,
 nnoremap <leader>, :noh<cr>
 
 " quick make
-map <leader>mm :make<CR>
-map <leader>mc :make clean<CR>
+map <leader>m :make<CR>
 
 " simple pasting from the system clipboard
 " http://tilvim.com/2014/03/18/a-better-paste.html
