@@ -1,0 +1,27 @@
+# Index
+color normal        white       black
+color error         red         black
+color tilde         brightblack black
+color message       cyan        black
+color markers       cyan        black
+color status        white       brightblack
+color indicator     green       black
+color tree          brightblack black
+
+# Messages
+# Blue for new messages
+color index         blue        black ~N
+# Grey for deleted messages
+color index         brightblack black ~D
+
+# Message headers
+color header        cyan black        "^"
+
+# Message body
+color quoted        magenta         black
+# URLs
+color body blue black "(http|https|ftp|news|telnet|finger)://[^ \">\t\r\n]*"
+# Emails
+color body blue black "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+
+# vi:syntax=muttrc

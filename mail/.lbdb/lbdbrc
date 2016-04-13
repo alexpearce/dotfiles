@@ -1,0 +1,11 @@
+# Configuration for lbdb, a program to find email addresses
+# Search for an address with `lbdbq <name>`
+METHODS="m_inmail m_ldap"
+
+# Use the `cern` LDAP database
+LDAP_NICKS="cern"
+
+# Sort the search results by name
+SORT_OUTPUT="name"
+
+# vi:syntax=sh

@@ -1,0 +1,26 @@
+# vim-like bindings for movement
+
+# In the message index
+bind index gg       first-entry
+bind index G        last-entry
+bind index R        group-reply
+bind index <space>  collapse-thread
+
+# In the sidebar with shift-movement keys
+bind index,pager J sidebar-next
+bind index,pager K sidebar-prev
+bind index,pager L sidebar-open
+
+# In the message pager
+bind pager k  previous-line
+bind pager j  next-line
+bind pager gg top
+bind pager G  bottom
+bind pager R  group-reply
+
+bind attach <return> view-mailcap
+
+# 'Save' messages to another mailbox (what mutt calls 'moving')
+macro index,pager s "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
+
+# vi:syntax=muttrc

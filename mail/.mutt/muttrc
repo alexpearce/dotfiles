@@ -1,0 +1,138 @@
+# Mailboxes are stored here
+set folder = ~/.mail
+# Format in which our messages are stored
+set mbox_type = Maildir
+
+# The world's best text editor
+# `/^$` searches for a blank line, placing the cursor after the headers
+# `+nohlsearch` turns off the search highlighting due to the "/^$"
+set editor = "nvim +/^$ +nohlsearch"
+# Allow us to be able to edit headers in the $EDITOR when composing
+set edit_headers
+# Use the contents of this file as the message signature
+set signature = ~/.mutt/signature
+# Insert the signature above any previous message body
+set sig_on_top
+# Don't insert dashes before the signature
+unset sig_dashes
+# Format for message that preceeds quotes when replying
+set attribution = "On %d, %n <%a> wrote:"
+
+# Use lbdb to query for contacts
+set query_command = "lbdbq %s 2>/dev/null"
+# Don't mark unread messages as 'old' when leaving a mailbox
+unset mark_old
+# Don't confirm deletions
+set delete
+# Don't ask when moving/saving messages to existing mailboxes
+unset confirmappend
+# Ask for CC recipients before composing a message
+set askcc
+# Assume we want to reuse the subject and recipients when replying
+set fast_reply
+# Include previous message body in replies
+set include
+# Include the message body in forwarded messages
+set forward_quote
+
+# Temporary directory
+set tmpdir = ~/.mutt/tmp
+# Store header cache here, for faster loading
+set header_cache = ~/.mutt/cache
+# Ask if we want to forward messages as attachments
+# (generally want the message body included directly)
+set mime_forward = ask-no
+
+# Don't show common menu bindings on first line
+# unset help
+
+# Don't check for mail (we use isync for that)
+set mail_check = 0
+
+# Move down message indices one line at a time, rather than in pages
+set menu_scroll
+# Number of lines of context in the message pager
+set pager_context = 5
+# How many lines of the mailbox are shown when in the message pager
+set pager_index_lines = 10
+# Don't skip to then next message when we reach the bottom of the pager
+set pager_stop
+# Pad short messages with "~" lines, like in vim
+set tilde
+# Try to wrap messages in the pager
+set smart_wrap
+# Don't show line wrapping markers
+unset markers
+
+# Try to clean up messages before passing them to the pager
+set pipe_decode
+# That's me!
+set realname = "Alex Pearce"
+# Holla when there's a new message
+set beep_new
+# Use the Reply-to header when replying, if given
+set reply_to
+# Sort messages in to threads
+set sort = threads
+# Sort threads from newest to oldest
+set sort_aux = reverse-last-date-received
+
+# Format dates as day/month/year at hour:minute 
+set date_format = "%d/%m/%y at %I:%M"
+# Use " " for unchaged, "*" for re-sync needed, "%" for read-only mode, and "A"
+# to indicate attachment mode. Used in the "%r" format string in status_format
+set status_chars = " *%A"
+# String to display in the mailbox footer
+set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+# Show status flags, date, from, and subject
+set index_format = "[%Z]  %D  %-20.20F  %s"
+# Format forwarded subjects as "Fwd: <subject>"
+set forward_format = "Fwd: %s"
+
+# Don't define threads only by the subject
+set strict_threads
+# Wait at most 5 seconds for user input until performing blocking operations
+# like checking for new messages
+set timeout = 5
+# Don't wait for pause before some operations (like switching folders)
+set sleep_time = 0
+
+# Show the sidebar (requires mutt compiled with a sidebar patch)
+set sidebar_visible = yes
+# Divider between the sidebar and message index
+set sidebar_divider_char = "│"
+# Width of the sidebar
+set sidebar_width = 22
+# Remove <mailbox_name>/ prefix, e.g. "gmail/Inbox" becomes "Inbox"
+set sidebar_short_path
+# Display folder name and unread count
+set sidebar_format = "%B%?F? [%F]?%* %?N?%N?"
+# Indent subfolders...
+set sidebar_folder_indent
+# ...with a space
+set sidebar_indent_string = ' '
+# Refresh the sidebar every 5 seconds
+set sidebar_refresh_time = 5
+
+# Prefer plain-text over enriched text over HTML
+alternative_order text/plain text/enriched text/html
+
+# Ignore all headers (don't display them)
+ignore *
+# ...except these ones
+unignore from: to: cc: date: subject:
+# Clear any system default ordering of headers
+unhdr_order *
+# Display headers in this order
+hdr_order from: to: cc: date: subject:
+
+set nm_default_uri = "notmuch:///Users/apearce/.mail/cern"
+
+# Source key binding definitions
+source ~/.mutt/bindings
+# Source colourscheme
+source ~/.mutt/colours
+# Source folder hooks
+source ~/.mutt/hooks
+
+# vi:syntax=muttrc

@@ -1,0 +1,26 @@
+%ldap_server_db = (
+  'cern' => [
+    # Server address
+    'ldaps://xldap.cern.ch:636',
+    # Base search, excludes guest users
+    'ou=users,ou=organic units,dc=cern,dc=ch',
+    # Search fields
+    'givenname sn cn mail',
+    # Expected answers
+    'givenname sn cn mail samaccountname',
+    # Format the email address as the `mail` field
+    '${mail}',
+    # Format the real name as `givenname sn` (surname)
+    '${givenname} ${sn}',
+    # Leave the comment field blank
+    '${samaccountname}'
+  ]
+);
+
+# Uses wildcards to search the fields
+# Takes longer, but usually returns more useful results
+$ignorant = 1;
+# I don't know why this is here!
+1;
+
+# vi:syntax=perl

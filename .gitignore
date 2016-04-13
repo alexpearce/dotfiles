@@ -3,3 +3,5 @@ vim/.vim/bundle
 vim/.vim/spell/*.spl
 fish/.config/fish/fish_history
 fish/.config/fish/fishd.*
+mail/.mutt/cache
+mail/.mutt/tmp

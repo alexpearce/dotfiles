@@ -1,0 +1,179 @@
+# Settings for isync, a program to syncronise IMAP mailboxes
+# This file defines the syncronisation for two accounts, personal and work
+# The remote for each account is a server somewhere, and the local is a folder 
+# in ~/.mail
+# Syncronise everything with `mbsync -a`
+
+########################################
+# Default settings
+# Applied to all channels
+########################################
+Create Slave
+Expunge Both
+SyncState *
+
+########################################
+# Gmail
+########################################
+IMAPAccount gmail
+Host imap.gmail.com
+User alex@alexpearce.me
+# Get the account password from the system Keychain
+PassCmd "security find-generic-password -s isync-alex-alexpearce-me -w"
+AuthMechs LOGIN
+SSLType IMAPS
+
+# Remote storage (where the mail is retrieved from)
+IMAPStore gmail-remote
+Account gmail
+
+# Local storage (where the mail is retrieved to)
+MaildirStore gmail-local
+Path ~/.mail/gmail/
+Inbox ~/.mail/gmail/Inbox
+
+# These channels taken from
+#  https://github.com/pbrisbin/dotfiles/blob/8309d9/tag-mail-recipient/mbsyncrc#L20-L47
+Channel gmail-inbox
+Master :gmail-remote:INBOX
+Slave :gmail-local:Inbox
+
+Channel gmail-drafts
+Master :gmail-remote:[Gmail]/Drafts
+Slave :gmail-local:Drafts
+
+Channel gmail-sent
+Master ":gmail-remote:[Gmail]/Sent Mail"
+Slave :gmail-local:Sent
+
+Channel gmail-spam
+Master :gmail-remote:[Gmail]/Spam
+Slave :gmail-local:Spam
+
+Channel gmail-trash
+Master :gmail-remote:[Gmail]/Bin
+Slave :gmail-local:Trash
+
+Channel gmail-folders
+Master :gmail-remote:
+Slave :gmail-local:
+# All folders except those defined above (i.e. this syncronises Gmail 'tags')
+Patterns * ![Gmail]* !INBOX !Drafts !Sent !Spam !Trash
+
+# Group the channels, so that all channels can be sync'd with `mbsync gmail`
+Group gmail
+Channel gmail-inbox
+Channel gmail-drafts
+Channel gmail-sent
+Channel gmail-spam
+Channel gmail-trash
+Channel gmail-folders
+
+########################################
+# FastMail
+########################################
+IMAPAccount personal
+Host mail.messagingengine.com
+User alexpearce@fastmail.com
+# Get the account password from the system Keychain
+PassCmd "security find-generic-password -s isync-alexpearce-fastmail-com -w"
+AuthMechs LOGIN
+SSLType IMAPS
+
+# Remote storage (where the mail is retrieved from)
+IMAPStore personal-remote
+Account personal
+
+# Local storage (where the mail is retrieved to)
+MaildirStore personal-local
+Path ~/.mail/personal/
+Inbox ~/.mail/personal/Inbox
+
+Channel personal-inbox
+Master :personal-remote:INBOX
+Slave :personal-local:Inbox
+
+Channel personal-drafts
+Master :personal-remote:Drafts
+Slave :personal-local:Drafts
+
+Channel personal-sent
+Master :personal-remote:Sent
+Slave :personal-local:Sent
+
+Channel personal-spam
+Master :personal-remote:Spam
+Slave :personal-local:Spam
+
+Channel personal-trash
+Master :personal-remote:Trash
+Slave :personal-local:Trash
+
+Channel personal-folders
+Master :personal-remote:
+Slave :personal-local:
+# All folders except those defined above
+Patterns * !INBOX !Archive !Drafts !Sent !Spam !Trash
+
+# Group the channels, so that all channels can be sync'd with `mbsync personal`
+Group personal
+Channel personal-inbox
+Channel personal-drafts
+Channel personal-sent
+Channel personal-spam
+Channel personal-trash
+Channel personal-folders
+
+########################################
+# CERN
+########################################
+IMAPAccount cern
+Host imap.cern.ch
+User apearce
+# Get the account password from the system Keychain
+PassCmd "security find-generic-password -s isync-alex-pearce-cern-ch -w"
+AuthMechs LOGIN
+SSLType IMAPS
+
+IMAPStore cern-remote
+Account cern
+
+MaildirStore cern-local
+Path ~/.mail/cern/
+Inbox ~/.mail/cern/Inbox
+
+Channel cern-inbox
+Master :cern-remote:INBOX
+Slave :cern-local:Inbox
+
+Channel cern-drafts
+Master :cern-remote:Drafts
+Slave :cern-local:Drafts
+
+Channel cern-sent
+Master :cern-remote:"Sent Items"
+Slave :cern-local:Sent
+
+Channel cern-spam
+Master :cern-remote:"Junk E-Mail"
+Slave :cern-local:Spam
+
+Channel cern-trash
+Master :cern-remote:"Deleted Items"
+Slave :cern-local:Trash
+
+Channel cern-folders
+Master :cern-remote:
+Slave :cern-local:
+# All other folders, except those already defined above and special Outlook 
+# folders like Tasks
+Patterns * !INBOX !Archive !Calendar !Conferences !Contacts* !"Conversation History" !"Deleted Items" !Drafts !Journal !"Junk E-Mail" !Notes !Outbox !Sent* !Spam !Tasks !Trash
+
+# Group the channels, so that all channels can be sync'd with `mbsync cern`
+Group cern
+Channel cern-inbox
+Channel cern-drafts
+Channel cern-sent
+Channel cern-spam
+Channel cern-trash
+Channel cern-folders
