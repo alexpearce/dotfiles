@@ -103,7 +103,7 @@ set sidebar_visible = yes
 set sidebar_divider_char = "│"
 # Width of the sidebar
 set sidebar_width = 22
-# Remove <mailbox_name>/ prefix, e.g. "gmail/Inbox" becomes "Inbox"
+# Remove <mailbox_name>/ prefix, e.g. "personal/Inbox" becomes "Inbox"
 set sidebar_short_path
 # Display folder name and unread count
 set sidebar_format = "%B%?F? [%F]?%* %?N?%N?"
