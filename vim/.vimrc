@@ -225,8 +225,8 @@ if has("autocmd")
   " Coloured column at 80 characters, good for wide terminals
   au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 colorcolumn=80
 
-  " Spellchecking in LaTeX and Markdown
-  au FileType tex,markdown set spelllang=en_gb spell
+  " Spellchecking in LaTeX, Markdown, and email
+  au FileType tex,markdown,mail set spelllang=en_gb spell
 
   " Wrap Python, LaTeX, and Markdown automatically at 80 characters, allowing
   " sentences to start on new lines
