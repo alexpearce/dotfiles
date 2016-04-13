@@ -33,11 +33,12 @@ $ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 $ vim +PlugInstall +qa
 ```
 
-There are two terminfo files in the `terminfo` directory.  These are for
-[enabling italics in iTerm2, vim, and
-tmux](https://alexpearce.me/2014/05/italics-in-iterm2-vim-tmux/).
+There's a [gruvbox][gruvbox] colourscheme for iTerm2 called 
+[`gruvbox.itermcolors`](gruvbox.itermcolors).
 
 License
 -------
 
 [MIT](http://opensource.org/licenses/MIT).
+
+[gruvbox]: https://github.com/morhetz/gruvbox
