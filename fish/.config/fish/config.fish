@@ -10,9 +10,6 @@ if not is_cern
 end
 
 set -l source_dir (dirname (status -f))
-source $source_dir/aliases.fish
-source $source_dir/folder_commands.fish
-source $source_dir/git.fish
 
 # This file is sourced twice on fish start-up, once interactively
 # and then once non-interactively. This wrapper prevents things
@@ -27,3 +24,7 @@ if status --is-interactive
     set -x PYTHONPATH $ROOTSYS/lib/root $PYTHONPATH
   end
 end
+
+source $source_dir/aliases.fish
+source $source_dir/folder_commands.fish
+source $source_dir/git.fish
