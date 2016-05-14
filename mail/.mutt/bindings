@@ -10,6 +10,8 @@ bind index <space>  collapse-thread
 bind index,pager J sidebar-next
 bind index,pager K sidebar-prev
 bind index,pager L sidebar-open
+# Mutt's backtab is equivalent to <shift><tab>
+bind index,pager <backtab> sidebar-next-new
 
 # In the message pager
 bind pager k  previous-line
@@ -22,5 +24,7 @@ bind attach <return> view-mailcap
 
 # 'Save' messages to another mailbox (what mutt calls 'moving')
 macro index,pager s "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
+
+macro index O "<shell-escape>mbsync personal-inbox cern-inbox<return>" "Run mbsync"
 
 # vi:syntax=muttrc

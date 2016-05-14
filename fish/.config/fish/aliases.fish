@@ -26,6 +26,7 @@ abbr ghoi "github_open issues"
 abbr ghopr "github_open pulls"
 abbr p python
 abbr ip ipython
+abbr be "bundle exec"
 abbr r root
 abbr tb tbrowser
 abbr v vim
@@ -43,5 +44,9 @@ abbr gsp "git stash pop"
 abbr gsx "git stash drop"
 
 abbr cern "ssh lxplus.cern.ch"
+# I don't know why I need the -K flag, I get a password prompt otherwise
+# I thought the GSSAPIDelegateCredentials config flag did the same thing, which
+# I have enabled for CERN hosts, but it doesn't work without -K
+abbr apv "ssh -K apv"
 
 abbr docker-init "eval (docker-machine env default --shell=fish)"
