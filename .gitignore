@@ -1,7 +1,10 @@
+neovim/.config/nvim/.netrwhist
+neovim/.config/nvim/spell
 vim/.vim/.netrwhist
 vim/.vim/bundle
 vim/.vim/spell/*.spl
 fish/.config/fish/fish_history
 fish/.config/fish/fishd.*
+mail/.mutt/mutt_attach
 mail/.mutt/cache
 mail/.mutt/tmp
