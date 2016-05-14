@@ -29,15 +29,19 @@ endif
 call plug#begin('~/.vim/bundle')
 
 Plug 'airblade/vim-gitgutter'
+" Use with gruvbox iTerm2 colourscheme from
+" https://github.com/flipxfx/gruvbox-terminal
 Plug 'alexpearce/gruvbox'
 Plug 'dag/vim-fish'
 Plug 'davidhalter/jedi-vim'
 Plug 'ehamberg/vim-cute-python'
 Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'ibab/vim-snakemake'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'JulesWang/css.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'justinmk/vim-sneak'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
 Plug 'neovimhaskell/haskell-vim'
@@ -45,8 +49,10 @@ Plug 'othree/html5.vim'
 Plug 'scrooloose/syntastic'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'ibab/vim-snakemake'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
@@ -117,6 +123,30 @@ set tabpagemax=20
 if has("nvim")
   set laststatus=1
 endif
+
+" airline configuration
+set laststatus=2
+let g:airline_powerline_fonts = 1
+" Show the tabline
+let g:airline#extensions#tabline#enabled = 1
+" Don't show tab number
+let g:airline#extensions#tabline#show_tab_nr = 0
+let g:airline#extensions#tabline#buffer_min_count = 2
+" Don't show a close tab 'X' button
+let g:airline#extensions#tabline#show_close_button = 0
+let g:airline#extensions#tabline#exclude_preview = 0
+" Enable fugitive integration
+let g:airline#extensions#branch#enabled = 1
+" Enable syntastic integration
+let g:airline#extensions#syntastic#enabled = 1
+" Override normal, insert, and visual {, line, block}
+let g:airline_mode_map = {
+  \ 'n'  : '∙',
+  \ 'i'  : '☕',
+  \ 'v'  : '→',
+  \ 'V'  : '↔',
+  \ '' : '↕',
+  \ }
 
 """"""""""""""""""""""""""""""""""""""""
 " Coding style
