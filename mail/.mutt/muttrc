@@ -39,6 +39,8 @@ set forward_quote
 set tmpdir = ~/.mutt/tmp
 # Store header cache here, for faster loading
 set header_cache = ~/.mutt/cache
+# Path to file defining what programs handle what MIME types
+set mailcap_path = ~/.mutt/mailcap
 # Ask if we want to forward messages as attachments
 # (generally want the message body included directly)
 set mime_forward = ask-no

@@ -1,0 +1,8 @@
+# Images
+image/*; $HOME/.mutt/view_attachment.sh %s
+
+# PDFs
+application/pdf; $HOME/.mutt/view_attachment.sh %s
+
+# HTML
+text/html; $HOME/.mutt/view_attachment.sh %s
