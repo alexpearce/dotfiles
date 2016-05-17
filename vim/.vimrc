@@ -32,27 +32,22 @@ Plug 'airblade/vim-gitgutter'
 " Use with gruvbox iTerm2 colourscheme from
 " https://github.com/flipxfx/gruvbox-terminal
 Plug 'alexpearce/gruvbox'
-Plug 'dag/vim-fish'
 Plug 'davidhalter/jedi-vim'
 Plug 'ehamberg/vim-cute-python'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'ibab/vim-snakemake'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'JulesWang/css.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
-Plug 'neovimhaskell/haskell-vim'
-Plug 'othree/html5.vim'
 Plug 'scrooloose/syntastic'
+Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
