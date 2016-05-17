@@ -5,11 +5,12 @@
 
 # Root Maildir path
 [database]
-path=/Users/apearce/.mail/cern
+path=/Users/apearce/.mail
 
 [user]
 name=Alex Pearce
 primary_email=alex.pearce@cern.ch
+other_email=alex@alexpearce.me
 
 # Can apply tags to new files, or specify folders to ignore, but I don't use
 # notmuch to filter in this way, so set values to blank

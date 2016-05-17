@@ -128,7 +128,7 @@ unhdr_order *
 # Display headers in this order
 hdr_order from: to: cc: date: subject:
 
-set nm_default_uri = "notmuch:///Users/apearce/.mail/cern"
+set nm_default_uri = "notmuch:///Users/apearce/.mail"
 
 # Source key binding definitions
 source ~/.mutt/bindings
