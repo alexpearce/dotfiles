@@ -4,15 +4,15 @@ color error         red         black
 color tilde         brightblack black
 color message       cyan        black
 color markers       cyan        black
-color status        white       brightblack
+color status        white       black
 color indicator     green       black
-color tree          brightblack black
+color tree          white black
 
 # Messages
 # Blue for new messages
 color index         blue        black ~N
 # Grey for deleted messages
-color index         brightblack black ~D
+color index         red black ~D
 
 # Message headers
 color header        cyan black        "^"

@@ -46,7 +46,7 @@ set mailcap_path = ~/.mutt/mailcap
 set mime_forward = ask-no
 
 # Don't show common menu bindings on first line
-# unset help
+unset help
 
 # Don't check for mail (we use isync for that)
 set mail_check = 0
