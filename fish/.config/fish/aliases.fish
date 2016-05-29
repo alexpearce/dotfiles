@@ -2,8 +2,12 @@
 alias ipython "ipython --no-banner"
 alias root "root -l"
 # Only use Neovim if the command is known
-# There must be a nicer way of doing this...
-which nvim > /dev/null ^ /dev/null; and alias vim "nvim -p"; or alias vim "vim -p"
+# Use -p to have all each file argument open in its own tab
+if command --search nvim > /dev/null
+  alias vim "nvim -p";
+else
+  alias vim "vim -p"
+end
 
 alias rm "rm -i"
 alias cp "cp -i"
@@ -48,5 +52,3 @@ abbr cern "ssh lxplus.cern.ch"
 # I thought the GSSAPIDelegateCredentials config flag did the same thing, which
 # I have enabled for CERN hosts, but it doesn't work without -K
 abbr apv "ssh -K apv"
-
-abbr docker-init "eval (docker-machine env default --shell=fish)"

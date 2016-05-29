@@ -1,11 +1,11 @@
 # Start tmux automatically if we're not connecting over SSH,
 # attaching to an existing session if possible
-if begin; set -q $TMUX; not is_ssh; end
+if not set -q TMUX; and not is_ssh
   tmux attach ^/dev/null; or tmux
 end
 
 # Set up virtualfish (virtualenvwrapper for fish, try `vf` command)
-if not is_cern
+if python -m virtualfish > /dev/null ^&1
   eval (python -m virtualfish auto_activation)
 end
 
@@ -26,5 +26,4 @@ if status --is-interactive
 end
 
 source $source_dir/aliases.fish
-source $source_dir/folder_commands.fish
 source $source_dir/git.fish
