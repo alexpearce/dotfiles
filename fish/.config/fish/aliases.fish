@@ -13,6 +13,7 @@ alias rm "rm -i"
 alias cp "cp -i"
 alias mv "mv -i"
 alias mkdir "mkdir -p"
+alias du "du -hs"
 
 # EOS on lxplus
 alias eos="/afs/cern.ch/project/eos/installation/0.3.15/bin/eos.select"
@@ -35,6 +36,7 @@ abbr r root
 abbr tb tbrowser
 abbr v vim
 abbr ospdf "open -a Skim *.pdf"
+abbr m make
 
 abbr gia "git add"
 abbr gb "git branch"
@@ -46,6 +48,7 @@ abbr gws "git status"
 abbr gs "git stash"
 abbr gsp "git stash pop"
 abbr gsx "git stash drop"
+abbr gssp "git stash show -p"
 
 abbr cern "ssh lxplus.cern.ch"
 # I don't know why I need the -K flag, I get a password prompt otherwise
