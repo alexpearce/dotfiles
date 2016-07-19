@@ -25,6 +25,8 @@ bind attach <return> view-mailcap
 # 'Save' messages to another mailbox (what mutt calls 'moving')
 macro index,pager s "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
 
-macro index O "<shell-escape>mbsync personal-inbox cern-inbox<return>" "Run mbsync"
+macro index O "<shell-escape>mbsync personal-inbox cern-inbox<return>" "Run mbsync for inboxes"
+# On my computer, the key combination ctrl+shift+o gives the character Ø
+macro index Ø "<shell-escape>mbsync -a<return>" "Run mbsync for everything"
 
 # vi:syntax=muttrc
