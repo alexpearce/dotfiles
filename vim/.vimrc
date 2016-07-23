@@ -69,7 +69,8 @@ nnoremap <c-p> :call FuzzyFind()<cr>
 " respected
 let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
 
-let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsListSnippets="<c-s-e>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
@@ -132,7 +133,7 @@ let g:airline#extensions#syntastic#enabled = 1
 " Override normal, insert, and visual {, line, block}
 let g:airline_mode_map = {
   \ 'n'  : '∙',
-  \ 'i'  : '☕',
+  \ 'i'  : '|',
   \ 'v'  : '→',
   \ 'V'  : '↔',
   \ '' : '↕',
@@ -159,7 +160,7 @@ set backspace=indent,eol,start
 """"""""""""""""""""""""""""""""""""""""
 
 " Share OS X clipboard
-set clipboard=unnamed
+set clipboard+=unnamedplus
 
 """"""""""""""""""""""""""""""""""""""""
 " Mappings
