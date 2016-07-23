@@ -46,6 +46,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 
@@ -68,7 +69,8 @@ nnoremap <c-p> :call FuzzyFind()<cr>
 " respected
 let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
 
-let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsListSnippets="<c-s-e>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
@@ -123,13 +125,7 @@ endif
 set laststatus=2
 let g:airline_powerline_fonts = 1
 " Show the tabline
-let g:airline#extensions#tabline#enabled = 1
-" Don't show tab number
-let g:airline#extensions#tabline#show_tab_nr = 0
-let g:airline#extensions#tabline#buffer_min_count = 2
-" Don't show a close tab 'X' button
-let g:airline#extensions#tabline#show_close_button = 0
-let g:airline#extensions#tabline#exclude_preview = 0
+let g:airline#extensions#tabline#enabled = 0
 " Enable fugitive integration
 let g:airline#extensions#branch#enabled = 1
 " Enable syntastic integration
@@ -137,7 +133,7 @@ let g:airline#extensions#syntastic#enabled = 1
 " Override normal, insert, and visual {, line, block}
 let g:airline_mode_map = {
   \ 'n'  : '∙',
-  \ 'i'  : '☕',
+  \ 'i'  : '|',
   \ 'v'  : '→',
   \ 'V'  : '↔',
   \ '' : '↕',
@@ -164,7 +160,7 @@ set backspace=indent,eol,start
 """"""""""""""""""""""""""""""""""""""""
 
 " Share OS X clipboard
-set clipboard=unnamed
+set clipboard+=unnamedplus
 
 """"""""""""""""""""""""""""""""""""""""
 " Mappings
