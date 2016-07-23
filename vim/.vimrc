@@ -124,13 +124,7 @@ endif
 set laststatus=2
 let g:airline_powerline_fonts = 1
 " Show the tabline
-let g:airline#extensions#tabline#enabled = 1
-" Don't show tab number
-let g:airline#extensions#tabline#show_tab_nr = 0
-let g:airline#extensions#tabline#buffer_min_count = 2
-" Don't show a close tab 'X' button
-let g:airline#extensions#tabline#show_close_button = 0
-let g:airline#extensions#tabline#exclude_preview = 0
+let g:airline#extensions#tabline#enabled = 0
 " Enable fugitive integration
 let g:airline#extensions#branch#enabled = 1
 " Enable syntastic integration
