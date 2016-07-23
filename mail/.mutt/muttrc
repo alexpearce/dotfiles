@@ -77,7 +77,7 @@ set reply_to
 # Sort messages in to threads
 set sort = threads
 # Sort threads from newest to oldest
-set sort_aux = reverse-last-date-received
+set sort_aux = last-date-received
 
 # Format dates as day/month/year at hour:minute 
 set date_format = "%d/%m/%y at %I:%M"
