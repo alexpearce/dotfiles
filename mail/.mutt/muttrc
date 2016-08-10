@@ -90,6 +90,8 @@ set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)
 set index_format = "[%Z]  %D  %-20.20F  %s"
 # Format forwarded subjects as "Fwd: <subject>"
 set forward_format = "Fwd: %s"
+# Display lists of folders with a numeric index and the folder name
+set folder_format = "%-2.2C %f"
 
 # Don't define threads only by the subject
 set strict_threads
