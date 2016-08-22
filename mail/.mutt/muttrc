@@ -115,8 +115,6 @@ set sidebar_format = "%B%?F? [%F]?%* %?N?%N?"
 set sidebar_folder_indent
 # ...with a space
 set sidebar_indent_string = ' '
-# Refresh the sidebar every 5 seconds
-set sidebar_refresh_time = 5
 
 # Prefer plain-text over enriched text over HTML
 alternative_order text/plain text/enriched text/html

@@ -12,6 +12,7 @@ bind index,pager K sidebar-prev
 bind index,pager L sidebar-open
 # Mutt's backtab is equivalent to <shift><tab>
 bind index,pager <backtab> sidebar-next-new
+bind index,pager V sidebar-toggle-visible
 
 # In the message pager
 bind pager k  previous-line

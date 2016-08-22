@@ -24,4 +24,9 @@ color body blue black "(http|https|ftp|news|telnet|finger)://[^ \">\t\r\n]*"
 # Emails
 color body blue black "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
 
+# Sidebar
+color sidebar_divider color08 black
+color sidebar_highlight yellow black
+color sidebar_new blue black
+
 # vi:syntax=muttrc
