@@ -5,5 +5,3 @@ else
 end
 
 set PATH ~/.bin $PATH
-
-set -x NVIM_TUI_ENABLE_TRUE_COLOR 1

@@ -5,9 +5,6 @@
 " Vim is not compatible with fish
 set shell=/bin/sh
 
-" Don't need vi compatibility
-set nocompatible
-
 " UTF-8 encoding
 set encoding=utf-8
 
@@ -16,9 +13,6 @@ set noswapfile
 
 " Enable the mouse in the terminal
 set mouse=a
-if !has("nvim")
-  set ttymouse=xterm2
-endif
 
 """"""""""""""""""""""""""""""""""""""""
 " Plugins
@@ -87,6 +81,7 @@ set showcmd
 set noshowmode
 
 " Theme
+set termguicolors
 set background=dark
 let g:gruvbox_italic=1
 colorscheme gruvbox
