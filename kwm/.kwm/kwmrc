@@ -31,10 +31,10 @@ kwmc bindsym hyper-h window -f west
 */
 
 // Set default values for screen padding
-kwmc config padding 40 20 20 20
+kwmc config padding 30 10 10 10
 
 // Set default values for container gaps
-kwmc config gap 15 15
+kwmc config gap 5 5
 
 // Default tiling mode for Kwm (bsp | monocle | float)
 kwmc config tiling bsp
@@ -100,6 +100,7 @@ kwmc rule owner="iTerm2" properties={role="AXDialog"}
    kwmc rule owner="iTunes" properties={display="1"} */
 
 // Float these troublesome windows
+kwmc rule owner="Fantastical" properties={float="true"}
 kwmc rule owner="Fantastical 2" properties={float="true"}
 
 // Enable border for focused window
