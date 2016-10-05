@@ -20,7 +20,7 @@ Host mail.messagingengine.com
 User alexpearce@fastmail.com
 # Get the account password from the system Keychain
 PassCmd "security find-generic-password -s isync-alexpearce-fastmail-com -w"
-AuthMechs LOGIN
+AuthMechs *
 SSLType IMAPS
 
 # Remote storage (where the mail is retrieved from)
@@ -75,7 +75,7 @@ Host imap.cern.ch
 User apearce
 # Get the account password from the system Keychain
 PassCmd "security find-generic-password -s isync-alex-pearce-cern-ch -w"
-AuthMechs LOGIN
+AuthMechs *
 SSLType IMAPS
 
 IMAPStore cern-remote
