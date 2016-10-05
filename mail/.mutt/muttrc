@@ -110,11 +110,14 @@ set sidebar_width = 22
 # Remove <mailbox_name>/ prefix, e.g. "personal/Inbox" becomes "Inbox"
 set sidebar_short_path
 # Display folder name and unread count
-set sidebar_format = "%B%?F? [%F]?%* %?N?%N?"
+set sidebar_format = "%B %* %?N?%N?"
 # Indent subfolders...
 set sidebar_folder_indent
 # ...with a space
 set sidebar_indent_string = ' '
+# Check for mailbox statistics every 10 seconds (required for new mail count)
+set mail_check_stats
+set mail_check_stats_interval = 10
 
 # Prefer plain-text over enriched text over HTML
 alternative_order text/plain text/enriched text/html
