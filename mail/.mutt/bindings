@@ -30,4 +30,7 @@ macro index O "<shell-escape>mbsync personal-inbox cern-inbox<return>" "Run mbsy
 # On my computer, the key combination ctrl+shift+o gives the character Ø
 macro index Ø "<shell-escape>mbsync -a<return>" "Run mbsync for everything"
 
+# notmuch search
+macro index \eX "<vfolder-from-query>"
+
 # vi:syntax=muttrc
