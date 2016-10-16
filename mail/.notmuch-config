@@ -16,7 +16,7 @@ other_email=alex@alexpearce.me
 # notmuch to filter in this way, so set values to blank
 [new]
 tags=
-ignore=
+ignore=.uidvalidity;.mbsyncstate
 
 # I don't use tags, so don't need to specify any exclusions
 [search]
