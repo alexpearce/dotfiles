@@ -249,6 +249,12 @@ if has("autocmd")
   " sentences to start on new lines
   au FileType python,tex,markdown set formatoptions+=atw textwidth=79
 
+  " relativenumber can be very slow when combined with a language whose syntax
+  " highlighting regexs are complex
+  " https://github.com/neovim/neovim/issues/2401
+  " https://groups.google.com/forum/#!topic/vim_use/ebRiypE2Xuw
+  au FileType tex set norelativenumber
+
   " I often type `#` to start a comment, as alt-3, then hit space
   " alt-space is a UTF non-breaking space character, which can give encoding errors
   highlight UTFSpaceComment ctermfg=White ctermbg=1
