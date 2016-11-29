@@ -102,6 +102,7 @@ kwmc rule owner="iTerm2" properties={role="AXDialog"}
 // Float these troublesome windows
 kwmc rule owner="Fantastical" properties={float="true"}
 kwmc rule owner="Fantastical 2" properties={float="true"}
+kwmc rule owner="Transmission" properties={float="true"}
 
 // Enable border for focused window
 kwmc config border focused on
