@@ -26,6 +26,7 @@ Plug 'airblade/vim-gitgutter'
 " Use with gruvbox iTerm2 colourscheme from
 " https://github.com/flipxfx/gruvbox-terminal
 Plug 'alexpearce/gruvbox'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'davidhalter/jedi-vim'
 Plug 'ehamberg/vim-cute-python'
 Plug 'Glench/Vim-Jinja2-Syntax'
