@@ -117,6 +117,9 @@ set incsearch
 set ignorecase
 set smartcase
 
+" Live substitution
+set inccommand=split
+
 " Allow a greater number of tabs to be opened (default: 10)
 set tabpagemax=20
 
