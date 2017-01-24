@@ -257,7 +257,9 @@ if has("autocmd")
 
   " Wrap Python, LaTeX, and Markdown automatically at 80 characters, allowing
   " sentences to start on new lines
-  au FileType python,tex,markdown set formatoptions+=atw textwidth=79
+  au FileType python,tex,markdown set formatoptions+=t textwidth=79
+  au FileType tex,markdown set formatoptions+=aw textwidth=79
+  au FileType mail set formatoptions+=aw
 
   " relativenumber can be very slow when combined with a language whose syntax
   " highlighting regexs are complex
