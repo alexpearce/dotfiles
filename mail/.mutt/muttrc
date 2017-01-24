@@ -7,6 +7,8 @@ set mbox_type = Maildir
 # `/^$` searches for a blank line, placing the cursor after the headers
 # `+nohlsearch` turns off the search highlighting due to the "/^$"
 set editor = "nvim +/^$ +nohlsearch"
+# Tell MUAs to treat linebreaks on lines ending with whitespace as soft breaks
+set text_flowed
 # Allow us to be able to edit headers in the $EDITOR when composing
 set edit_headers
 # Use the contents of this file as the message signature
@@ -80,7 +82,7 @@ set sort = threads
 set sort_aux = last-date-received
 
 # Format dates as day/month/year at hour:minute 
-set date_format = "%d/%m/%y at %I:%M"
+set date_format = "%d/%m/%y at %H:%M"
 # Use " " for unchaged, "*" for re-sync needed, "%" for read-only mode, and "A"
 # to indicate attachment mode. Used in the "%r" format string in status_format
 set status_chars = " *%A"
