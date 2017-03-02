@@ -40,7 +40,6 @@ Plug 'justinmk/vim-sneak'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
 Plug 'lervag/vimtex'
-Plug 'scrooloose/syntastic'
 Plug 'sheerun/vim-polyglot'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
@@ -51,6 +50,7 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'zchee/deoplete-jedi'
 Plug 'vim-scripts/UniCycle'
+Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -80,6 +80,14 @@ let g:UltiSnipsEditSplit="vertical"
 let g:python2_host_prog = '/usr/local/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'
 let g:deoplete#enable_at_startup = 1
+
+let g:ale_linters = {
+  \ 'python': ['flake8'],
+  \}
+let g:ale_sign_error = 'ϟ'
+let g:ale_sign_warning = '∗'
+highlight link ALEErrorSign diffRemoved
+highlight link ALEWarningSign diffChanged
 
 """"""""""""""""""""""""""""""""""""""""
 " UI
@@ -141,8 +149,10 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 0
 " Enable fugitive integration
 let g:airline#extensions#branch#enabled = 1
-" Enable syntastic integration
-let g:airline#extensions#syntastic#enabled = 1
+" Enable Ale integration
+let g:airline#extensions#ale#enabled = 1
+" Don't show empty warning or error sections
+let g:airline_skip_empty_sections = 1
 " Override normal, insert, and visual {, line, block}
 let g:airline_mode_map = {
   \ 'n'  : '∙',
