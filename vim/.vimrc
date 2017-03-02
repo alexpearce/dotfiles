@@ -50,6 +50,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'zchee/deoplete-jedi'
+Plug 'vim-scripts/UniCycle'
 
 call plug#end()
 
@@ -269,6 +270,9 @@ if has("autocmd")
   au FileType python,tex,markdown set formatoptions+=t textwidth=79
   au FileType tex,markdown set formatoptions+=aw textwidth=79
   au FileType mail set formatoptions+=aw
+
+  " Smart quotes, dashes, and ellipses in markdown and emails
+  au FileType mail,markdown UniCycleOn
 
   " relativenumber can be very slow when combined with a language whose syntax
   " highlighting regexs are complex
