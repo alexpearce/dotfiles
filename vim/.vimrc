@@ -14,6 +14,9 @@ set noswapfile
 " Enable the mouse in the terminal
 set mouse=a
 
+" Different cursor shape in insert mode
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
 """"""""""""""""""""""""""""""""""""""""
 " Plugins
 """"""""""""""""""""""""""""""""""""""""
@@ -111,6 +114,9 @@ set display+=lastline
 set listchars=tab:>-,trail:-
 set list
 
+" Nicer split character
+set fillchars+=vert:⎪
+
 " Smart case searching
 set hlsearch
 set incsearch
@@ -174,6 +180,9 @@ set clipboard+=unnamedplus
 
 " change the leader key to space
 let mapleader="\<Space>"
+
+" Exit insert mode with jk
+inoremap jk <Esc>
 
 " Stop command window from popping u
 map q: :q
