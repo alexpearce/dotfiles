@@ -104,12 +104,6 @@ set background=dark
 let g:gruvbox_italic=1
 colorscheme gruvbox
 
-
-" Show relative line number as absolute line number at the cursor position,
-" but relative line number above and below the cursor
-set number
-set relativenumber
-
 " Have some context around the current line always on screen
 set scrolloff=3
 set sidescrolloff=5
@@ -251,6 +245,12 @@ function ToggleWrapping()
   endif
 endfunction
 nnoremap <leader>t :call ToggleWrapping()<cr>
+
+function ToggleRelativeLineNumbers()
+  set invnumber
+  set invrelativenumber
+endfunction
+nnoremap <leader>l :call ToggleRelativeLineNumbers()<cr>
 
 """"""""""""""""""""""""""""""""""""""""
 " Filetype specific
