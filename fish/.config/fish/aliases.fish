@@ -45,6 +45,8 @@ abbr gs "git stash"
 abbr gsp "git stash pop"
 abbr gsx "git stash drop"
 abbr gssp "git stash show -p"
+abbr grb "git rebase"
+abbr gr "git reset"
 
 abbr cern "ssh lxplus.cern.ch"
 # I don't know why I need the -K flag, I get a password prompt otherwise
