@@ -10,12 +10,6 @@ alias mv "mv -i"
 alias mkdir "mkdir -p"
 alias du "du -hs"
 
-# EOS on lxplus
-alias eos="/afs/cern.ch/project/eos/installation/0.3.15/bin/eos.select"
-alias eosumount="/afs/cern.ch/project/eos/installation/0.3.15/bin/eos.select -b fuse umount"
-alias eosmount="/afs/cern.ch/project/eos/installation/0.3.15/bin/eos.select -b fuse mount"
-alias eosforceumount="killall eosfsd 2>/dev/null; killall -9 eosfsd 2>/dev/null; fusermount -u "
-
 # Abbreviate commonly used functions
 # An abbreviation will expand after <space> or <Enter> is hit
 abbr o open
@@ -42,7 +36,7 @@ abbr gco "git checkout"
 abbr gc "git commit"
 abbr gcm "git commit -m"
 abbr gwd "git diff"
-abbr gws "git status"
+abbr gws "git status -s -b"
 abbr gs "git stash"
 abbr gsp "git stash pop"
 abbr gsx "git stash drop"
