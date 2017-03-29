@@ -1,13 +1,8 @@
 # Alias commands to include common flags
 alias ipython "ipython --no-banner"
 alias root "root -l"
-# Only use Neovim if the command is known
-# Use -p to have all each file argument open in its own tab
-if command --search nvim > /dev/null
-  alias vim "nvim -p";
-else
-  alias vim "vim -p"
-end
+alias nvim "nvim -p";
+alias vim "vim -p"
 
 alias rm "rm -i"
 alias cp "cp -i"
@@ -35,6 +30,7 @@ abbr be "bundle exec"
 abbr r root
 abbr tb tbrowser
 abbr v vim
+abbr nv nvim
 abbr ospdf "open -a Skim *.pdf"
 abbr m make
 
