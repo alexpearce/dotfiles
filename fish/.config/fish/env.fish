@@ -1,7 +1,5 @@
-if command --search nvim >/dev/null
-  set -x EDITOR nvim
-else
-  set -x EDITOR vim
-end
-
-set PATH ~/.bin $PATH
+# Generally, constant variables should be set once using set -U:
+# set -U -x EDITOR nvim
+# set -U -x ROOTSYS (brew --prefix root6)
+# set -U -x PYTHONPATH $ROOTSYS/lib/root
+# set -U fish_user_paths ~/.bin $fish_user_paths

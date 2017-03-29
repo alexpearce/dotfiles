@@ -26,6 +26,8 @@ abbr ghoi "github_open issues"
 abbr ghopr "github_open pulls"
 abbr p python
 abbr ip ipython
+# Set up virtualfish (virtualenvwrapper for fish, try `vf` command)
+abbr pyvf "eval (python -m virtualfish auto_activation)"
 abbr be "bundle exec"
 abbr r root
 abbr tb tbrowser
