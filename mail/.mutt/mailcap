@@ -5,4 +5,4 @@ image/*; $HOME/.mutt/view_attachment.sh %s
 application/pdf; $HOME/.mutt/view_attachment.sh %s
 
 # HTML
-text/html; $HOME/.mutt/view_attachment.sh %s
+text/html; lynx -display_charset=utf-8 -dump %s; nametemplate=%s.html; copiousoutput
