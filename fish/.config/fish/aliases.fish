@@ -29,6 +29,7 @@ abbr v vim
 abbr nv nvim
 abbr ospdf "open -a Skim *.pdf"
 abbr m make
+abbr se setup-env
 
 abbr gia "git add"
 abbr gb "git branch"
