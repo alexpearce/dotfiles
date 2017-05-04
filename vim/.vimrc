@@ -40,7 +40,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
+Plug 'ledger/vim-ledger'
 Plug 'lervag/vimtex'
+Plug 'nathangrigg/vim-beancount'
 Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
@@ -129,6 +131,9 @@ set inccommand=split
 
 " Allow a greater number of tabs to be opened (default: 10)
 set tabpagemax=20
+
+" Don't fold
+set foldlevelstart=99
 
 if has("nvim")
   set laststatus=1
@@ -287,6 +292,9 @@ if has("autocmd")
   " https://github.com/neovim/neovim/issues/2401
   " https://groups.google.com/forum/#!topic/vim_use/ebRiypE2Xuw
   au FileType tex set norelativenumber
+
+  " Enable marker folder for Beancount files
+  au FileType beancount set foldmethod=marker foldlevel=0 foldlevelstart=0
 
   " I often type `#` to start a comment, as alt-3, then hit space
   " alt-space is a UTF non-breaking space character, which can give encoding errors
