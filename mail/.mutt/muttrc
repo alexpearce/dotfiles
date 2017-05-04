@@ -20,8 +20,8 @@ unset sig_dashes
 # Format for message that preceeds quotes when replying
 set attribution = "On %d, %n <%a> wrote:"
 
-# Use lbdb to query for contacts
-set query_command = "lbdbq %s 2>/dev/null"
+# Use notmuch-addrlookup to query for contacts
+set query_command = "notmuch-addrlookup --mutt '%s'"
 # Don't mark unread messages as 'old' when leaving a mailbox
 unset mark_old
 # Don't confirm deletions
