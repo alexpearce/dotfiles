@@ -21,6 +21,10 @@ if is_cern
   set -g -x LD_LIBRARY_PATH ~/usr/lib:$LD_LIBRARY_PATH
 end
 
+# Don't let sourcing virtualenvs change our prompt
+# We use the env name in the right prompt anyway
+set -g -x VIRTUAL_ENV_DISABLE_PROMPT 1
+
 # Set syntax highlighting colours; var names defined here:
 # http://fishshell.com/docs/current/index.html#variables-color
 set fish_color_normal normal
