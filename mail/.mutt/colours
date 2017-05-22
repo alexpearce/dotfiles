@@ -1,32 +1,34 @@
 # Index
-color normal        white       black
-color error         red         black
-color tilde         brightblack black
-color message       cyan        black
-color markers       cyan        black
-color status        white       black
-color indicator     green       black
-color tree          white black
+color normal        black       brightwhite
+color error         red         brightwhite
+color tilde         brightblack brightwhite
+color message       cyan        brightwhite
+color markers       cyan        brightwhite
+color status        black       brightwhite
+color indicator     blue        brightwhite
+color tree          yellow      brightwhite
 
 # Messages
-# Blue for new messages
-color index         blue        black ~N
-# Grey for deleted messages
-color index         red black ~D
+# Green for new messages
+color index         green       brightwhite ~N
+# Red for deleted messages
+color index         red         brightwhite ~D
+color attachment    red         brightwhite
 
 # Message headers
-color header        cyan black        "^"
+color header        white       brightwhite "^"
 
 # Message body
-color quoted        magenta         black
+color quoted        magenta     brightwhite
 # URLs
-color body blue black "(http|https|ftp|news|telnet|finger)://[^ \">\t\r\n]*"
+color body          cyan        brightwhite "(http|https|ftp|news|telnet|finger)://[^ \">\t\r\n]*"
 # Emails
-color body blue black "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+color body          cyan        brightwhite "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
 
 # Sidebar
-color sidebar_divider color08 black
-color sidebar_highlight yellow black
-color sidebar_new blue black
+color sidebar_divider   black   brightwhite
+color sidebar_indicator blue    brightwhite
+color sidebar_highlight cyan    brightwhite
+color sidebar_new       green   brightwhite
 
 # vi:syntax=muttrc
