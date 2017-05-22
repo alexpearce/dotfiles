@@ -30,6 +30,7 @@ abbr nv nvim
 abbr ospdf "open -a Skim *.pdf"
 abbr m make
 abbr se setup-env
+abbr dbg 'set CMTCONFIG $CMTDEB'
 
 abbr gia "git add"
 abbr gb "git branch"
