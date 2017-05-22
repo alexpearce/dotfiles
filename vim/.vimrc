@@ -26,13 +26,13 @@ let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 call plug#begin('~/.vim/bundle')
 
 Plug 'airblade/vim-gitgutter'
+Plug 'ajh17/VimCompletesMe'
 " Use with gruvbox iTerm2 colourscheme from
 " https://github.com/flipxfx/gruvbox-terminal
 Plug 'alexpearce/gruvbox'
 Plug 'anntzer/vim-cython'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'davidhalter/jedi-vim'
-Plug 'ehamberg/vim-cute-python'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'ibab/vim-snakemake'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -50,6 +50,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'vimwiki/vimwiki'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/UniCycle'
 Plug 'w0rp/ale'
@@ -273,6 +274,15 @@ function ToggleRelativeLineNumbers()
   set invrelativenumber
 endfunction
 nnoremap <leader>l :call ToggleRelativeLineNumbers()<cr>
+
+""""""""""""""""""""""""""""""""""""""""
+" vimwiki
+""""""""""""""""""""""""""""""""""""""""
+
+nmap <Leader>vw <Plug>VimwikiIndex
+nmap <Leader>vt <Plug>VimwikiMakeDiaryNote
+let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki',
+                     \ 'syntax': 'markdown', 'ext': '.markdown'}]
 
 """"""""""""""""""""""""""""""""""""""""
 " Filetype specific
