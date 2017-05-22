@@ -135,7 +135,7 @@ set listchars=tab:>-,trail:-
 set list
 
 " Nicer split character
-set fillchars+=vert:⎪
+set fillchars+=vert:│
 
 " Smart case searching
 set hlsearch

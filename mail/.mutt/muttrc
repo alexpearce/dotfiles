@@ -90,7 +90,7 @@ set date_format = "%d/%m/%y at %H:%M"
 # to indicate attachment mode. Used in the "%r" format string in status_format
 set status_chars = " *%A"
 # String to display in the mailbox footer
-set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+set status_format = "─── %f ───%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ───%>─%?p?( %p postponed )?───"
 # Show status flags, date, from, and subject
 set index_format = "[%Z]  %D  %-20.20F  %s"
 # Format forwarded subjects as "Fwd: <subject>"
