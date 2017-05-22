@@ -120,6 +120,8 @@ set sidebar_format = "%B %* %?N?%N?"
 set sidebar_folder_indent
 # ...with a space
 set sidebar_indent_string = ' '
+# Wrap around when selecting the next mailbox with unreads
+set sidebar_next_new_wrap = yes
 # Check for mailbox statistics every 10 seconds (required for new mail count)
 set mail_check_stats
 set mail_check_stats_interval = 10
