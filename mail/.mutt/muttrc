@@ -70,6 +70,8 @@ set tilde
 set smart_wrap
 # Don't show line wrapping markers
 unset markers
+# Highlight the selected message with an arrow
+set arrow_cursor
 
 # Try to clean up messages before passing them to the pager
 set pipe_decode

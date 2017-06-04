@@ -1,34 +1,38 @@
 # Index
-color normal        black       brightwhite
-color error         red         brightwhite
-color tilde         brightblack brightwhite
-color message       cyan        brightwhite
-color markers       cyan        brightwhite
-color status        black       brightwhite
-color indicator     blue        brightwhite
-color tree          yellow      brightwhite
+color normal        default     default
+color error         red         default
+color tilde         brightblack default
+color message       cyan        default
+color prompt        cyan        default
+color markers       cyan        default
+color status        default     default
+color indicator     blue        default
+color tree          yellow      default
 
 # Messages
+# Bold black for message author
+color index_author  brightblack default "!(~D | ~N) ~A"
 # Green for new messages
-color index         green       brightwhite ~N
+color index         green       default ~N
 # Red for deleted messages
-color index         red         brightwhite ~D
-color attachment    red         brightwhite
+color index         red         default ~D
+# Red for attachment text
+color attachment    red         default
 
 # Message headers
-color header        white       brightwhite "^"
+color header        brightdefault       default "^"
 
 # Message body
-color quoted        magenta     brightwhite
+color quoted        magenta     default
 # URLs
-color body          cyan        brightwhite "(http|https|ftp|news|telnet|finger)://[^ \">\t\r\n]*"
+color body          cyan        default "(http|https|ftp|news|telnet|finger)://[^ \">\t\r\n]*"
 # Emails
-color body          cyan        brightwhite "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+color body          cyan        default "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
 
 # Sidebar
-color sidebar_divider   black   brightwhite
-color sidebar_indicator blue    brightwhite
-color sidebar_highlight cyan    brightwhite
-color sidebar_new       green   brightwhite
+color sidebar_divider   default default
+color sidebar_indicator blue    default
+color sidebar_highlight cyan    default
+color sidebar_new       green   default
 
 # vi:syntax=muttrc
