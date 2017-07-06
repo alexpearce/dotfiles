@@ -4,25 +4,33 @@
 # Run notmuch over new mail with `notmuch new`
 
 # Root Maildir path
+
 [database]
 path=/Users/apearce/.mail
 
 [user]
 name=Alex Pearce
 primary_email=alex.pearce@cern.ch
-other_email=alex@alexpearce.me
+other_email=alex@alexpearce.me;
 
-# Can apply tags to new files, or specify folders to ignore, but I don't use
-# notmuch to filter in this way, so set values to blank
+# Tag all new messages with 'unnotified'
+# Our notifier script will remove this tag once a notification has been made
 [new]
-tags=
+tags=unnotified;
 ignore=.uidvalidity;.mbsyncstate
 
-# I don't use tags, so don't need to specify any exclusions
 [search]
 exclude_tags=
 
-# Again, I don't use tags, so don't need to syncronise Maildir flags with
-# notmuch tags
 [maildir]
 synchronize_flags=false
+
+# Cryptography related configuration
+#
+# The following option is supported here:
+#
+#	gpg_path
+#		binary name or full path to invoke gpg.
+#
+[crypto]
+gpg_path=gpg
