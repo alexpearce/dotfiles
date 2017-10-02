@@ -19,6 +19,8 @@ if is_cern
   set -e EDITOR
   set -g -x EDITOR nvim
   set -g -x LD_LIBRARY_PATH ~/usr/lib:$LD_LIBRARY_PATH
+  # Place Grid proxy somewhere host agnostic (it's placed in /tmp by default)
+  set -g -x X509_USER_PROXY $HOME/.grid.proxy
 end
 
 # Don't let sourcing virtualenvs change our prompt
