@@ -281,7 +281,11 @@ nnoremap <leader>l :call ToggleRelativeLineNumbers()<cr>
 
 nmap <Leader>vw <Plug>VimwikiIndex
 nmap <Leader>vd <Plug>VimwikiMakeDiaryNote
+nmap <Leader>vh <Plug>VimwikiAll2HTML
 let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki',
+                     \ 'template_path': '~/Dropbox/vimwiki/templates',
+                     \ 'path_html': '~/Dropbox/vimwiki/html',
+                     \ 'custom_wiki2html': '~/Dropbox/vimwiki/vimwiki_to_html.py',
                      \ 'syntax': 'markdown', 'ext': '.markdown'}]
 
 """"""""""""""""""""""""""""""""""""""""
