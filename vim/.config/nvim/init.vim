@@ -96,24 +96,32 @@ set noshowmode
 
 " Theme
 set termguicolors
-let g:one_allow_italics=1
-colorscheme one
-set background=light
+let s:mybg = "dark"
+if (s:mybg ==? "dark")
+  let g:gruvbox_italic=1
+  colorscheme gruvbox
+  set background=dark
+else
+  let g:one_allow_italics=1
+  colorscheme one
+  set background=light
 
-function CustomHighlight(group, fg, bg, attr)
-  let l:fg = substitute(a:fg, '#', '', '')
-  let l:bg = substitute(a:bg, '#', '', '')
-  call one#highlight(a:group, l:fg, l:bg, a:attr)
-endfunction
-let s:bg_color = '#fafafa'
-let s:blue_color = '#4078f2'
-let s:comment_color = '#a0a1a7'
-" Make the tab bar more subtle
-call CustomHighlight('TabLine', g:terminal_color_0, s:bg_color, 'none')
-call CustomHighlight('TabLineFill', g:terminal_color_0, s:bg_color, '')
-call CustomHighlight('TabLineSel', s:blue_color, s:bg_color, 'none')
-" Make folds look like comments
-call CustomHighlight('Folded', s:comment_color, s:bg_color, 'italic')
+  function CustomHighlight(group, fg, bg, attr)
+    let l:fg = substitute(a:fg, '#', '', '')
+    let l:bg = substitute(a:bg, '#', '', '')
+    call one#highlight(a:group, l:fg, l:bg, a:attr)
+  endfunction
+  let s:bg_color = '#fafafa'
+  let s:blue_color = '#4078f2'
+  let s:comment_color = '#a0a1a7'
+  " Make the tab bar more subtle
+  call CustomHighlight('TabLine', g:terminal_color_0, s:bg_color, 'none')
+  call CustomHighlight('TabLineFill', g:terminal_color_0, s:bg_color, '')
+  call CustomHighlight('TabLineSel', s:blue_color, s:bg_color, 'none')
+  " Make folds look like comments
+  call CustomHighlight('Folded', s:comment_color, s:bg_color, 'italic')
+
+endif
 
 " Have some context around the current line always on screen
 set scrolloff=3
