@@ -69,7 +69,7 @@ nnoremap <c-p> :call FuzzyFind()<cr>
 
 " Use ag to perform the search, so that .gitignore files and the like are
 " respected
-let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
+let $FZF_DEFAULT_COMMAND = 'rg --files'
 
 let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsListSnippets="<c-s-e>"
