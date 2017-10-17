@@ -1,6 +1,7 @@
 # vim-like bindings for movement
 
 # In the message index
+bind index g        noop
 bind index gg       first-entry
 bind index G        last-entry
 bind index R        group-reply
@@ -17,6 +18,7 @@ bind index,pager V sidebar-toggle-visible
 # In the message pager
 bind pager k  previous-line
 bind pager j  next-line
+bind pager g  noop
 bind pager gg top
 bind pager G  bottom
 bind pager R  group-reply

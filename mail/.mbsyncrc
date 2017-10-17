@@ -84,6 +84,7 @@ Account cern
 MaildirStore cern-local
 Path ~/.mail/cern/
 Inbox ~/.mail/cern/Inbox
+SubFolders Verbatim
 
 Channel cern-inbox
 Master :cern-remote:INBOX
@@ -110,7 +111,7 @@ Master :cern-remote:
 Slave :cern-local:
 # All other folders, except those already defined above and special Outlook 
 # folders like Tasks
-Patterns * !INBOX !Archive !Calendar !Conferences !Contacts* !"Conversation History" !"Deleted Items" !Drafts !Journal !"Junk E-Mail" !Notes !Outbox !Sent* !Spam !Tasks !Trash
+Patterns * !INBOX !Archive !Calendar !Contacts* !"Conversation History" !"Deleted Items" !Drafts !Journal !"Junk E-Mail" !Notes !Outbox !Sent* !Spam !Tasks !Trash
 
 # Group the channels, so that all channels can be sync'd with `mbsync cern`
 Group cern
