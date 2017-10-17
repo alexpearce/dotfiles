@@ -20,3 +20,14 @@
   diff = diff-so-fancy | less --pattern='^(added|deleted|modified): '
 [interactive]
   diffFilter = diff-so-fancy
+# Clone git repos with URLs like "gh:alexpearce/dotfiles"
+[url "https://github.com/"]
+  insteadOf = "gh:"
+[url "git@github.com:"]
+  pushInsteadOf = "gh:"
+# Clone CERN GitLab repos with URLs like "gl:lhcb/Hlt"
+[url "ssh://git@gitlab.cern.ch:7999/"]
+  insteadOf = "gl:"
+# Clone Arch User Repository repos with URLs like "aur:neomutt"
+[url "https://aur.archlinux.org/"]
+  insteadOf = "aur:"
