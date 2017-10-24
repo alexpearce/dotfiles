@@ -296,6 +296,8 @@ let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki',
 let g:tex_flavor = "latex"
 
 if has("autocmd")
+  au BufNewFile,BufRead ~/.mutt/tmp/neomutt-* set filetype=mail
+
   " Makefiles require actual tabs
   au FileType make set noexpandtab
 
