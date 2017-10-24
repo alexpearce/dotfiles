@@ -221,7 +221,7 @@ map <leader>m :make<CR>
 
 " simple pasting from the system clipboard
 " http://tilvim.com/2014/03/18/a-better-paste.html
-map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
+map <Leader>p :set paste<CR>o<esc>"+]p:set nopaste<cr>
 
 " Scroll up and down visible lines, not buffer lines
 noremap j gj
