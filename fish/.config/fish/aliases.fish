@@ -9,6 +9,11 @@ alias cp "cp -i"
 alias mv "mv -i"
 alias mkdir "mkdir -p"
 alias du "du -hs"
+if which exa > /dev/null 2>&1
+  alias ls "exa"
+  alias la "exa -aghl --git"
+end
+alias pcat "pygmentize -f terminal16m -O style=monokai"
 
 # Abbreviate commonly used functions
 # An abbreviation will expand after <space> or <Enter> is hit
