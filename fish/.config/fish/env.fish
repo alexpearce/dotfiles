@@ -10,6 +10,10 @@ if not set -q fish_user_paths
   echo 'Hello! This is your shell 👋'
   echo 'It looks this the machine ('(hostname)') hasn\'t been setup yet.'
   echo 'You can run the '(set_color green)'setup-env'(set_color normal)' command to do so.'
+  if hostname | grep lxplus > /dev/null
+    echo 'Initiating auto-setup for lxplus'
+    yes | setup-env
+  end
 end
 
 # Even after setup-env, some universal variables are overriden
