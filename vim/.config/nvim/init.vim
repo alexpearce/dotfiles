@@ -34,9 +34,7 @@ Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'ibab/vim-snakemake'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'lervag/vimtex'
 Plug 'nathangrigg/vim-beancount'
-Plug 'rakr/vim-one'
 Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
@@ -262,9 +260,9 @@ set wildignore+=output
 " have fewer than 80 characters, but ocassionally want longer lines
 function ToggleWrapping()
   if &l:formatoptions =~ "t"
-    set formatoptions-=t
+    set formatoptions-=taw
   else
-    set formatoptions+=t
+    set formatoptions+=taw
   endif
 endfunction
 nnoremap <leader>t :call ToggleWrapping()<cr>
@@ -307,6 +305,8 @@ if has("autocmd")
   " Python style uses 4 spaces as tabs
   " Coloured column at 80 characters, good for wide terminals
   au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 colorcolumn=80
+
+  au BufNewFile,BufRead *.markdown set syntax=markdown
 
   " Spellchecking in LaTeX, Markdown, and email
   au FileType tex,markdown,mail set spelllang=en_gb spell
