@@ -69,8 +69,10 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 
-let g:python2_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
+" As recommended by `:help provider`, define a venv just for neovim that has
+" the neovim module and some Python linters
+let g:python_host_prog = $HOME . "/.nvim-venv2/bin/python2"
+let g:python3_host_prog = $HOME . "/.nvim-venv/bin/python3"
 
 let g:ale_linters = {
   \ 'python': ['flake8', 'pylint'],
