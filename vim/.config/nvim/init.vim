@@ -24,9 +24,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'airblade/vim-gitgutter'
 Plug 'ajh17/VimCompletesMe'
-" Use with gruvbox iTerm2 colourscheme from
-" https://github.com/flipxfx/gruvbox-terminal
-Plug 'alexpearce/gruvbox'
 Plug 'anntzer/vim-cython'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'davidhalter/jedi-vim'
@@ -34,6 +31,7 @@ Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'ibab/vim-snakemake'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'morhetz/gruvbox'
 Plug 'nathangrigg/vim-beancount'
 Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
@@ -95,32 +93,10 @@ set noshowmode
 
 " Theme
 set termguicolors
-let s:mybg = "dark"
-if (s:mybg ==? "dark")
-  let g:gruvbox_italic=1
-  colorscheme gruvbox
-  set background=dark
-else
-  let g:one_allow_italics=1
-  colorscheme one
-  set background=light
-
-  function CustomHighlight(group, fg, bg, attr)
-    let l:fg = substitute(a:fg, '#', '', '')
-    let l:bg = substitute(a:bg, '#', '', '')
-    call one#highlight(a:group, l:fg, l:bg, a:attr)
-  endfunction
-  let s:bg_color = '#fafafa'
-  let s:blue_color = '#4078f2'
-  let s:comment_color = '#a0a1a7'
-  " Make the tab bar more subtle
-  call CustomHighlight('TabLine', g:terminal_color_0, s:bg_color, 'none')
-  call CustomHighlight('TabLineFill', g:terminal_color_0, s:bg_color, '')
-  call CustomHighlight('TabLineSel', s:blue_color, s:bg_color, 'none')
-  " Make folds look like comments
-  call CustomHighlight('Folded', s:comment_color, s:bg_color, 'italic')
-
-endif
+set background=dark
+let g:gruvbox_italic=1
+let g:airline_theme = 'gruvbox'
+color gruvbox
 
 " Have some context around the current line always on screen
 set scrolloff=3
@@ -157,7 +133,6 @@ endif
 
 " airline configuration
 set laststatus=2
-let g:airline_theme = 'one'
 let g:airline_powerline_fonts = 1
 " Show the tabline
 let g:airline#extensions#tabline#enabled = 0
