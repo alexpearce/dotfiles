@@ -2,47 +2,46 @@
 " General configuration
 """"""""""""""""""""""""""""""""""""""""
 
-" Vim is not compatible with fish
-" set shell=/bin/sh
-
-" UTF-8 encoding
-set encoding=utf-8
-
 " Disable swp files
 set noswapfile
 
+" Enable persistent undo
+set undofile
+
 " Enable the mouse in the terminal
 set mouse=a
+
+" Share the system clipboard
+set clipboard+=unnamedplus
+
+" As recommended by `:help provider`, define a venv just for neovim that has
+" the neovim module and some Python linters
+let g:python_host_prog = $HOME . "/.nvim-venv2/bin/python2"
+let g:python3_host_prog = $HOME . "/.nvim-venv/bin/python3"
 
 """"""""""""""""""""""""""""""""""""""""
 " Plugins
 """"""""""""""""""""""""""""""""""""""""
 
 " Plugin configuration
-" vim-plug does `filetype plugin indent on` for us
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'airblade/vim-gitgutter'
-Plug 'ajh17/VimCompletesMe'
-Plug 'anntzer/vim-cython'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'davidhalter/jedi-vim'
-Plug 'Glench/Vim-Jinja2-Syntax'
-Plug 'ibab/vim-snakemake'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'morhetz/gruvbox'
 Plug 'nathangrigg/vim-beancount'
-Plug 'sheerun/vim-polyglot'
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vimwiki/vimwiki'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-scripts/UniCycle'
-Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -59,40 +58,39 @@ endfunction
 
 nnoremap <c-p> :call FuzzyFind()<cr>
 
-" Use ag to perform the search, so that .gitignore files and the like are
+" Use rg to perform the search, so that .gitignore files and the like are
 " respected
 let $FZF_DEFAULT_COMMAND = 'rg --files'
 
-let g:UltiSnipsExpandTrigger="<c-e>"
-let g:UltiSnipsListSnippets="<c-s-e>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsEditSplit="vertical"
+" Airline configuration
+let g:airline_powerline_fonts = 1
+" Don't show empty warning or error sections
+let g:airline_skip_empty_sections = 1
+" " Override normal, insert, and visual {, line, block}
+let g:airline_mode_map = {
+  \ 'n'  : '∙',
+  \ 'i'  : '|',
+  \ 'v'  : '→',
+  \ 'V'  : '↔',
+  \ '' : '↕',
+  \ }
 
-" As recommended by `:help provider`, define a venv just for neovim that has
-" the neovim module and some Python linters
-let g:python_host_prog = $HOME . "/.nvim-venv2/bin/python2"
-let g:python3_host_prog = $HOME . "/.nvim-venv/bin/python3"
-
-let g:ale_linters = {
-  \ 'python': ['flake8', 'pylint'],
-  \}
-let g:ale_sign_error = 'ϟ'
-let g:ale_sign_warning = '∗'
-highlight link ALEErrorSign diffRemoved
-highlight link ALEWarningSign diffChanged
+" vimwiki
+let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki',
+                     \ 'template_path': '~/Dropbox/vimwiki/templates',
+                     \ 'path_html': '~/Dropbox/vimwiki/html',
+                     \ 'custom_wiki2html': '~/Dropbox/vimwiki/vimwiki_to_html.py',
+                     \ 'syntax': 'markdown', 'ext': '.markdown'}]
 
 """"""""""""""""""""""""""""""""""""""""
 " UI
 """"""""""""""""""""""""""""""""""""""""
 
-" Syntax highlighting
-syntax enable
-
 " Show the executing command
 set showcmd
+" Don't show the current editing mode
 set noshowmode
-
+"
 " Theme
 set termguicolors
 set background=dark
@@ -111,47 +109,16 @@ set display+=lastline
 set listchars=tab:>-,trail:-
 set list
 
-" Nicer split character
-set fillchars+=vert:│
-
 " Smart case searching
-set hlsearch
-set incsearch
 set ignorecase
 set smartcase
 
 " Live substitution
 set inccommand=split
 
-" Allow a greater number of tabs to be opened (default: 10)
-set tabpagemax=20
-
-" Don't fold
-set foldlevelstart=99
-
 if has("nvim")
   set laststatus=1
 endif
-
-" airline configuration
-set laststatus=2
-let g:airline_powerline_fonts = 1
-" Show the tabline
-let g:airline#extensions#tabline#enabled = 0
-" Enable fugitive integration
-let g:airline#extensions#branch#enabled = 1
-" Enable Ale integration
-let g:airline#extensions#ale#enabled = 1
-" Don't show empty warning or error sections
-let g:airline_skip_empty_sections = 1
-" Override normal, insert, and visual {, line, block}
-let g:airline_mode_map = {
-  \ 'n'  : '∙',
-  \ 'i'  : '|',
-  \ 'v'  : '→',
-  \ 'V'  : '↔',
-  \ '' : '↕',
-  \ }
 
 """"""""""""""""""""""""""""""""""""""""
 " Coding style
@@ -163,28 +130,11 @@ set shiftwidth=2
 set expandtab
 
 """"""""""""""""""""""""""""""""""""""""
-" Movement
-""""""""""""""""""""""""""""""""""""""""
-
-" Make delete key work as expected
-set backspace=indent,eol,start
-
-""""""""""""""""""""""""""""""""""""""""
-" OS X compatibility
-""""""""""""""""""""""""""""""""""""""""
-
-" Share OS X clipboard
-set clipboard+=unnamedplus
-
-""""""""""""""""""""""""""""""""""""""""
 " Mappings
 """"""""""""""""""""""""""""""""""""""""
 
 " change the leader key to space
 let mapleader="\<Space>"
-
-" Exit insert mode with jk
-inoremap jk <Esc>
 
 " Stop command window from popping u
 map q: :q
@@ -219,6 +169,40 @@ map <leader>q :q<CR>
 " Search with ag.vim
 nnoremap <leader>a :Ag<Space>
 
+" Quickly enable and disable hard wrapping
+" I often find this useful for editing LaTeX, when I usually want the lines to
+" have fewer than 80 characters, but ocassionally want longer lines
+function ToggleWrapping()
+  if &l:formatoptions =~ "t"
+    set formatoptions-=taw
+    echo "Wrapping disabled"
+  else
+    set formatoptions+=taw
+    echo "Wrapping enabled"
+  endif
+endfunction
+nnoremap <leader>t :call ToggleWrapping()<cr>
+
+function ToggleRelativeLineNumbers()
+  set invnumber
+  set invrelativenumber
+endfunction
+nnoremap <leader>l :call ToggleRelativeLineNumbers()<cr>
+
+function ToggleGoyoLimelight()
+  Goyo
+  Limelight
+endfunction
+nnoremap <leader>g :call ToggleGoyoLimelight()<cr>
+
+nmap <Leader>vw <Plug>VimwikiIndex
+nmap <Leader>vd <Plug>VimwikiMakeDiaryNote
+nmap <Leader>vh <Plug>VimwikiAll2HTML
+
+""""""""""""""""""""""""""""""""""""""""
+" Filetype specific
+""""""""""""""""""""""""""""""""""""""""
+
 " Don't autocomplete filenames that match these patterns
 " Version control
 set wildignore=.svn,.git
@@ -233,82 +217,42 @@ set wildignore+=vendor,_site,tmp,node_modules,bower_components
 " Script outputs
 set wildignore+=output
 
-" Quickly enable and disable hard wrapping
-" I often find this useful for editing LaTeX, when I usually want the lines to
-" have fewer than 80 characters, but ocassionally want longer lines
-function ToggleWrapping()
-  if &l:formatoptions =~ "t"
-    set formatoptions-=taw
-  else
-    set formatoptions+=taw
-  endif
-endfunction
-nnoremap <leader>t :call ToggleWrapping()<cr>
+au BufNewFile,BufRead ~/.mutt/tmp/neomutt-* set filetype=mail
 
-function ToggleRelativeLineNumbers()
-  set invnumber
-  set invrelativenumber
-endfunction
-nnoremap <leader>l :call ToggleRelativeLineNumbers()<cr>
+" Makefiles require actual tabs
+au FileType make set noexpandtab
 
-""""""""""""""""""""""""""""""""""""""""
-" vimwiki
-""""""""""""""""""""""""""""""""""""""""
+" Don't create backup files when editing crontabs
+au filetype crontab setlocal nobackup nowritebackup
 
-nmap <Leader>vw <Plug>VimwikiIndex
-nmap <Leader>vd <Plug>VimwikiMakeDiaryNote
-nmap <Leader>vh <Plug>VimwikiAll2HTML
-let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki',
-                     \ 'template_path': '~/Dropbox/vimwiki/templates',
-                     \ 'path_html': '~/Dropbox/vimwiki/html',
-                     \ 'custom_wiki2html': '~/Dropbox/vimwiki/vimwiki_to_html.py',
-                     \ 'syntax': 'markdown', 'ext': '.markdown'}]
+" Python style uses 4 spaces as tabs
+" Coloured column at 80 characters, good for wide terminals
+au FileType python set tabstop=4 shiftwidth=4
 
-""""""""""""""""""""""""""""""""""""""""
-" Filetype specific
-""""""""""""""""""""""""""""""""""""""""
-" Always use the 'tex' filetype for .tex files, rather than the dated
-" 'plaintex' filetype
-let g:tex_flavor = "latex"
+au BufNewFile,BufRead *.markdown set syntax=markdown
 
-if has("autocmd")
-  au BufNewFile,BufRead ~/.mutt/tmp/neomutt-* set filetype=mail
+" Spellchecking in LaTeX, Markdown, and email
+au FileType tex,markdown,mail set spelllang=en_gb spell
 
-  " Makefiles require actual tabs
-  au FileType make set noexpandtab
+" Wrap Python, LaTeX, and Markdown automatically at 80 characters, allowing
+" sentences to start on new lines
+au FileType python,tex,markdown,pandoc set formatoptions+=t textwidth=79
+au FileType tex,markdown set formatoptions+=aw textwidth=79
+au FileType mail set formatoptions+=aw
 
-  " Don't create backup files when editing crontabs
-  au filetype crontab setlocal nobackup nowritebackup
+" Smart quotes, dashes, and ellipses in markdown and emails
+au FileType mail,markdown UniCycleOn
 
-  " Python style uses 4 spaces as tabs
-  " Coloured column at 80 characters, good for wide terminals
-  au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 colorcolumn=80
+" relativenumber can be very slow when combined with a language whose syntax
+" highlighting regexs are complex
+" https://github.com/neovim/neovim/issues/2401
+" https://groups.google.com/forum/#!topic/vim_use/ebRiypE2Xuw
+au FileType tex set norelativenumber
 
-  au BufNewFile,BufRead *.markdown set syntax=markdown
+" Enable marker folder for Beancount files
+au FileType beancount set foldmethod=marker foldlevel=0 foldlevelstart=0
 
-  " Spellchecking in LaTeX, Markdown, and email
-  au FileType tex,markdown,mail set spelllang=en_gb spell
-
-  " Wrap Python, LaTeX, and Markdown automatically at 80 characters, allowing
-  " sentences to start on new lines
-  au FileType python,tex,markdown set formatoptions+=t textwidth=79
-  au FileType tex,markdown set formatoptions+=aw textwidth=79
-  au FileType mail set formatoptions+=aw
-
-  " Smart quotes, dashes, and ellipses in markdown and emails
-  au FileType mail,markdown UniCycleOn
-
-  " relativenumber can be very slow when combined with a language whose syntax
-  " highlighting regexs are complex
-  " https://github.com/neovim/neovim/issues/2401
-  " https://groups.google.com/forum/#!topic/vim_use/ebRiypE2Xuw
-  au FileType tex set norelativenumber
-
-  " Enable marker folder for Beancount files
-  au FileType beancount set foldmethod=marker foldlevel=0 foldlevelstart=0
-
-  " I often type `#` to start a comment, as alt-3, then hit space
-  " alt-space is a UTF non-breaking space character, which can give encoding errors
-  highlight UTFSpaceComment ctermfg=White ctermbg=1
-  au BufNewFile,BufRead * :syn match UTFSpaceComment '.\%uA0'
-endif
+" I often type `#` to start a comment, as alt-3, then hit space
+" alt-space is a UTF non-breaking space character, which can give encoding errors
+highlight UTFSpaceComment ctermfg=White ctermbg=1
+au BufNewFile,BufRead * :syn match UTFSpaceComment '.\%uA0'
