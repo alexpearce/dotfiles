@@ -27,12 +27,14 @@ let g:python3_host_prog = $HOME . "/.nvim-venv/bin/python3"
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'ervandew/supertab'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'morhetz/gruvbox'
 Plug 'nathangrigg/vim-beancount'
+Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -42,6 +44,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-scripts/UniCycle'
+Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -81,6 +84,23 @@ let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki',
                      \ 'path_html': '~/Dropbox/vimwiki/html',
                      \ 'custom_wiki2html': '~/Dropbox/vimwiki/vimwiki_to_html.py',
                      \ 'syntax': 'markdown', 'ext': '.markdown'}]
+
+" Don't show the foldcolumn
+let g:pandoc#folding#fdc = 0
+" Soft wraps, but not in regions where wrapping is undesirable (like headers
+" and code blocks)
+let g:pandoc#formatting#mode = 'hA'
+
+" Append our Neovim virtualenv to the list of venvs ale searches for
+" The search is performed from the buffer directory up, until a name match is
+" found; our Neovim venv lives in ~/.nvim-venv
+let g:ale_virtualenv_dir_names = ['.env', '.venv', 'env', 'virtualenv', 'venv', '.nvim-venv']
+" Explicitly list linters we care about
+let g:ale_linters = {'python': ['flake8', 'pylint']}
+" Only show warnings and errors from pylint
+let g:ale_python_pylint_options = '--disable C,R'
+let g:ale_sign_warning = '→'
+let g:ale_sign_error = '→'
 
 """"""""""""""""""""""""""""""""""""""""
 " UI
@@ -226,8 +246,9 @@ au FileType make set noexpandtab
 au filetype crontab setlocal nobackup nowritebackup
 
 " Python style uses 4 spaces as tabs
-" Coloured column at 80 characters, good for wide terminals
 au FileType python set tabstop=4 shiftwidth=4
+" Enable deoplete
+au FileType python call deoplete#enable()
 
 au BufNewFile,BufRead *.markdown set syntax=markdown
 
