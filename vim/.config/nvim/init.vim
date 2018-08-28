@@ -214,9 +214,40 @@ function ToggleGoyoLimelight()
 endfunction
 nnoremap <leader>g :call ToggleGoyoLimelight()<cr>
 
-nmap <Leader>vw <Plug>VimwikiIndex
-nmap <Leader>vd <Plug>VimwikiMakeDiaryNote
-nmap <Leader>vh <Plug>VimwikiAll2HTML
+""""""""""""""""""""""""""""""""""""""""
+" Wiki
+""""""""""""""""""""""""""""""""""""""""
+
+" Open the index file of the wiki
+function WikiIndex()
+  let path = fnameescape(expand(g:wiki_root)) . '/index.' . g:wiki_extension
+  execute 'e ' . path
+endfunction
+
+function WikiDiary()
+  let path = fnameescape(expand(g:wiki_root)) . '/diary/diary.' . g:wiki_extension
+  execute 'e ' . path
+endfunction
+
+function WikiDiaryToday()
+  let date = strftime('%Y-%m-%d')
+  let fname = date . '.' . g:wiki_extension
+  let path = fnameescape(expand(g:wiki_root)) . '/diary/' . fname
+  execute 'e ' . path
+  " Insert the date as a header if the file doesn't exist
+  if !filereadable(path)
+    call append(0, '# '. date)
+    call append(1, '')
+  endif
+endfunction
+
+let g:wiki_root = '~/Dropbox/vimwiki'
+let g:wiki_extension = 'markdown'
+
+nmap <Leader>vw :call WikiIndex() <cr>
+nmap <Leader>vd :call WikiDiary() <cr>
+nmap <Leader>vn :call WikiDiaryToday() <cr>
+nmap <Leader>vh :call VimwikiAll2HTML() <cr>
 
 """"""""""""""""""""""""""""""""""""""""
 " Filetype specific
