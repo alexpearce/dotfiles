@@ -18,8 +18,8 @@ SyncState *
 IMAPAccount personal
 Host mail.messagingengine.com
 User alexpearce@fastmail.com
-# Get the account password from the system Keychain
-PassCmd "security find-generic-password -s isync-alexpearce-fastmail-com -w"
+# Get the account password from a GPG file
+PassCmd "gpg2 --quiet --for-your-eyes-only --no-tty --decrypt ~/.password-personal.gpg"
 AuthMechs *
 SSLType IMAPS
 
@@ -73,8 +73,8 @@ Channel personal-folders
 IMAPAccount cern
 Host imap.cern.ch
 User apearce
-# Get the account password from the system Keychain
-PassCmd "security find-generic-password -s isync-alex-pearce-cern-ch -w"
+# Get the account password from a GPG file
+PassCmd "gpg2 --quiet --for-your-eyes-only --no-tty --decrypt ~/.password-cern.gpg"
 AuthMechs *
 SSLType IMAPS
 

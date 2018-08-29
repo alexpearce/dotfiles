@@ -73,3 +73,25 @@ This will run `mbsync -a` every 3 minutes, synchronising all IMAP folders.
 [stow_tutorial]: https://alexpearce.me/2016/02/managing-dotfiles-with-stow/
 [keychain]: https://en.wikipedia.org/wiki/Keychain_(software)
 [launchctl]: http://launchd.info
+
+# Modifications for running on Linux
+
+We don't need to change much, just the way mbsync gets its passwords.
+
+First generate a GnuPG key, and then [create the encrypted password 
+file][gpg-guide].
+
+```
+$ gpg2 --full-gen-key
+# An extra space in front of this command, so it doesn't get stored in the
+# shell's history file
+$  echo 'your_password123' | gpg2 --encrypt --recipient 'Alex Pearce' -o /path/to/password-ACCOUNT.gpg
+```
+
+Then set the `PassCmd` in the `mbsyncrc` to use `gpg2`:
+
+```
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.password-ACCOUNT.gpg"
+```
+
+[gpg-guide]: http://f-koehler.github.io/posts/2015-03-17-offlineimap-msmtp-gnupg.html
