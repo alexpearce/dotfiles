@@ -42,8 +42,6 @@ set tmpdir = ~/.mutt/tmp
 # Store header and body cache here, for faster loading
 set header_cache = ~/.mutt/cache
 set message_cachedir = ~/.mutt/cache
-# Use LMDB as the header cache backend
-set header_cache_backend = lmdb
 # Path to file defining what programs handle what MIME types
 set mailcap_path = ~/.mutt/mailcap
 # Ask if we want to forward messages as attachments
