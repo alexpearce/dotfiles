@@ -50,9 +50,3 @@ abbr gsx "git stash drop"
 abbr gssp "git stash show -p"
 abbr grb "git rebase"
 abbr gr "git reset"
-
-abbr cern "ssh lxplus.cern.ch"
-# I don't know why I need the -K flag, I get a password prompt otherwise
-# I thought the GSSAPIDelegateCredentials config flag did the same thing, which
-# I have enabled for CERN hosts, but it doesn't work without -K
-abbr apv "ssh -K apv"
