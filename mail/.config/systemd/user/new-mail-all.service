@@ -1,0 +1,8 @@
+[Unit]
+Description=Check for new mail in all mailboxes
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+ExecStart=/home/apearce/.bin/new_mail -a
+Type=oneshot

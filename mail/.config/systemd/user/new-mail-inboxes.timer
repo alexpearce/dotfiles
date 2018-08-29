@@ -1,0 +1,17 @@
+# Enable on start-up and start with:
+#   systemctl --user enable new-mail-inboxes.timer
+#   systemctl --user start new-mail-inboxes.timer
+# Check the status of this timer and all timers:
+#   systemctl --user status new-mail-inboxes.timer
+#   systemctl --user list-timers --all
+[Unit]
+Description=Periodically check for new mail in inboxes
+
+[Timer]
+# Wait for one minute after boot before the first run
+OnBootSec=1min
+# Run every two minutes after the OnBoot run
+OnUnitActiveSec=2min
+
+[Install]
+WantedBy=timers.target
