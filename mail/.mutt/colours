@@ -1,17 +1,17 @@
 # Index
 color normal        default     default
 color error         red         default
-color tilde         brightblack default
+color tilde         brightwhite default
 color message       cyan        default
 color prompt        cyan        default
 color markers       cyan        default
 color status        default     default
-color indicator     blue        default
-color tree          yellow      default
+color indicator     yellow      default
+color tree          blue        default
 
 # Messages
-# Bold black for message author
-color index_author  brightblack default "!(~D | ~N) ~A"
+# Bold white for message author
+color index_author  brightwhite default "!(~D | ~N) ~A"
 # Green for new messages
 color index         green       default ~N
 # Red for deleted messages
@@ -20,7 +20,7 @@ color index         red         default ~D
 color attachment    red         default
 
 # Message headers
-color header        brightdefault       default "^"
+color header        brightwhite default "^"
 
 # Message body
 color quoted        magenta     default
@@ -31,7 +31,7 @@ color body          cyan        default "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a
 
 # Sidebar
 color sidebar_divider   default default
-color sidebar_indicator blue    default
+color sidebar_indicator yellow  default
 color sidebar_highlight cyan    default
 color sidebar_new       green   default
 
