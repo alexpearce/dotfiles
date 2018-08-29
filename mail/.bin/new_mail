@@ -2,15 +2,22 @@
 # coding: utf-8
 # Syncronise all IMAP mailboxes, then show a message if there are new messages
 # Requires: isync, notmuch, terminal-notifier
+from distutils.spawn import find_executable
 import json
 import sys
 import subprocess
 
+try:
+    import gi
+    darwin = False
+except ImportError:
+    darwin = True
+
 # Tag given to new mail that not notification has been created for
 NEW_TAG = 'unnotified'
-MBSYNC = '/usr/local/bin/mbsync'
-NOTMUCH = '/usr/local/bin/notmuch'
-TERMINAL_NOTIFIER = '/usr/local/bin/terminal-notifier'
+MBSYNC = find_executable('mbsync')
+NOTMUCH = find_executable('notmuch')
+TERMINAL_NOTIFIER = find_executable('terminal-notifier')
 
 
 # https://stackoverflow.com/a/10824420/596068
@@ -52,20 +59,33 @@ def notifications():
         ])
     )
     for message in messages:
-        m = filter(lambda x: x and 'headers' in x, flatten(message))[0]
+        m = list(filter(lambda x: x and 'headers' in x, flatten(message)))[0]
         title = m['headers']['Subject']
         # Get the name from the 'First Last <user@email.tld>' format
         subtitle = m['headers']['From'].split('<')[0]
         message = first_line(m['body'], truncate=120)
-        subprocess.call([
-            TERMINAL_NOTIFIER,
-            '-title', '"{0}"'.format(title),
-            '-subtitle', '"{0}"'.format(subtitle),
-            '-message', '"{0}"'.format(message),
-            '-group', 'neomutt',
-            '-appIcon', '/Applications/Mail.app/Contents/Resources/ApplicationIcon.icns',
-            '-timeout', '5'
-        ])
+        if darwin:
+            subprocess.call([
+                TERMINAL_NOTIFIER,
+                '-title', '"{0}"'.format(title),
+                '-subtitle', '"{0}"'.format(subtitle),
+                '-message', '"{0}"'.format(message),
+                '-group', 'neomutt',
+                '-appIcon', '/Applications/Mail.app/Contents/Resources/ApplicationIcon.icns',
+                '-timeout', '5'
+            ])
+        else:
+            gi.require_version('Notify', '0.7')
+            from gi.repository import Notify
+
+            title = '{0} - {1}'.format(title, subtitle)
+
+            if not Notify.init(title):
+                sys.exit(1)
+            n = Notify.Notification.new(title, message, 'evolution')
+            n.set_urgency(Notify.Urgency.NORMAL)
+            n.set_timeout(5000)
+            n.show()
 
 
 def new_mail(mailboxes):
