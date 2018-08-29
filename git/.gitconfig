@@ -18,8 +18,9 @@
   log = diff-so-fancy | less --pattern='^(added|deleted|modified): '
   show = diff-so-fancy | less --pattern='^(added|deleted|modified): '
   diff = diff-so-fancy | less --pattern='^(added|deleted|modified): '
-[interactive]
-  diffFilter = diff-so-fancy
+; Can't use diff-so-fancy for e.g. `git add -p`, see diff-so-fancy#296
+; [interactive]
+;   diffFilter = diff-so-fancy
 # Clone git repos with URLs like "gh:alexpearce/dotfiles"
 [url "https://github.com/"]
   insteadOf = "gh:"
