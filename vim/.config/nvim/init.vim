@@ -38,7 +38,6 @@ Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'vimwiki/vimwiki'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-pandoc/vim-pandoc'
@@ -253,7 +252,7 @@ au FileType python call deoplete#enable()
 au BufNewFile,BufRead *.markdown set syntax=markdown
 
 " Spellchecking in LaTeX, Markdown, and email
-au FileType tex,markdown,mail set spelllang=en_gb spell
+au FileType tex,plaintex,markdown,pandoc,mail set spelllang=en_gb spell
 
 " Wrap Python, LaTeX, and Markdown automatically at 80 characters, allowing
 " sentences to start on new lines
