@@ -26,13 +26,15 @@ let g:python3_host_prog = $HOME . "/.nvim-venv/bin/python3"
 " Plugin configuration
 call plug#begin('~/.local/share/nvim/plugged')
 
+Plug 'airblade/vim-gitgutter'
+Plug 'arcticicestudio/nord-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ervandew/supertab'
+Plug 'ivan-krukov/vim-snakemake'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-Plug 'morhetz/gruvbox'
 Plug 'nathangrigg/vim-beancount'
 Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-commentary'
@@ -113,9 +115,12 @@ set noshowmode
 " Theme
 set termguicolors
 set background=dark
-let g:gruvbox_italic=1
-let g:airline_theme = 'gruvbox'
-color gruvbox
+let g:nord_italic=1
+let g:nord_italic_comments = 1
+let g:nord_underline = 1
+let g:airline_theme = 'nord'
+color nord
+hi Conceal guifg=#81A1C1 guibg=NONE ctermbg=NONE
 
 " Have some context around the current line always on screen
 set scrolloff=3
