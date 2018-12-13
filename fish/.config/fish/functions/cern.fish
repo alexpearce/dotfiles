@@ -39,7 +39,9 @@ function cern -d "Dynamically resolve a round-robin SSH target for Kerberos auth
   # Make sure we have a Kerberos token
   if not klist -s
     echo '🔐 Renewing Kerberos token'
-    kinit -f -l 24h apearce@CERN.CH
+    if not kinit -f -l 24h apearce@CERN.CH
+      return 1
+    end
   end
 
   if test -e $ssh_config_template
