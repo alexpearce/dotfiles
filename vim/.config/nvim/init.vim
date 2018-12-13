@@ -79,13 +79,6 @@ let g:airline_mode_map = {
   \ '' : '↕',
   \ }
 
-" vimwiki
-let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki',
-                     \ 'template_path': '~/Dropbox/vimwiki/templates',
-                     \ 'path_html': '~/Dropbox/vimwiki/html',
-                     \ 'custom_wiki2html': '~/Dropbox/vimwiki/vimwiki_to_html.py',
-                     \ 'syntax': 'markdown', 'ext': '.markdown'}]
-
 " Don't show the foldcolumn
 let g:pandoc#folding#fdc = 0
 " Soft wraps, but not in regions where wrapping is undesirable (like headers
@@ -190,23 +183,6 @@ map <leader>w :w<CR>
 map <leader>x :x<CR>
 map <leader>q :q<CR>
 
-" Search with ag.vim
-nnoremap <leader>a :Ag<Space>
-
-" Quickly enable and disable hard wrapping
-" I often find this useful for editing LaTeX, when I usually want the lines to
-" have fewer than 80 characters, but ocassionally want longer lines
-function ToggleWrapping()
-  if &l:formatoptions =~ "t"
-    set formatoptions-=taw
-    echo "Wrapping disabled"
-  else
-    set formatoptions+=taw
-    echo "Wrapping enabled"
-  endif
-endfunction
-nnoremap <leader>t :call ToggleWrapping()<cr>
-
 function ToggleRelativeLineNumbers()
   set invnumber
   set invrelativenumber
@@ -258,6 +234,9 @@ nmap <Leader>vh :call VimwikiAll2HTML() <cr>
 " Filetype specific
 """"""""""""""""""""""""""""""""""""""""
 
+" Always assume .tex files are LaTeX
+let g:tex_flavor = "latex"
+
 " Don't autocomplete filenames that match these patterns
 " Version control
 set wildignore=.svn,.git
@@ -288,13 +267,10 @@ au FileType python call deoplete#enable()
 au BufNewFile,BufRead *.markdown set syntax=markdown
 
 " Spellchecking in LaTeX, Markdown, and email
-au FileType tex,plaintex,markdown,pandoc,mail set spelllang=en_gb spell
+au FileType tex,plaintex,markdown,pandoc,mail set spelllang=en_gb spell formatoptions=tcroqlj
 
-" Wrap Python, LaTeX, and Markdown automatically at 80 characters, allowing
-" sentences to start on new lines
-au FileType python,tex,markdown,pandoc set formatoptions+=t textwidth=79
-au FileType tex,markdown set formatoptions+=aw textwidth=79
-au FileType mail set formatoptions+=aw
+" Wrap Python automatically at 80 characters
+au FileType python set textwidth=79 formatoptions=tcroqlj
 
 " Smart quotes, dashes, and ellipses in markdown and emails
 au FileType mail,markdown UniCycleOn
