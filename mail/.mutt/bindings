@@ -36,6 +36,6 @@ macro index O "<shell-escape>mbsync personal-inbox cern-inbox<return>" "Run mbsy
 macro index Ø "<shell-escape>mbsync -a<return>" "Run mbsync for everything"
 
 # notmuch search
-macro index \eX "<vfolder-from-query>"
+macro index \Cf "<vfolder-from-query>"
 
 # vi:syntax=muttrc
