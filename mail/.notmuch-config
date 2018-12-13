@@ -6,7 +6,7 @@
 # Root Maildir path
 
 [database]
-path=/Users/apearce/.mail
+path=/home/apearce/.mail
 
 [user]
 name=Alex Pearce

@@ -1,7 +1,7 @@
 set spoolfile = "+cern/Inbox"
 set from      = "alex.pearce@cern.ch"
 unalternates    "*"
-set sendmail  = "/usr/local/bin/msmtp -a cern"
+set sendmail  = "/usr/bin/msmtp -a cern"
 set postponed = "+cern/Drafts"
 # Record outgoing emails
 set record    = "+cern/Sent"
@@ -22,6 +22,6 @@ mailboxes \
   "+cern/Sent" \
   "+cern/Spam" \
   "+cern/Trash" \
-  `tree ~/.mail -d -I "cur|new|tmp|certs|.notmuch" -a -f -i | sed -n -E -e "s|^/Users/apearce/.mail/?||" -e "/^(cern|personal)(\/[a-z].+)?$/d" -e "/^(cern)/{p;}" | sed -E -e 's/(.*)/+"\1"/' | tr '\n' ' '`
+  `tree ~/.mail -d -I "cur|new|tmp|certs|.notmuch" -a -f -i | sed -n -E -e "s|^/home/apearce/.mail/?||" -e "/^(cern|personal)(\/[a-z].+)?$/d" -e "/^(cern)/{p;}" | sed -E -e 's/(.*)/+"\1"/' | grep -v Archive | tr '\n' ' '`
 
 # vi:syntax=muttrc
