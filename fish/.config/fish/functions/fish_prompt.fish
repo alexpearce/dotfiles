@@ -1,4 +1,7 @@
 function fish_prompt -d "Set prompt with pwd and git information"
+  # Store the status of the last command so that we can query it later
+  set -l _prompt_status $status
+
   echo
   # Show username@hostname if this is an SSH session
   if is_ssh
@@ -21,6 +24,14 @@ function fish_prompt -d "Set prompt with pwd and git information"
   set_color normal
 
   printf '%s' (__fish_git_prompt)
+
+  if test "$_prompt_status" -gt 0
+    set_color red
+    printf ' · '
+    set_color black
+    printf '(%s)' "$_prompt_status"
+  end
   set_color normal
+
   printf '\n> '
 end
