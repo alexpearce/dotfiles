@@ -1,8 +1,8 @@
 # Images
-image/*; $HOME/.mutt/view_attachment.sh %s
+image/*; view_attachment.sh %s
 
 # PDFs
-application/pdf; $HOME/.mutt/view_attachment.sh %s
+application/pdf; view_attachment.sh %s
 
 # HTML
 text/html; lynx -display_charset=utf-8 -dump %s; nametemplate=%s.html; copiousoutput
