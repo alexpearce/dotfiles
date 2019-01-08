@@ -1,7 +1,7 @@
 # Start tmux automatically if we're not connecting over SSH,
 # attaching to an existing session if possible
 if not set -q TMUX; and not is_ssh
-  tmux attach ^/dev/null; or tmux
+  tmux attach ^/dev/null; or tmux_new
 end
 
 set -l source_dir (dirname (status -f))
