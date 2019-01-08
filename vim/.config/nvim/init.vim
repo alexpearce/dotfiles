@@ -29,6 +29,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'arcticicestudio/nord-vim'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'dag/vim-fish', { 'for': 'fish' }
 Plug 'ervandew/supertab'
 Plug 'ivan-krukov/vim-snakemake'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
