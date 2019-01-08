@@ -4,12 +4,14 @@ function refresh_tmux_environment --on-event fish_preexec -d "Ensure the current
   # New windows or panes pick up the updated values, however existing processes will not.
   # This function, which runs before every command run in the shell, ensures that the current process's environment matches that known to tmux
 
-  # Filter out variables that were not set in parent that started tmux (tmux prepends '-' for unset variables)
-  for line in (tmux show-environment | grep '^[^-]')
-    # Split by the equals sign to get the variable name and value
-    set varname (echo $line | sed -r 's/(.*)=.*/\1/')
-    set varvalue (echo $line | sed -r 's/.*=(.*)/\1/')
-    # Set the variable in this session
-    set -g -x "$varname" "$varvalue"
+  if set -q TMUX
+    # Filter out variables that were not set in parent that started tmux (tmux prepends '-' for unset variables)
+    for line in (tmux show-environment | grep '^[^-]')
+      # Split by the equals sign to get the variable name and value
+      set -l varname (echo $line | sed -r 's/(.*)=.*/\1/')
+      set -l varvalue (echo $line | sed -r 's/.*=(.*)/\1/')
+      # Set the variable in this session
+      set -g -x "$varname" "$varvalue"
+    end
   end
 end
