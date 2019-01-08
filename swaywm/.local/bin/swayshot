@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# Advertised @ https://www.reddit.com/r/swaywm/comments/ab9gfb
+# Source @ https://gist.github.com/BenKerry/0fdb0ac536ff2c62e59f241d318b9d8f
+# Requires bash, grim, jq, slurp, sway
+
+main() {
+    case "$@" in
+        '')
+            take_shot
+            ;;
+        display)
+            take_shot -o "$(swaymsg --type get_outputs --raw | jq --raw-output '.[] | select(.focused) | .name')"
+            ;;
+        window)
+            take_shot -g "$(swaymsg --type get_tree --raw | jq --raw-output "${filter}")"
+            ;;
+        region)
+            take_shot -g "$(slurp -b '#FFFFFFBF' -c '#FFFFFFFF' -s '#00000000' -w 3)"
+            ;;
+        *)
+            echo 'Bad argument(s)' >&2
+            echo 'Usage: swayshot [display|window|region]' >&2
+            return 1
+            ;;
+    esac
+}
+
+take_shot() {
+    declare -r result="$(xdg-user-dir PICTURES)/screenshot-$(date '+%F_%T').png"
+    grim "$@" "${result}"
+    echo "${result}"
+}
+
+declare -r filter='
+# returns the focused node by recursively traversing the node tree
+def find_focused_node:
+    if .focused then . else (if .nodes then (.nodes | .[] | find_focused_node) else empty end) end;
+
+# returns a string in the format that grim expects
+def format_rect:
+    "\(.rect.x),\(.rect.y) \(.rect.width)x\(.rect.height)";
+
+find_focused_node | format_rect
+'
+
+main "$@"

@@ -1,0 +1,224 @@
+# {{{ Variables
+
+# Meta key
+set $mod Mod4
+
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+
+set $terminal env KITTY_ENABLE_WAYLAND=1 kitty
+set $terminalnumber 1
+
+set $browser gtk-launch firefox
+set $browsernumber 2
+
+set $calendar gtk-launch org.gnome.Calendar
+set $calendarnumber 3
+
+set $music spotify
+set $musicnumber 4
+
+# }}}
+
+# {{{ Output configuration
+
+output * bg "/home/apearce/Pictures/Grand_Teton_Sunrise.jpg" fill
+
+output eDP-1 res 1920x1080 pos 0 0
+output "Dell Inc. DELL U2415 08DXD49L2G2L" res 1920x1200 pos 1920 0
+
+# Move a workspace to the laptop monitor
+bindsym $mod+Shift+Ctrl+1 move workspace to output eDP-1
+bindsym $mod+Shift+Ctrl+2 move workspace to output "Dell Inc. DELL U2415 08DXD49L2G2L"
+
+# }}}
+
+# {{{ UI
+
+# Separate windows with a gap
+gaps inner 5px
+
+default_border pixel 1
+
+client.unfocused #3B4252FF #2E3440FF #D8DEE9FF #D8DEE9FF #3B4252FF
+client.focused #81A1C1ff #2E3440FF #D8DEE9FF #D8DEE9FF #81A1C1FF
+
+# }}}
+
+# {{{ Idle configuration
+
+# Lock after 300 seconds
+# Turn off screen after 600 seconds, turn on after activity
+# Lock when recieving a sleep notification from the system
+exec swayidle \
+    timeout 300 'swaylock' \
+    timeout 600 'swaymsg "output * dpms off"' \
+    resume 'swaymsg "output * dpms on"' \
+    before-sleep 'swaylock'
+
+# }}}
+
+# {{{ Input configuration
+
+input * {
+    # Delay in milliseconds
+    repeat_delay 300
+    # Rate in hertz
+    repeat_rate 100
+    # Make caps lock key work as escape
+    xkb_options caps:escape
+}
+
+# }}}
+
+# {{{ Key bindings
+
+bindsym $mod+Return exec $terminal
+
+bindsym $mod+Shift+Return exec $browser
+
+bindsym $mod+Shift+q kill
+
+floating_modifier $mod normal
+
+bindsym $mod+Shift+c reload
+
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit sway?' -b 'Yes' 'swaymsg exit' -s 'No'
+
+bindsym $mod+m exec swaylock
+
+# {{{ Moving
+
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+# }}}
+
+# {{{ Workspaces
+
+bindsym $mod+1 workspace number $terminalnumber
+bindsym $mod+2 workspace number $browsernumber
+bindsym $mod+3 workspace number $calendarnumber
+bindsym $mod+4 workspace number $musicnumber
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+bindsym $mod+Shift+1 move container to workspace number $terminalnumber
+bindsym $mod+Shift+2 move container to workspace number $browsernumber
+bindsym $mod+Shift+3 move container to workspace number $calendarnumber
+bindsym $mod+Shift+4 move container to workspace number $musicnumber
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# }}}
+
+# }}}
+
+# {{{ Layout
+
+bindsym $mod+b splith
+bindsym $mod+v splitv
+
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+bindsym $mod+f fullscreen
+
+bindsym $mod+Shift+space floating toggle
+
+bindsym $mod+space focus mode_toggle
+
+bindsym $mod+a focus parent
+
+# }}}
+
+# {{{ Scratchpad:
+
+bindsym $mod+Shift+minus move scratchpad
+
+bindsym $mod+minus scratchpad show
+
+# }}}
+
+# {{{ Resizing
+
+mode "resize" {
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# }}}
+
+# {{{ Media keys
+
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioNext exec playerctl next
+
+bindsym Print exec swayshot display
+bindsym Shift+Print exec swayshot window
+bindsym Mod1+Print exec swayshot region
+
+# }}}
+
+# {{{ Default applications, launched when sway starts, and styles
+
+# Status Bar
+exec waybar
+
+# Notifications
+exec mako
+
+exec $terminal
+
+exec $browser
+
+exec $calendar
+
+exec $music
+
+# }}}
+
+# {{{ Default workspaces:
+
+assign [app_id="kitty"] $terminalnumber
+assign [class="Firefox"] $browsernumber
+assign [app_id="gnome-calendar"] $calendarnumber
+assign [class="Spotify"] $musicnumber
+
+# Default behaviour for other applications
+assign [class="ROOT"] floating enable
+
+# }}}
+
+include /etc/sway/config.d/*

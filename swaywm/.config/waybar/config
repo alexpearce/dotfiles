@@ -1,0 +1,49 @@
+{
+    "layer": "top",
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["tray", "pulseaudio", "network", "battery", "clock"],
+    "sway/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "default": ""
+        }
+    },
+    "sway/window": {
+        "max-length": 50
+    },
+    "battery": {
+        "format": "{icon} {capacity}%",
+        "format-charging": "{icon}  {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "clock": {
+        "format": "{:%a %d %b %H:%M}"
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": " {volume}%",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        }
+    },
+    "network": {
+        "format-ethernet": "",
+        "format-wifi": " {essid}"
+    }
+}

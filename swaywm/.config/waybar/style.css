@@ -1,0 +1,36 @@
+* {
+    font-family: "Inter UI", "Font Awesome", sans-serif;
+    font-size: 8pt;
+    color: #D8DEE9;
+}
+
+window#waybar {
+    background: #2E3440;
+    border: none;
+}
+
+#workspaces button {
+    padding: 1px 8px;
+    border-radius: 0;
+}
+
+/* See Alexays/Waybar#60 */
+#workspaces button:hover {
+    padding: 1px 10px;
+    border: none;
+    background: #3B4252;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+#workspaces button.focused {
+    /* Remove the bottom padding to make room for the border */
+    padding-bottom: 0;
+    border-bottom: 2px solid #81A1C1;
+    background: #3B4252;
+}
+
+#battery, #clock, #pulseaudio {
+    padding: 0 5px;
+    margin: 0 5px;
+}

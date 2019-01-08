@@ -1,0 +1,18 @@
+font=pango:Inter UI 10
+
+[warning]
+background=#2E3440FF
+text=#D8DEE9FF
+
+message-padding=7
+
+border=#EBCB8BFF
+border-bottom-size=2
+
+button-background=#3B4252
+button-border=#FF0000
+button-padding=2
+button-border-size=1
+button-gap=0
+button-dismiss-gap=0
+button-margin-right=0
