@@ -13,6 +13,8 @@ it:
 If you want to use [tmux][tmux] with sway, you might also be interested in the
 custom [`refresh_tmux_environment` fish shell function][refresher]
 
+![Screenshot](https://user-images.githubusercontent.com/540853/50842016-30ede600-1366-11e9-9fe8-40a69ccd5552.png)
+
 ## Dependencies
 
 The following are required for running my setup, all installed from the AUR:
