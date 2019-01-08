@@ -251,26 +251,26 @@ set wildignore+=vendor,_site,tmp,node_modules,bower_components
 " Script outputs
 set wildignore+=output
 
-au BufNewFile,BufRead ~/.mutt/tmp/neomutt-* set filetype=mail
+au BufNewFile,BufRead ~/.mutt/tmp/neomutt-* setlocal filetype=mail
 
 " Makefiles require actual tabs
-au FileType make set noexpandtab
+au FileType make setlocal noexpandtab
 
 " Don't create backup files when editing crontabs
 au filetype crontab setlocal nobackup nowritebackup
 
 " Python style uses 4 spaces as tabs
-au FileType python set tabstop=4 shiftwidth=4
+au FileType python setlocal tabstop=4 shiftwidth=4
 " Enable deoplete
 au FileType python call deoplete#enable()
 
-au BufNewFile,BufRead *.markdown set syntax=markdown
+au BufNewFile,BufRead *.markdown setlocal syntax=markdown
 
 " Spellchecking in LaTeX, Markdown, and email
-au FileType tex,plaintex,markdown,pandoc,mail set spelllang=en_gb spell formatoptions=tcroqlj
+au FileType tex,plaintex,markdown,pandoc,mail setlocal spelllang=en_gb spell formatoptions=tcroqlj
 
 " Wrap Python automatically at 80 characters
-au FileType python set textwidth=79 formatoptions=tcroqlj
+au FileType python setlocal textwidth=79 formatoptions=tcroqlj
 
 " Smart quotes, dashes, and ellipses in markdown and emails
 au FileType mail,markdown UniCycleOn
