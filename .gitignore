@@ -8,3 +8,4 @@ fish/.config/fish/fishd.*
 mail/.mutt/mutt_attach
 mail/.mutt/cache
 mail/.mutt/tmp
+mail/.password-*.gpg
