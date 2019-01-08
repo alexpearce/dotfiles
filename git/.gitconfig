@@ -1,8 +1,6 @@
 [user]
   name = Alex Pearce
   email = alex@alexpearce.me
-[credential]
-  helper = osxkeychain
 [core]
   editor = nvim
   excludesfile = ~/.gitignore
