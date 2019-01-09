@@ -11,7 +11,7 @@ Copy/move/symlink this file to ~/Library/LaunchAgents, and then load it with
  <string>com.alexpearce.isyncinboxes</string>
  <key>ProgramArguments</key>
  <array>
-  <string>/Users/apearce/.bin/new_mail</string>
+  <string>/Users/apearce/.local/bin/new_mail</string>
   <string>cern-inbox</string>
   <string>personal-inbox</string>
  </array>
