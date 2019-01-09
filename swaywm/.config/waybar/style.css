@@ -30,7 +30,11 @@ window#waybar {
     background: #3B4252;
 }
 
-#battery, #clock, #pulseaudio {
+#battery, #clock, #pulseaudio, #custom-nowplaying {
     padding: 0 5px;
     margin: 0 5px;
+}
+
+#custom-nowplaying {
+    border-bottom: 2px solid #A3BE8C;
 }

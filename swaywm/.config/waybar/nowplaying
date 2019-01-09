@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Print the current song as JSON, as reported by playerctl, every interval for
+# display in waybar
+SLEEP_INTERVAL=5
+
+# Replace ampersands with their HTML entity &amp;
+function sanitise {
+  echo "$1" | sed -r 's/&/&amp;/'
+}
+
+while [ 1 ]; do
+  if [ "$(playerctl status)" = "Playing" ]; then
+    title="$(playerctl metadata title)"
+    album="$(playerctl metadata album)"
+    artist="$(playerctl metadata artist)"
+    echo -n '{'
+    echo -n '"text": "'$(sanitise "${title} - ${artist}")'", '
+    echo -n '"tooltip": "'"Title: ${title}\nAlbum: ${album}\nArtist: ${artist}"'", '
+    echo -n '"class": ""'
+    echo '}'
+  else
+    echo
+  fi
+  sleep $SLEEP_INTERVAL
+done

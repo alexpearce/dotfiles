@@ -2,7 +2,7 @@
     "layer": "top",
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["tray", "pulseaudio", "network", "battery", "clock"],
+    "modules-right": ["custom/nowplaying", "tray", "pulseaudio", "network", "battery", "clock"],
     "sway/workspaces": {
         "format": "{icon}",
         "format-icons": {
@@ -45,5 +45,10 @@
     "network": {
         "format-ethernet": "",
         "format-wifi": " {essid}"
+    },
+    "custom/nowplaying": {
+        "format": " {}",
+        "return-type": "json",
+        "exec": "$XDG_CONFIG_HOME/waybar/nowplaying"
     }
 }
