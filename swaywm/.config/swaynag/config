@@ -6,12 +6,13 @@ text=#D8DEE9FF
 
 message-padding=7
 
-border=#EBCB8BFF
+border=#3B4252FF
+border-bottom=#EBCB8BFF
 border-bottom-size=2
 
 button-background=#3B4252
-button-border=#FF0000
-button-padding=2
+# Chosen so that the button fills the height of the bar
+button-padding=6
 button-border-size=1
 button-gap=0
 button-dismiss-gap=0
