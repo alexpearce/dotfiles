@@ -56,12 +56,12 @@ client.focused #81A1C1ff #2E3440FF #D8DEE9FF #D8DEE9FF #81A1C1FF
 
 # {{{ Idle configuration
 
-# Lock after 300 seconds
-# Turn off screen after 600 seconds, turn on after activity
+# Lock after 600 seconds
+# Turn off screen after 660 seconds, turn on after activity
 # Lock when recieving a sleep notification from the system
 exec swayidle \
-    timeout 300 'swaylock' \
-    timeout 600 'swaymsg "output * dpms off"' \
+    timeout 600 'swaylock' \
+    timeout 660 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on"' \
     before-sleep 'swaylock'
 
