@@ -30,8 +30,10 @@ main() {
 
 take_shot() {
     declare -r result="$(xdg-user-dir PICTURES)/screenshot-$(date '+%F_%T').png"
+    paplay /usr/share/sounds/freedesktop/stereo/screen-capture.oga
     grim "$@" "${result}"
-    echo "${result}"
+    # Send a notification, using a tilde to represent $HOME
+    notify-send 'Screenshot' "Saved to <tt>$(echo $result | sed -r "s#$HOME#~#")</tt>."
 }
 
 declare -r filter='
