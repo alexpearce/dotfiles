@@ -228,4 +228,22 @@ assign [class="ROOT"] floating enable
 
 # }}}
 
+# {{{ Launcher mode
+
+mode "launcher" {
+    bindsym f exec gtk-launch org.gnome.Nautilus; mode "default"
+    bindsym m exec gtk-launch org.gnome.Maps; mode "default"
+    bindsym s exec gtk-launch skypeforlinux; mode "default"
+    bindsym v exec gtk-launch visual-studio-code; mode "default"
+    bindsym z exec gtk-launch zotero; mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+o mode "launcher"
+
+for_window [app_id="nautilus"] floating enable, border none
+
+# }}}
+
 include /etc/sway/config.d/*
