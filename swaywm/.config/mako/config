@@ -5,6 +5,6 @@ text-color=#D8DEE9ff
 border-color=#81A1C1FF
 border-size=2
 markup=1
-default-timeout=5000
+default-timeout=10000
 margin=10,15
 padding=5,10
