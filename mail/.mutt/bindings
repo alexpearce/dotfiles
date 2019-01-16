@@ -16,12 +16,14 @@ bind index,pager <backtab> sidebar-next-new
 bind index,pager V sidebar-toggle-visible
 
 # In the message pager
-bind pager k  previous-line
-bind pager j  next-line
-bind pager g  noop
-bind pager gg top
-bind pager G  bottom
-bind pager R  group-reply
+bind pager k   previous-line
+bind pager j   next-line
+bind pager \cb previous-page
+bind pager \cf next-page
+bind pager g   noop
+bind pager gg  top
+bind pager G   bottom
+bind pager R   group-reply
 
 bind attach <return> view-mailcap
 
@@ -29,7 +31,7 @@ bind attach <return> view-mailcap
 macro index,pager s "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
 
 # Send the pager contents to urlview
-macro index,pager \cb <pipe-entry>"urlview"<enter> "Follow links with urlview"
+macro index,pager \cv <pipe-entry>"urlview"<enter> "Follow links with urlview"
 
 macro index O "<shell-escape>mbsync personal-inbox cern-inbox<return>" "Run mbsync for inboxes"
 # On my computer, the key combination ctrl+shift+o gives the character Ø
