@@ -21,6 +21,9 @@ set $calendarnumber 3
 set $music spotify
 set $musicnumber 4
 
+# Command that plays a short bell sound
+set $audiobell paplay /usr/share/sounds/freedesktop/stereo/bell.oga
+
 # }}}
 
 # {{{ Output configuration
@@ -177,8 +180,9 @@ bindsym $mod+r mode "resize"
 
 # {{{ Media keys
 
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+# Play a bell sound after changing the volume as feedback
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%; exec $audiobell
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%; exec $audiobell
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 bindsym XF86AudioPlay exec playerctl play-pause
