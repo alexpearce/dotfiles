@@ -28,14 +28,17 @@ set $audiobell paplay /usr/share/sounds/freedesktop/stereo/bell.oga
 
 # {{{ Output configuration
 
+set $laptop eDP-1
+set $external "Dell Inc. DELL U2415 08DXD49L2G2L"
+
 output * bg "/home/apearce/Pictures/Grand_Teton_Sunrise.jpg" fill
 
-output eDP-1 res 1920x1080 pos 0 0
-output "Dell Inc. DELL U2415 08DXD49L2G2L" res 1920x1200 pos 1920 0
+output $laptop res 1920x1080 pos 0 0
+output $external res 1920x1200 pos 1920 0
 
 # Move a workspace to the laptop monitor
-bindsym $mod+Shift+Ctrl+1 move workspace to output eDP-1
-bindsym $mod+Shift+Ctrl+2 move workspace to output "Dell Inc. DELL U2415 08DXD49L2G2L"
+bindsym $mod+Shift+Ctrl+1 move workspace to output $laptop
+bindsym $mod+Shift+Ctrl+2 move workspace to output $external
 
 # }}}
 
