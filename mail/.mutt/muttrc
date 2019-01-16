@@ -91,8 +91,8 @@ set date_format = "%d/%m/%y at %H:%M"
 set status_chars = " *%A"
 # String to display in the mailbox footer
 set status_format = "─── %f ───%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ───%>─%?p?( %p postponed )?───"
-# Show status flags, date, from, and subject
-set index_format = "[%Z]  %D  %-30.30F  %s"
+# Show 'A' if the message has attachments, status flags, date, from, and subject
+set index_format = "[%?X?A& ?%Z]  %D  %-30.30F  %s"
 # Format forwarded subjects as "Fwd: <subject>"
 set forward_format = "Fwd: %s"
 # Display lists of folders with a numeric index and the folder name
