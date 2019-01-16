@@ -30,6 +30,10 @@ window#waybar {
     background: #3B4252;
 }
 
+#mode {
+    font-style: italic;
+}
+
 #battery, #clock, #pulseaudio, #custom-nowplaying {
     padding: 0 5px;
     margin: 0 5px;
