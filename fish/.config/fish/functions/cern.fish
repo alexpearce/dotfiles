@@ -61,10 +61,10 @@ function cern -d "Dynamically resolve a round-robin SSH target for Kerberos auth
 
   # Figure out the hostname we want the log in into
   if not count $argv > /dev/null
-    set hostname $default_host
+    set remote_hostname $default_host
   else
-    set hostname $argv
+    set remote_hostname $argv
   end
 
-  ssh -K -oProxyJump=$default_host $hostname
+  ssh -K -oProxyJump=$default_host $remote_hostname
 end
