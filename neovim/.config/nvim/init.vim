@@ -51,9 +51,14 @@ Plug 'w0rp/ale'
 call plug#end()
 
 " Search from the git repo root, if we're in a repo, else the cwd
-function FuzzyFind()
+function FuzzyFind(show_hidden)
   " Contains a null-byte that is stripped.
   let gitparent=system('git rev-parse --show-toplevel')[:-2]
+  if a:show_hidden
+    let $FZF_DEFAULT_COMMAND = g:fzf_default_command . ' --hidden'
+  else
+    let $FZF_DEFAULT_COMMAND = g:fzf_default_command
+  endif
   if empty(matchstr(gitparent, '^fatal:.*'))
     silent execute ':FZF -m ' . gitparent
   else
@@ -61,11 +66,12 @@ function FuzzyFind()
   endif
 endfunction
 
-nnoremap <c-p> :call FuzzyFind()<cr>
+nnoremap <c-p> :call FuzzyFind(0)<cr>
+nnoremap <c-o> :call FuzzyFind(1)<cr>
 
 " Use rg to perform the search, so that .gitignore files and the like are
 " respected
-let $FZF_DEFAULT_COMMAND = 'rg --files'
+let g:fzf_default_command = 'rg --files'
 
 " Airline configuration
 let g:airline_powerline_fonts = 1
