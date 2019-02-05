@@ -34,6 +34,9 @@ getting everything up and running:
 * [ttf-inter-ui][interui] (UI font)
 * [otf-font-awesome][fontawesome] (for icons in waybar, using this rather than `ttf-` version
   because of https://github.com/Anachron/i3blocks/issues/53)
+* [brightnessctl][brightnessctl] (for adjusting backlight brightness; in the
+default installation from the AUR the user running sway should be added to the
+`video` group)
 
 [sway]: https://swaywm.org/
 [i3]: https://i3wm.org/
