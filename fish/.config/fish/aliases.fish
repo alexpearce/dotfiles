@@ -16,7 +16,7 @@ end
 
 # Abbreviate commonly used functions
 # An abbreviation will expand after <space> or <Enter> is hit
-abbr o open
+abbr o bopen
 abbr b bat
 abbr g git
 abbr gx gitx
