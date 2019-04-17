@@ -257,4 +257,18 @@ for_window [app_id="nautilus"] floating enable, border none
 
 # }}}
 
+# {{{ Notifications mode
+
+# TODO don't need to quote the mode name here or elsewhere
+mode "notifications" {
+    bindsym d exec makoctl dismiss; mode "default"
+    bindsym Shift+d exec makoctl dismiss -a; mode "default"
+    bindsym Return exec makoctl invoke; exec makoctl dismiss; mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+n mode "notifications"
+
+# }}}
+
 include /etc/sway/config.d/*
