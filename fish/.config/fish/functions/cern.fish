@@ -7,14 +7,14 @@ function cern -d "Dynamically resolve a round-robin SSH target for Kerberos auth
   #
   # Example configuration template:
   #
-  #   Host lxplus7
+  #   Host lxplus
   #     # $ip is a placeholder that this function will fill
   #     HostName $ip
   #     GSSAPIAuthentication yes
   #     GSSAPIDelegateCredentials yes
   #
   #   Host lbgw
-  #     ProxyJump lxplus7
+  #     ProxyJump lxplus
   #
   #   Host plus
   #     ProxyJump lbgw
@@ -24,14 +24,14 @@ function cern -d "Dynamically resolve a round-robin SSH target for Kerberos auth
 
   # Path to SSH configuration template.
   # Should contain the token '$ip' which will be replaced with an
-  # IP address from the lxplus7.cern.ch DNS record.
+  # IP address from the lxplus.cern.ch DNS record.
   set ssh_config_template ~/.ssh/lxplus.tpl
   # Path for the completed template
   set ssh_config ~/.ssh/lxplus
   # Address of the load balancer that we need to get a IP address from
-  set load_balancer lxplus7.cern.ch
+  set load_balancer lxplus.cern.ch
   # Hostname to log in to if none is specified
-  set default_host lxplus7.cern.ch
+  set default_host lxplus.cern.ch
   # Token to identify a configuration file that *we* created.
   # We'll bail if ssh_config doesn't start with this line
   set first_line '# Auto-generated on'
