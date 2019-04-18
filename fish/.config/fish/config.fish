@@ -7,6 +7,8 @@ if set -q TMUX
   refresh_tmux_environment
 end
 
+start_command_timer
+
 set -l source_dir (dirname (status -f))
 
 source $source_dir/env.fish
