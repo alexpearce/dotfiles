@@ -49,3 +49,4 @@ default installation from the AUR the user running sway should be added to the
 [kitty]: https://sw.kovidgoyal.net/kitty/
 [interui]: https://rsms.me/inter/
 [fontawesome]: https://fontawesome.com/
+[brightnessctl]: https://github.com/Hummer12007/brightnessctl
