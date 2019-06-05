@@ -10,8 +10,8 @@ Description=Periodically check for new mail in inboxes
 [Timer]
 # Wait for one minute after boot before the first run
 OnBootSec=1min
-# Run every two minutes after the OnBoot run
-OnUnitActiveSec=2min
+# Run every ten minutes after the OnBoot run
+OnUnitActiveSec=10min
 
 [Install]
 WantedBy=timers.target
