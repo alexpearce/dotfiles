@@ -27,10 +27,14 @@ let g:python3_host_prog = $HOME . "/.nvim-venv/bin/python3"
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'airblade/vim-gitgutter'
+Plug 'alexpearce/nvim-follow-markdown-links', { 'do': ':UpdateRemotePlugins' }
 Plug 'arcticicestudio/nord-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dag/vim-fish', { 'for': 'fish' }
 Plug 'ervandew/supertab'
+" Dependency of vim-OnSyntaxChange
+Plug 'inkarkat/vim-ingo-library'
+Plug 'inkarkat/vim-OnSyntaxChange'
 Plug 'ivan-krukov/vim-snakemake'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -43,8 +47,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-scripts/UniCycle'
 Plug 'w0rp/ale'
 
@@ -85,12 +87,6 @@ let g:airline_mode_map = {
   \ 'V'  : '↔',
   \ '' : '↕',
   \ }
-
-" Don't show the foldcolumn
-let g:pandoc#folding#fdc = 0
-" Soft wraps, but not in regions where wrapping is undesirable (like headers
-" and code blocks)
-let g:pandoc#formatting#mode = 'hA'
 
 " Append our Neovim virtualenv to the list of venvs ale searches for
 " The search is performed from the buffer directory up, until a name match is
@@ -237,6 +233,12 @@ nmap <Leader>vd :call WikiDiary() <cr>
 nmap <Leader>vn :call WikiDiaryToday() <cr>
 nmap <Leader>vh :call VimwikiAll2HTML() <cr>
 
+let g:follow_markdown_links#extensions = ['.md', '.markdown']
+command! FollowMarkdownLink call FollowMarkdownLink()
+command! PreviousMarkdownBuffer call PreviousMarkdownBuffer()
+autocmd FileType markdown nnoremap <script> <CR> :FollowMarkdownLink<CR>
+autocmd FileType markdown nnoremap <script> <BS> :PreviousMarkdownBuffer<CR>
+
 """"""""""""""""""""""""""""""""""""""""
 " Filetype specific
 """"""""""""""""""""""""""""""""""""""""
@@ -271,10 +273,11 @@ au FileType python setlocal tabstop=4 shiftwidth=4
 " Enable deoplete
 au FileType python call deoplete#enable()
 
+au BufNewFile,BufRead *.md setlocal filetype=markdown syntax=markdown
 au BufNewFile,BufRead *.markdown setlocal syntax=markdown
 
-" Spellchecking in LaTeX, Markdown, and email
-au FileType tex,plaintex,markdown,pandoc,mail setlocal spelllang=en_gb spell formatoptions=tcroqlj
+" Spellchecking in LaTeX, Markdown
+au FileType tex,plaintex,markdown setlocal setlocal spelllang=en_gb spell formatoptions=tcroqlj
 
 " Wrap Python automatically at 80 characters
 au FileType python setlocal textwidth=79 formatoptions=tcroqlj
@@ -295,3 +298,35 @@ au FileType beancount set foldmethod=marker foldlevel=0 foldlevelstart=0
 " alt-space is a UTF non-breaking space character, which can give encoding errors
 highlight UTFSpaceComment ctermfg=White ctermbg=1
 au BufNewFile,BufRead * :syn match UTFSpaceComment '.\%uA0'
+
+augroup mail
+  au!
+
+  au FileType mail setlocal spell spelllang=en_gb
+
+  " Common standard used in plaintext emails
+  au FileType mail setlocal textwidth=72
+
+  " w: Lines ending with spaces continue on the next line, used in combination
+  "    with Mutt's text_flowed option
+  " a: Format automatically
+  " t: Wrap using textwidth
+  " c: Wrap comments using textwidth
+  " q: Format with gq macro
+  au FileType mail setlocal formatoptions=watcq
+
+  " Define comment leaders as in a Markdown document, that is:
+  " * Treat *, -, +, and > as comment leaders
+  " * Characters *, -, + begin comments when followed by a space, and wrapped
+  "   lines immediately after these should be indented
+  " * Comments starting with > can be nested
+  au FileType mail setlocal comments=fb:*,fb:-,fb:+,n:>
+
+  " Install an autogroup that triggers when inside a `mail.*` syntax group
+  au FileType mail call OnSyntaxChange#Install('NoWrapElements', '^mail', 1, 'a')
+
+  " Use the trigger to disable/enable text wrapping when leaving/enter the
+  " mail body (i.e. we only want wrapping in the mail body).
+  au FileType mail autocmd User SyntaxNoWrapElementsEnterA setlocal formatoptions-=watc
+  au FileType mail autocmd User SyntaxNoWrapElementsLeaveA setlocal formatoptions+=watc
+augroup end
