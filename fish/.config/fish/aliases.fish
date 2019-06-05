@@ -29,7 +29,7 @@ abbr be "bundle exec"
 abbr r root
 abbr tb tbrowser
 abbr v vim
-abbr nv nvim
+abbr n nvim
 abbr ospdf "open -a Skim *.pdf"
 abbr m make
 abbr dbg 'set CMTCONFIG $CMTDEB'
