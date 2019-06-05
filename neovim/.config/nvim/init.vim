@@ -42,12 +42,14 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'nathangrigg/vim-beancount'
 Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'tmsvg/pear-tree'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/UniCycle'
+Plug 'wincent/loupe'
 Plug 'w0rp/ale'
 
 call plug#end()
@@ -99,6 +101,10 @@ let g:ale_python_pylint_options = '--disable C,R'
 let g:ale_sign_warning = '→'
 let g:ale_sign_error = '→'
 
+let g:pear_tree_smart_openers=1
+let g:pear_tree_smart_closers=1
+let g:pear_tree_smart_backspace=1
+
 """"""""""""""""""""""""""""""""""""""""
 " UI
 """"""""""""""""""""""""""""""""""""""""
@@ -129,10 +135,6 @@ set display+=lastline
 set listchars=tab:>-,trail:-
 set list
 
-" Smart case searching
-set ignorecase
-set smartcase
-
 " Live substitution
 set inccommand=split
 
@@ -160,7 +162,7 @@ let mapleader="\<Space>"
 map q: :q
 
 " clear search highlighting with <space>,
-nnoremap <leader>, :noh<cr>
+nmap <leader>, <Plug>(LoupeClearHighlight)
 
 " quick make
 map <leader>m :make<CR>
