@@ -227,12 +227,17 @@ function WikiDiaryToday()
   endif
 endfunction
 
+function WikiSearch()
+  exe "FZF " . g:wiki_root
+endfunction
+
 let g:wiki_root = '~/Dropbox/vimwiki'
 let g:wiki_extension = 'markdown'
 
 nmap <Leader>vw :call WikiIndex() <cr>
 nmap <Leader>vd :call WikiDiary() <cr>
 nmap <Leader>vn :call WikiDiaryToday() <cr>
+nmap <Leader>vp :call WikiSearch() <cr>
 nmap <Leader>vh :call VimwikiAll2HTML() <cr>
 
 let g:follow_markdown_links#extensions = ['.md', '.markdown']
