@@ -39,16 +39,15 @@ Plug 'ivan-krukov/vim-snakemake'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'nathangrigg/vim-beancount'
-Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tmsvg/pear-tree'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'valloric/youcompleteme', { 'do': './install.py --clang-completer' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/UniCycle'
 Plug 'wincent/loupe'
-Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -69,7 +68,7 @@ function FuzzyFind(show_hidden)
 endfunction
 
 nnoremap <c-p> :call FuzzyFind(0)<cr>
-nnoremap <c-o> :call FuzzyFind(1)<cr>
+nnoremap <c-i> :call FuzzyFind(1)<cr>
 
 " Use rg to perform the search, so that .gitignore files and the like are
 " respected
@@ -102,6 +101,9 @@ let g:ale_sign_error = '→'
 let g:pear_tree_smart_openers=1
 let g:pear_tree_smart_closers=1
 let g:pear_tree_smart_backspace=1
+
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_autoclose_preview_window_after_insertion = 1
 
 """"""""""""""""""""""""""""""""""""""""
 " UI
@@ -192,6 +194,9 @@ function ToggleRelativeLineNumbers()
 endfunction
 nnoremap <leader>l :call ToggleRelativeLineNumbers()<cr>
 
+nnoremap <leader>g :YcmCompleter GoTo<cr>
+nnoremap <leader>f :YcmCompleter FixIt<cr>
+nnoremap <leader>t :YcmCompleter GetType<cr>
 
 """"""""""""""""""""""""""""""""""""""""
 " Wiki
@@ -270,8 +275,6 @@ au filetype crontab setlocal nobackup nowritebackup
 
 " Python style uses 4 spaces as tabs
 au FileType python setlocal tabstop=4 shiftwidth=4
-" Enable deoplete
-au FileType python call deoplete#enable()
 
 au BufNewFile,BufRead *.md setlocal filetype=markdown syntax=markdown
 au BufNewFile,BufRead *.markdown setlocal syntax=markdown
