@@ -38,8 +38,6 @@ Plug 'inkarkat/vim-OnSyntaxChange'
 Plug 'ivan-krukov/vim-snakemake'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
 Plug 'nathangrigg/vim-beancount'
 Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tmsvg/pear-tree'
@@ -194,11 +192,6 @@ function ToggleRelativeLineNumbers()
 endfunction
 nnoremap <leader>l :call ToggleRelativeLineNumbers()<cr>
 
-function ToggleGoyoLimelight()
-  Goyo
-  Limelight
-endfunction
-nnoremap <leader>g :call ToggleGoyoLimelight()<cr>
 
 """"""""""""""""""""""""""""""""""""""""
 " Wiki
