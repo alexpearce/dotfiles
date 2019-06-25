@@ -205,19 +205,19 @@ nnoremap <leader>t :YcmCompleter GetType<cr>
 
 " Open the index file of the wiki
 function WikiIndex()
-  let path = fnameescape(expand(g:wiki_root)) . '/index.' . g:wiki_extension
+  let path = fnameescape(expand(g:wiki_root)) . '/README.' . g:wiki_extension
   execute 'e ' . path
 endfunction
 
 function WikiDiary()
-  let path = fnameescape(expand(g:wiki_root)) . '/diary/diary.' . g:wiki_extension
+  let path = fnameescape(expand(g:wiki_root)) . '/HEP/Log/README.' . g:wiki_extension
   execute 'e ' . path
 endfunction
 
 function WikiDiaryToday()
   let date = strftime('%Y-%m-%d')
   let fname = date . '.' . g:wiki_extension
-  let path = fnameescape(expand(g:wiki_root)) . '/diary/' . fname
+  let path = fnameescape(expand(g:wiki_root)) . '/HEP/Log/' . fname
   execute 'e ' . path
   " Insert the date as a header if the file doesn't exist
   if !filereadable(path)
@@ -230,8 +230,13 @@ function WikiSearch()
   exe "FZF " . g:wiki_root
 endfunction
 
-let g:wiki_root = '~/Dropbox/vimwiki'
-let g:wiki_extension = 'markdown'
+" function WikiSearchText()
+"   " call fzf#run(fzf#wrap('FZF', {'dir': expand(g:wiki_root)}, 0))
+"   call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>)." ".g:wiki_root, 1, 0)
+" endfunction
+
+let g:wiki_root = '~/Dropbox/kb'
+let g:wiki_extension = 'md'
 
 nmap <Leader>vw :call WikiIndex() <cr>
 nmap <Leader>vd :call WikiDiary() <cr>

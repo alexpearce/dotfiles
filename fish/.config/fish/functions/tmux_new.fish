@@ -4,6 +4,6 @@ function tmux_new -d "Start a new tmux session with preconfigured windows"
     rename-window mail \; \
     send-keys -t 1 'cd ~/Downloads; and neomutt' Enter \; \
     new-window -n log \; \
-    send-keys -t 2 'cd ~/Dropbox/vimwiki; and nvim -c ":call WikiDiaryToday()"' Enter \; \
+    send-keys -t 2 'cd ~/Dropbox/kb; and nvim -c ":call WikiDiaryToday()"' Enter \; \
     new-window
 end
