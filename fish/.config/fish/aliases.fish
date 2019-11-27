@@ -16,7 +16,7 @@ end
 
 # Abbreviate commonly used functions
 # An abbreviation will expand after <space> or <Enter> is hit
-abbr o bopen
+abbr o open
 abbr b bat
 abbr g git
 abbr gx gitx
@@ -32,7 +32,8 @@ abbr v vim
 abbr n nvim
 abbr ospdf "open -a Skim *.pdf"
 abbr m make
-abbr dbg 'set CMTCONFIG $CMTDEB'
+abbr cern "ssh lxplus"
+abbr s "cd ~/Work/RTA/stack"
 
 abbr gia "git add"
 abbr gb "git branch"
@@ -51,3 +52,4 @@ abbr grbi "git rebase -i"
 abbr grbc "git rebase --continue"
 abbr grba "git rebase --abort"
 abbr gr "git reset"
+abbr gpf "git push -f"

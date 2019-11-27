@@ -2,7 +2,7 @@ set spoolfile = "+personal/Inbox"
 set from      = "alex@alexpearce.me"
 # Can also recieve mail for these addresses
 alternates      ^alexpearce@fastmail.com$ ^boba899@gmail.com$
-set sendmail  = "/usr/bin/msmtp -a personal"
+set sendmail  = "/usr/local/bin/msmtp -a personal"
 set mbox      = "+personal/Archive"
 set postponed = "+personal/Drafts"
 # Record outgoing emails
@@ -24,6 +24,6 @@ mailboxes \
   "+personal/Sent" \
   "+personal/Spam" \
   "+personal/Trash" \
-  `tree ~/.mail -d -I "cur|new|tmp|certs|.notmuch|Inbox" -a -f -i | sed -n -E -e "s|^/home/apearce/.mail/?||" -e "/^(cern|personal)(\/[a-z].+)?$/d" -e "/^(personal)/{p;}" | sed -E -e 's/(.*)/+"\1"/' | tr '\n' ' '`
+  `tree ~/.mail -d -I "cur|new|tmp|certs|.notmuch|Inbox" -a -f -i | sed -n -E -e "s|^/Users/apearce/.mail/?||" -e "/^(cern|personal)(\/[a-z].+)?$/d" -e "/^(personal)/{p;}" | sed -E -e 's/(.*)/+"\1"/' | tr '\n' ' '`
 
 # vi:syntax=muttrc

@@ -15,11 +15,10 @@ function fish_right_prompt -d "Set right prompt with virtualenv information"
     set_color 666
     if test $cmd_time_delta -lt 60
       # Only show seconds
-      echo (date -u -d @"$cmd_time_delta" +'%-Ss')
+      echo (date -u -r "$cmd_time_delta" +'%-Ss')
     else
       # Show seconds and minutes
-      echo (date -u -d @"$cmd_time_delta" +'%-Mm %-Ss')
+      echo (date -u -r "$cmd_time_delta" +'%-Mm %-Ss')
     end
   end
 end
-

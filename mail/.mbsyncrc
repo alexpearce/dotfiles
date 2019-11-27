@@ -18,8 +18,8 @@ SyncState *
 IMAPAccount personal
 Host mail.messagingengine.com
 User alexpearce@fastmail.com
-# Get the account password from a GPG file
-PassCmd "gpg2 --quiet --for-your-eyes-only --no-tty --decrypt ~/.password-personal.gpg"
+# Get the account password from the Keychain
+PassCmd "security find-generic-password -s isync-alexpearce-fastmail-com -w"
 AuthMechs *
 SSLType IMAPS
 
@@ -73,9 +73,11 @@ Channel personal-folders
 IMAPAccount cern
 Host imap.cern.ch
 User apearce
-# Get the account password from a GPG file
-PassCmd "gpg2 --quiet --for-your-eyes-only --no-tty --decrypt ~/.password-cern.gpg"
-AuthMechs *
+# Get the account password from the Keychain
+PassCmd "security find-generic-password -s isync-alex-pearce-cern-ch -w"
+# PLAIN rather than *, otherwise mbsync tries to authenticate via Kerberos (and
+# I don't want to always have a ticket)
+AuthMechs PLAIN
 SSLType IMAPS
 
 IMAPStore cern-remote
