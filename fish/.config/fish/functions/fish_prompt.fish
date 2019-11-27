@@ -33,5 +33,7 @@ function fish_prompt -d "Set prompt with pwd and git information"
   end
   set_color normal
 
-  printf '\n> '
+  printf '\n'
+  iterm2_prompt_mark
+  printf '> '
 end
