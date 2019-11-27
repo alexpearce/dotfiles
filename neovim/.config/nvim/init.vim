@@ -286,7 +286,7 @@ au BufNewFile,BufRead *.md setlocal filetype=markdown syntax=markdown
 au BufNewFile,BufRead *.markdown setlocal syntax=markdown
 
 " Spellchecking in LaTeX, Markdown
-au FileType tex,plaintex,markdown setlocal setlocal spelllang=en_gb spell formatoptions=tcroqlj
+au FileType tex,plaintex,markdown setlocal spelllang=en_gb spell formatoptions=tcroqlj
 
 " Wrap Python automatically at 80 characters
 au FileType python setlocal textwidth=79 formatoptions=tcroqlj
