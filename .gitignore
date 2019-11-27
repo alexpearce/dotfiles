@@ -4,6 +4,7 @@ vim/.vim/.netrwhist
 vim/.vim/bundle
 vim/.vim/spell/*.spl
 fish/.config/fish/fish_history
+fish/.config/fish/fish_variables
 fish/.config/fish/fishd.*
 mail/.mutt/mutt_attach
 mail/.mutt/cache
