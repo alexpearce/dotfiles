@@ -162,6 +162,140 @@
         "Green Component" : 0.23046499490737915
       },
       "Scrollback Lines" : 0,
+      "Show Status Bar" : true,
+      "Status Bar Layout" : {
+        "components" : [
+          {
+            "class" : "iTermStatusBarWorkingDirectoryComponent",
+            "configuration" : {
+              "knobs" : {
+                "path" : "path",
+                "maxwidth" : 1.7976931348623157e+308,
+                "base: priority" : 5,
+                "shared text color" : {
+                  "Red Component" : 0.90000000000000002,
+                  "Color Space" : "sRGB",
+                  "Blue Component" : 0.63,
+                  "Alpha Component" : 1,
+                  "Green Component" : 0.63
+                },
+                "base: compression resistance" : 1,
+                "minwidth" : 0
+              },
+              "layout advanced configuration dictionary value" : {
+                "font" : ".AppleSystemUIFont 12",
+                "algorithm" : 1
+              }
+            }
+          },
+          {
+            "class" : "iTermStatusBarGitComponent",
+            "configuration" : {
+              "knobs" : {
+                "maxwidth" : 1.7976931348623157e+308,
+                "iTermStatusBarGitComponentPollingIntervalKey" : 2,
+                "base: priority" : 5,
+                "shared text color" : {
+                  "Red Component" : 0.90000000000000002,
+                  "Color Space" : "sRGB",
+                  "Blue Component" : 0.63,
+                  "Alpha Component" : 1,
+                  "Green Component" : 0.90000000000000002
+                },
+                "base: compression resistance" : 1,
+                "minwidth" : 0
+              },
+              "layout advanced configuration dictionary value" : {
+                "font" : ".AppleSystemUIFont 12",
+                "algorithm" : 1
+              }
+            }
+          },
+          {
+            "class" : "iTermStatusBarSpringComponent",
+            "configuration" : {
+              "knobs" : {
+                "iTermStatusBarSpringComponentSizeMultipleKey" : 1,
+                "base: priority" : 5,
+                "iTermStatusBarSpringComponentSpringConstantKey" : 0.01,
+                "shared text color" : {
+                  "Red Component" : 0.63,
+                  "Color Space" : "sRGB",
+                  "Blue Component" : 0.63,
+                  "Alpha Component" : 1,
+                  "Green Component" : 0.90000000000000002
+                },
+                "base: compression resistance" : 1
+              },
+              "layout advanced configuration dictionary value" : {
+                "font" : ".AppleSystemUIFont 12",
+                "algorithm" : 1
+              }
+            }
+          },
+          {
+            "class" : "iTermStatusBarCPUUtilizationComponent",
+            "configuration" : {
+              "knobs" : {
+                "base: priority" : 5,
+                "shared text color" : {
+                  "Red Component" : 0.62999999523162842,
+                  "Color Space" : "sRGB",
+                  "Blue Component" : 0.89999997615814209,
+                  "Alpha Component" : 1,
+                  "Green Component" : 0.89999997615814209
+                }
+              },
+              "layout advanced configuration dictionary value" : {
+                "font" : ".AppleSystemUIFont 12",
+                "algorithm" : 1
+              }
+            }
+          },
+          {
+            "class" : "iTermStatusBarMemoryUtilizationComponent",
+            "configuration" : {
+              "knobs" : {
+                "base: priority" : 5,
+                "shared text color" : {
+                  "Red Component" : 0.62999999523162842,
+                  "Color Space" : "sRGB",
+                  "Blue Component" : 0.89999997615814209,
+                  "Alpha Component" : 1,
+                  "Green Component" : 0.62999999523162842
+                }
+              },
+              "layout advanced configuration dictionary value" : {
+                "font" : ".AppleSystemUIFont 12",
+                "algorithm" : 1
+              }
+            }
+          },
+          {
+            "class" : "iTermStatusBarNetworkUtilizationComponent",
+            "configuration" : {
+              "knobs" : {
+                "base: priority" : 5,
+                "shared text color" : {
+                  "Red Component" : 0.89999997615814209,
+                  "Color Space" : "sRGB",
+                  "Blue Component" : 0.89999997615814209,
+                  "Alpha Component" : 1,
+                  "Green Component" : 0.62999999523162842
+                }
+              },
+              "layout advanced configuration dictionary value" : {
+                "font" : ".AppleSystemUIFont 12",
+                "algorithm" : 1
+              }
+            }
+          }
+        ],
+        "advanced configuration" : {
+          "font" : ".AppleSystemUIFont 12",
+          "algorithm" : 1
+        }
+      },
       "Send Code When Idle" : false,
       "Close Sessions On End" : true,
       "Terminal Type" : "xterm-256color",
