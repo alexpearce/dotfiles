@@ -47,6 +47,7 @@ Plug 'tpope/vim-surround'
 Plug 'valloric/youcompleteme', { 'do': './install.py --clang-completer' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-scripts/UniCycle'
 Plug 'wincent/loupe'
 
@@ -282,11 +283,11 @@ au filetype crontab setlocal nobackup nowritebackup
 " Python style uses 4 spaces as tabs
 au FileType python setlocal tabstop=4 shiftwidth=4
 
-au BufNewFile,BufRead *.md setlocal filetype=markdown syntax=markdown
-au BufNewFile,BufRead *.markdown setlocal syntax=markdown
+au BufNewFile,BufRead *.md setlocal filetype=markdown.pandoc
+au BufNewFile,BufRead *.markdown setlocal filetype=markdown.pandoc
 
-" Spellchecking in LaTeX, Markdown
-au FileType tex,plaintex,markdown setlocal spelllang=en_gb spell formatoptions=tcroqlj
+" Spellchecking in LaTeX, Markdown, reStructured text
+au FileType tex,plaintex,markdown,rst setlocal spelllang=en_gb spell formatoptions=tcroqlj
 
 " Wrap Python automatically at 80 characters
 au FileType python setlocal textwidth=79 formatoptions=tcroqlj
