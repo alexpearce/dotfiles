@@ -23,7 +23,7 @@ abbr gx gitx
 abbr gho "github_open ."
 abbr ghoi "github_open issues"
 abbr ghopr "github_open pulls"
-abbr p python
+abbr p python3
 abbr ip ipython
 abbr be "bundle exec"
 abbr r root
