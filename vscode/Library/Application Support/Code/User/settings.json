@@ -1,0 +1,13 @@
+{
+    "workbench.colorTheme": "GitHub Light",
+    "editor.fontFamily": "'Fira Code', Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 14,
+    "files.trimFinalNewlines": true,
+    "files.insertFinalNewline": true,
+    "editor.renderFinalNewline": false,
+    "vim.enableNeovim": true,
+    "vim.neovimPath": "/usr/local/bin/nvim",
+    "window.zoomLevel": 0,
+    "cSpell.language": "en-GB",
+    "editor.minimap.enabled": false
+}
