@@ -38,7 +38,7 @@
       },
       "AWDS Tab Directory" : "",
       "Normal Font" : "FiraCode-Retina 14",
-      "Rows" : 52,
+      "Rows" : 25,
       "Default Bookmark" : "No",
       "Horizontal Spacing" : 1,
       "Ansi 3 Color" : {
@@ -107,7 +107,7 @@
       },
       "Mouse Reporting" : true,
       "AWDS Window Directory" : "",
-      "Columns" : 205,
+      "Columns" : 95,
       "Idle Code" : 0,
       "Ansi 13 Color" : {
         "Red Component" : 0.64283657073974609,
