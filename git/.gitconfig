@@ -4,21 +4,19 @@
 [core]
   editor = nvim
   excludesfile = ~/.gitignore
+  pager = delta
 [color]
   ui = true
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true
+  line-numbers = true
+  syntax-theme = Nord
 [push]
   default = simple
 [alias]
   lg = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-# Show diffs with the diff-so-fancy tool, and seed the pager with a seach
-# pattern so files can be jumped to with n/N
-[pager]
-  log = diff-so-fancy | less --pattern='^(added|deleted|modified): '
-  show = diff-so-fancy | less --pattern='^(added|deleted|modified): '
-  diff = diff-so-fancy | less --pattern='^(added|deleted|modified): '
-; Can't use diff-so-fancy for e.g. `git add -p`, see diff-so-fancy#296
-; [interactive]
-;   diffFilter = diff-so-fancy
 # Clone git repos with URLs like "gh:alexpearce/dotfiles"
 [url "https://github.com/"]
   insteadOf = "gh:"
