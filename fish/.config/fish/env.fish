@@ -1,27 +1,7 @@
-# Fish stores 'universal' variables in hostname-specific configuration files,
-# e.g. ~/.config/fish/fishd.02163e018f66.
-# The little block below prompts the user to set these variables if they
-# haven't been already.
-# But, using a load-balanced cluster of machines, like CERN's lxplus,
-# doesn't play well with universal variables, because you're sent to one
-# of many possible machines when you SSH in.
-# This means we need to run setup-env quite often.
-if not set -q fish_user_paths
-  echo 'Hello! This is your shell 👋'
-  echo 'It looks this the machine ('(hostname)') hasn\'t been setup yet.'
-  echo 'You can run the '(set_color green)'setup-env'(set_color normal)' command to do so.'
-  if hostname | grep lxplus > /dev/null
-    echo 'Initiating auto-setup for lxplus'
-    yes | setup-env
-  end
-end
+set -g -x EDITOR nvim
 
-# Even after setup-env, some universal variables are overriden
-# by CERN-controlled login scripts on subsequent logins!
-# So we must override those ourselves (again), which we do here.
 if is_cern
-  set -e EDITOR
-  set -g -x EDITOR nvim
+  set -g -x fish_user_paths ~/usr/bin $fish_user_paths
   set -g -x LD_LIBRARY_PATH ~/usr/lib:$LD_LIBRARY_PATH
   # Place Grid proxy somewhere host agnostic (it's placed in /tmp by default)
   set -g -x X509_USER_PROXY $HOME/.grid.proxy

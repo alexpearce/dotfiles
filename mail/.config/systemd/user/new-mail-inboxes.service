@@ -1,8 +1,0 @@
-[Unit]
-Description=Check for new mail in inboxes
-Wants=network-online.target
-After=network-online.target
-
-[Service]
-ExecStart=/home/apearce/.local/bin/new_mail cern-inbox personal-inbox
-Type=oneshot

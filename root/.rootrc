@@ -1,3 +1,0 @@
-# Disable the obnoxious RooFit banner
-# Flag is honoured in ROOT > 6.03.04
-RooFit.Banner: 0

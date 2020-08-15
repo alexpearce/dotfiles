@@ -1,6 +1,5 @@
 # Alias commands to include common flags
 alias ipython "ipython --no-banner"
-alias root "root -l"
 alias nvim "nvim -p";
 alias vim "vim -p"
 
@@ -19,21 +18,11 @@ end
 abbr o open
 abbr b bat
 abbr g git
-abbr gx gitx
-abbr gho "github_open ."
-abbr ghoi "github_open issues"
-abbr ghopr "github_open pulls"
 abbr p python3
 abbr ip ipython
-abbr be "bundle exec"
-abbr r root
-abbr tb tbrowser
-abbr v vim
 abbr n nvim
-abbr ospdf "open -a Skim *.pdf"
 abbr m make
 abbr cern "ssh lxplus"
-abbr s "cd ~/Work/RTA/stack"
 
 abbr gia "git add"
 abbr gb "git branch"
