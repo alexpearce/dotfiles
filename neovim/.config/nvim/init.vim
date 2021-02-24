@@ -40,11 +40,11 @@ Plug 'ivan-krukov/vim-snakemake'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'nathangrigg/vim-beancount'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tmsvg/pear-tree'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'valloric/youcompleteme', { 'do': './install.py --clang-completer' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-pandoc/vim-pandoc-syntax'
