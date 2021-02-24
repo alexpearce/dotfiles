@@ -1,4 +1,4 @@
-start_command_timer
+starship init fish | source
 
 set -l source_dir (dirname (status -f))
 
