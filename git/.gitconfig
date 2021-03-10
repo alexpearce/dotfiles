@@ -30,3 +30,5 @@
 # Clone Arch User Repository repos with URLs like "aur:neomutt"
 [url "https://aur.archlinux.org/"]
   insteadOf = "aur:"
+[init]
+  defaultBranch = main
