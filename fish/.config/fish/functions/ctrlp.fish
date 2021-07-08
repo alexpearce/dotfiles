@@ -1,7 +1,7 @@
-function ctrlp -d "Launch fzf, inside Vim, from the shell" --argument-names hidden
+function ctrlp -d "Launch Neovim file finder from the shell" --argument-names hidden
   if test -n "$hidden"
-    nvim -c 'call FuzzyFind(1)'
+    nvim -c 'lua require(\'telescope.builtin\').find_files({hidden = true})'
   else
-    nvim -c 'call FuzzyFind(0)'
+    nvim -c 'lua require(\'telescope.builtin\').find_files()'
   end
 end
