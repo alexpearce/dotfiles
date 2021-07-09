@@ -27,13 +27,22 @@ require('packer').startup(function(use)
   use 'wincent/loupe'
 
   -- UI
-  use 'arcticicestudio/nord-vim'
+  use {
+    'projekt0n/github-nvim-theme',
+    after = 'lualine.nvim',
+    config = function()
+      require('github-theme').setup({
+        themeStyle = 'light',
+        keywordStyle = 'NONE',
+      })
+    end
+  }
   use {
     'hoob3rt/lualine.nvim',
     config = function()
       require('lualine').setup({
         options = {
-          theme = 'nord'
+          theme = 'github'
         }
       })
       -- Mode symbols not exposed as options, so modify internals

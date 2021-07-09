@@ -30,14 +30,6 @@ vim.g.loaded_ruby_provider = 0
 -- UI
 -----
 
--- Theme
-vim.o.termguicolors = true
-vim.o.background = 'dark'
-vim.g.nord_italic = 1
-vim.g.nord_italic_comments = 1
-vim.g.nord_underline = 1
-vim.cmd('colorscheme nord')
-
 -- Don't use the native mode display, lualine does this for us
 vim.o.showmode = false
 
