@@ -2,7 +2,7 @@
 -------------------
 
 -- Setup omnifunc and key bindings when attaching to an LSP server
-local on_attach = function(_client, bufnr)
+local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   local opts = {noremap = true, silent = true}
@@ -10,17 +10,20 @@ local on_attach = function(_client, bufnr)
     {
       g = {
         name = 'Goto',
-        d = { '<cmd>lua vim.lsp.buf.declaration()<cr>', 'Declaration' },
-        D = { '<cmd>lua vim.lsp.buf.definition()<cr>', 'Definition' },
-        i = { '<cmd>lua vim.lsp.buf.implementation()<cr>', 'Definition' },
+        D = { '<cmd>lua vim.lsp.buf.declaration()<cr>', 'Declaration' },
+        -- d = { '<cmd>lua vim.lsp.buf.definition()<cr>', 'Definition' },
+        d = { '<cmd>TroubleToggle lsp_definitions<cr>', 'Definition' },
+        i = { '<cmd>lua vim.lsp.buf.implementation()<cr>', 'Implementation' },
         K = { '<cmd>lua vim.lsp.buf.hover()<cr>', 'Help' },
         s = { '<cmd>lua vim.lsp.buf.signature_help()<cr>', 'Signature' },
         r = { '<cmd>lua vim.lsp.buf.rename()<cr>', 'Rename' },
-        u = { '<cmd>lua vim.lsp.buf.references()<cr>', 'Usages' },
+        -- u = { '<cmd>lua vim.lsp.buf.references()<cr>', 'Usages' },
+        u = { '<cmd>TroubleToggle lsp_references<cr>', 'Usages' },
         a = { '<cmd>lua vim.lsp.buf.code_action()<cr>', 'Code Action' },
         [']'] = { '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>', 'Next Diagnoistic' },
         ['['] = { '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>', 'Previous Diagnoistic' },
-        l = { '<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>', 'Location List' },
+        -- l = { '<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>', 'Location List' },
+        l = { '<cmd>TroubleToggle lsp_document_diagnostics<cr>', 'Location List' },
       }
     },
     {
@@ -35,14 +38,20 @@ local on_attach = function(_client, bufnr)
 
   -- Show a lightbulb in the gutter when a code action is available
   vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
+
+  require('lsp-status').on_attach(client)
 end
 
 local nvim_lsp = require('lspconfig')
+local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 -- Enable C, Python, and Rust language servers
 local servers = {'clangd', 'pyright', 'rust_analyzer'}
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup({on_attach = on_attach})
+  nvim_lsp[lsp].setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+  })
 end
 
 vim.o.completeopt = 'menuone,noinsert'

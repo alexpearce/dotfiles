@@ -37,18 +37,20 @@ require('packer').startup(function(use)
       })
     end
   }
+  use 'nvim-lua/lsp-status.nvim'
   use {
     'hoob3rt/lualine.nvim',
+    requires = 'lsp-status.nvim',
     config = function()
-      require('lualine').setup({
-        options = {
-          theme = 'github'
-        }
-      })
+      -- See hoob3rt/lualine.nvim#276
+      require('plenary.reload').reload_module('lualine', true)
+
       -- Mode symbols not exposed as options, so modify internals
       local mode_map = {
         n  = '∙',
         i  = '|',
+        ic  = '|',
+        ix  = '|',
         v  = '→',
         V  = '↔',
         [''] = '↕',
@@ -57,6 +59,24 @@ require('packer').startup(function(use)
       for k, v in pairs(mode_map) do
         require('lualine.utils.mode').map[k] = v
       end
+
+      local lsp_status = require('lsp-status')
+      lsp_status.config({
+        indicator_info = 'i',
+        indicator_hint = '?',
+        indicator_ok = '',
+        status_symbol = '',
+      })
+      lsp_status.register_progress()
+
+      require('lualine').setup({
+        options = {
+          theme = 'github'
+        },
+        sections = {
+          lualine_y = {require('lsp-status').status}
+        }
+      })
     end
   }
   -- Git signs in the gutter
@@ -133,12 +153,13 @@ require('packer').startup(function(use)
   -- Language servers
   use {
     'neovim/nvim-lspconfig',
-    after = {'which-key.nvim', 'nvim-compe', 'nvim-lightbulb'},
+    after = {'which-key.nvim', 'nvim-compe', 'nvim-lightbulb', 'trouble.nvim'},
     config = function()
       require('language_servers')
     end
   }
   -- LSP UI
+  use 'folke/trouble.nvim'
   use 'kosayoda/nvim-lightbulb'
   -- Completion
   use 'hrsh7th/nvim-compe'
