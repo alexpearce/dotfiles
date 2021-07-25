@@ -137,6 +137,7 @@ require('packer').startup(function(use)
           'json',
           'latex',
           'lua',
+          'nix',
           'python',
           'regex',
           'rust',
@@ -164,3 +165,6 @@ require('packer').startup(function(use)
   -- Completion
   use 'hrsh7th/nvim-compe'
 end)
+
+vim.cmd('autocmd BufRead,BufNewFile *.fish setfiletype fish')
+vim.cmd('autocmd BufRead,BufNewFile *.nix setfiletype nix')
