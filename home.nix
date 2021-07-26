@@ -50,6 +50,10 @@
     fish = {
       enable = true;
       plugins = [
+        {
+          name = "iterm2-shell-integration";
+          src = ./config/fish/iterm2_shell_integration;
+        }
         # Need this when using Fish as a default macOS shell in order to pick
         # up ~/.nix-profile/bin
         {
@@ -78,6 +82,10 @@
         set fish_color_operator cyan
         set fish_color_escape white
         set fish_color_autosuggestion brblack
+      '';
+      interactiveShellInit = ''
+        # Activate the iTerm 2 shell integration
+        iterm2_shell_integration
       '';
       shellAliases = {
         ipython = "ipython --no-banner";

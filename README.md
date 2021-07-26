@@ -2,65 +2,84 @@
 
 This is my collection of [configuration files](http://dotfiles.github.io/).
 
+It uses [home-manager][home-manager]—a [Nix][nix]-based tool—to install
+programs and create their configuration files based off the
+[`home.nix`](home.nix) file in this repository. I [wrote more about it in a
+blog post][nix-post].
+
+(I used to [use GNU Stow][stow-post]. The last Stow-based commit was
+[`4f1feee1e`][stow-commit].)
+
 ## Usage
 
-Pull the repository, and then create the symbolic links [using GNU
-stow](https://alexpearce.me/2016/02/managing-dotfiles-with-stow/).
+Install [Nix][nix] and then install [home-manager][home-manager]. You should be
+able to run the `home-manager` program in a shell.
+
+Next, clone this repository to `~/.config/nixpkgs`.
 
 ```shell
-$ git clone git@github.com:alexpearce/dotfiles.git ~/.dotfiles
-$ cd ~/.dotfiles
-$ stow fish neovim git # plus whatever else you'd like
+$ git clone git@github.com:alexpearce/dotfiles.git ~/.config/nixpkgs
 ```
 
-## Dependencies
+This will place the [`home.nix`](home.nix) file in the location home-manager
+expects. The home-manager profile can then be built and activated:
 
-The [fish shell][fish] configuration uses [Starship][starship] to generate a
-prompt. A few tools are optional but make the experience nicer:
+```shell
+$ home-manager switch
+```
 
-* [bat][bat] for output.
-* [exa][exa] for listings.
-* [ripgrep][ripgrep] for file searching.
+To update home-manager:
 
-I install [Conda][conda], specifically [Mambaforge][mambaforge], to manage
-Python environments. Conda is picked up automatically by the shell if the
-install path is set to `$HOME/.local/conda`.
+```shell
+$ nix-channel --update nixpkgs
+unpacking channels...
+$ nix-env -u home-manager
+```
+
+To update home-manager-managed packages:
+
+```shell
+$ nix-channel --update nixpkgs
+unpacking channels...
+$ home-manager switch
+```
+
+### Fish
+
+I like to set [fish][fish] as my default shell. On macOS this means:
+
+1. Editing `/etc/shells` to include an entry for the home-manager-managed
+   `fish` binary at `~/.nix-profile/bin/fish`.
+2. Setting the default shell with `chsh -s ~/.nix-profile/bin/fish`.
 
 ### Neovim
 
-The [Neovim editor][neovim] (>= 0.5) configuration assumes there is a dedicated
-virtual environment for it at `$HOME/.local/conda/envs/neovim`.
+On its first run [Neovim][neovim] will install the [packer.nvim][packer]
+package management plugin. Restart Neovim and install the other packages with
+`:PackerInstall`.
+
+### iTerm2
+
+The [iTerm2][iterm2] profile can be installed with:
 
 ```shell
-$ conda create --name neovim pynvim
+$ ln -s (realpath config/iterm2/DynamicDefault.json) ~/Library/Application\ Support/iTerm2/DynamicProfiles/
 ```
 
-Neovim packages are managed using [packer.nvim][packer]. Run `:PackerCompile`
-followed by `:PackerInstall` to install.
-
-The [language server configuration][lsp] requires the relevant servers to be
-installed:
-
-```shell
-# Python
-$ npm install -g pyright
-# Rust
-$ brew install rust-analyzer
-# C family (using clangd)
-$ brew install llvm
-```
+It depends on the [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) variant
+of the [IBM Plex Mono](https://www.ibm.com/plex/) fonts.
 
 ## License
 
 [MIT](http://opensource.org/licenses/MIT).
 
+[nix]: https://nixos.org/
+[home-manager]: https://github.com/nix-community/home-manager
 [fish]: https://fishshell.com/
-[starship]: https://starship.rs/
 [neovim]: https://neovim.io/
-[conda]: https://conda.io/
-[mambaforge]: https://github.com/conda-forge/miniforge
-[bat]: https://github.com/sharkdp/bat
-[exa]: https://github.com/ogham/exa
-[ripgrep]: https://github.com/BurntSushi/ripgrep
 [packer]: https://github.com/wbthomason/packer.nvim
-[lsp]: https://github.com/neovim/nvim-lspconfig
+[iterm2]: https://iterm2.com/
+
+[nix-post]: https://alexpearce.me/2021/07/managing-dotfiles-with-nix/
+[stow-post]: https://alexpearce.me/2016/02/managing-dotfiles-with-stow/
+[stow-commit]: https://github.com/alexpearce/dotfiles/tree/4f1feee1e4bc71f2ba5774af44eed1da774510a0
