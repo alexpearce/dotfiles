@@ -29,8 +29,8 @@ require('packer').startup(function(use)
   -- UI
   use {
     'projekt0n/github-nvim-theme',
-    after = 'lualine.nvim',
     config = function()
+      vim.o.background = "light"
       require('github-theme').setup({
         themeStyle = 'light',
         keywordStyle = 'NONE',
@@ -39,12 +39,10 @@ require('packer').startup(function(use)
   }
   use 'nvim-lua/lsp-status.nvim'
   use {
-    'hoob3rt/lualine.nvim',
+    'shadmansaleh/lualine.nvim',
+    after = 'github-nvim-theme',
     requires = 'lsp-status.nvim',
     config = function()
-      -- See hoob3rt/lualine.nvim#276
-      require('plenary.reload').reload_module('lualine', true)
-
       -- Mode symbols not exposed as options, so modify internals
       local mode_map = {
         n  = '∙',
@@ -71,10 +69,10 @@ require('packer').startup(function(use)
 
       require('lualine').setup({
         options = {
-          theme = 'github'
+          theme = 'github',
         },
         sections = {
-          lualine_y = {require('lsp-status').status}
+          lualine_y = {"require('lsp-status').status()"}
         }
       })
     end
@@ -161,7 +159,14 @@ require('packer').startup(function(use)
     end
   }
   -- LSP UI
-  use 'folke/trouble.nvim'
+  use {
+    'folke/trouble.nvim',
+    config = function()
+      require('trouble').setup({
+        icons = false
+      })
+    end
+  }
   use 'kosayoda/nvim-lightbulb'
   -- Completion
   use 'hrsh7th/nvim-compe'
