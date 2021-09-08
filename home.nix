@@ -197,8 +197,10 @@
           defaultBranch = "main";
         };
         # Clone git repos with URLs like "gh:alexpearce/dotfiles"
-        url."https://github.com/".insteadOf = "gh:";
-        url."git@github.com:".pushInsteadOf = "gh:";
+        url."git@github.com:" = {
+          insteadOf = "gh:";
+          pushInsteadOf = "gh:";
+        };
       };
       ignores = [
         ".*.swp"
