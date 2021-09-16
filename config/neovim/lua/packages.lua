@@ -155,17 +155,37 @@ require('packer').startup(function(use)
       })
     end
   }
+  use 'osohq/polar.vim'
   use {'ivan-krukov/vim-snakemake', ft = 'snakemake'}
 
   -- Language servers
   use {
     'neovim/nvim-lspconfig',
     after = {'which-key.nvim', 'nvim-compe', 'nvim-lightbulb', 'trouble.nvim'},
+  }
+  use({
+    'jose-elias-alvarez/null-ls.nvim',
+    requires = {'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig'},
+    after = 'nvim-lspconfig',
     config = function()
+      pkg = require('null-ls')
+      pkg.config({
+        sources = {
+          -- Diagnositcs
+          pkg.builtins.diagnostics.flake8,
+          -- Formatting
+          pkg.builtins.formatting.bean_format,
+          pkg.builtins.formatting.black,
+          pkg.builtins.formatting.isort,
+          pkg.builtins.formatting.rustfmt,
+          pkg.builtins.formatting.shellcheck,
+        }
+      })
       require('language_servers')
     end
-  }
+  })
   -- LSP UI
+  use 'kyazdani42/nvim-web-devicons'
   use {
     'folke/trouble.nvim',
     config = function()

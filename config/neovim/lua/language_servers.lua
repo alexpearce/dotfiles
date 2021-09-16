@@ -46,7 +46,7 @@ local nvim_lsp = require('lspconfig')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 -- Enable C, Python, and Rust language servers
-local servers = {'clangd', 'pyright', 'rust_analyzer'}
+local servers = {'clangd', 'pyright', 'rust_analyzer', 'null-ls'}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup({
     on_attach = on_attach,
