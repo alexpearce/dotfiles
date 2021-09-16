@@ -85,6 +85,13 @@ require('packer').startup(function(use)
       require('gitsigns').setup()
     end
   }
+  use {
+    'lukas-reineke/indent-blankline.nvim',
+    config = function ()
+      -- Start with indent guides turned off; toggle with <Leader>i
+      vim.g.indent_blankline_enabled = false
+    end
+  }
 
   -- Find anything
   use {

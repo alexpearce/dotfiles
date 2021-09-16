@@ -88,6 +88,9 @@ ToggleRelativeLineNumbers = function()
 end
 vim.api.nvim_set_keymap('n', '<Leader>l', '<cmd>lua ToggleRelativeLineNumbers()<cr>', {noremap = true})
 
+-- Toggle indentation guides
+vim.api.nvim_set_keymap('n', '<Leader>i', '<cmd>lua require("indent_blankline.commands").toggle()<cr>', {noremap = true})
+
 -- Coding style
 ---------------
 
