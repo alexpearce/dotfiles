@@ -126,6 +126,8 @@
         gstx = "git stash drop";
         gsw = "git switch";
         gswc = "git switch -c";
+        hme = "home-manager edit";
+        hms = "home-manager switch";
         m = "make";
         n = "nvim";
         o = "open";
