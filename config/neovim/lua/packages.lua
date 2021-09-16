@@ -32,8 +32,8 @@ require('packer').startup(function(use)
     config = function()
       vim.o.background = "light"
       require('github-theme').setup({
-        themeStyle = 'light',
-        keywordStyle = 'NONE',
+        theme_style = 'light',
+        keyword_style = 'NONE',
       })
     end
   }
