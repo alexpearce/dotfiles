@@ -12,6 +12,7 @@
       imagemagick
       jq
       neovim
+      nodejs
       pandoc
       ripgrep
       tree
@@ -86,6 +87,11 @@
       interactiveShellInit = ''
         # Activate the iTerm 2 shell integration
         iterm2_shell_integration
+
+        # Pick up conda installation
+        if test -x /Users/apearce/.mambaforge/bin/conda
+          eval /Users/apearce/.mambaforge/bin/conda "shell.fish" "hook" $argv | source
+        end
       '';
       shellAliases = {
         ipython = "ipython --no-banner";
@@ -105,6 +111,7 @@
         g = "git";
         ga = "git add";
         gap = "git add -p";
+        gb = "git branch";
         gc = "git commit";
         gcan = "git commit --amend --no-edit";
         gcm = "git commit -m";
@@ -167,6 +174,15 @@
       };
     };
 
+    gh = {
+      enable = true;
+      aliases = {
+        co = "pr checkout";
+        pv = "pr view";
+      };
+      gitProtocol = "ssh";
+    };
+
     git = {
       enable = true;
       userName = "Alex Pearce";
@@ -185,6 +201,10 @@
       extraConfig = {
         core = {
           editor = "nvim";
+          # If git uses `ssh` from Nix the macOS-specific configuration in
+          # `~/.ssh/config` won't be seen as valid
+          # https://github.com/NixOS/nixpkgs/issues/15686#issuecomment-865928923
+          sshCommand = "/usr/bin/ssh";
         };
         color = {
           ui = true;
@@ -211,7 +231,8 @@
         ".DS_Store"
         "Icon"
         "*.pyc"
-        ".direnv"
+        ".envrc"
+        "environment.yaml"
       ];
     };
 
@@ -224,7 +245,16 @@
         add_newline = true;
       };
     };
+
+    zoxide = {
+      enable = true;
+      enableFishIntegration = true;
+    };
   };
+
+  xdg.configFile."nix/nix.conf".text = ''
+    experimental-features = nix-command flakes
+  '';
 
   # FIXME The init.vim unconditionally installed by this module conflicts with
   # our init.lua, so we cannot use the module for now and must install the
