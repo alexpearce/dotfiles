@@ -133,7 +133,7 @@
       "Character Encoding": 4,
       "Close Sessions On End": true,
       "Columns": 95,
-      "Command": "",
+      "Command" : "\/Users\/apearce\/.nix-profile\/bin\/fish",
       "Cursor Color": {
         "Blue Component": 0.5372549019607843,
         "Color Space": "sRGB",
@@ -154,7 +154,7 @@
         "Red Component": 1
       },
       "Cursor Type": 2,
-      "Custom Command": "No",
+      "Custom Command" : "Custom Shell",
       "Custom Directory": "Advanced",
       "Default Bookmark": "No",
       "Description": "Default (dynamic)",
