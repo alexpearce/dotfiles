@@ -176,11 +176,13 @@
 
     gh = {
       enable = true;
-      aliases = {
-        co = "pr checkout";
-        pv = "pr view";
+      settings = {
+        aliases = {
+          co = "pr checkout";
+          pv = "pr view";
+        };
+        git_protocol = "ssh";
       };
-      gitProtocol = "ssh";
     };
 
     git = {
