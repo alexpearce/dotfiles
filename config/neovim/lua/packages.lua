@@ -30,9 +30,15 @@ require('packer').startup(function(use)
   use {
     'projekt0n/github-nvim-theme',
     config = function()
-      vim.o.background = "light"
+      -- Determine light/dark background based on macOS appearance
+      local cmd = [[defaults read -g AppleInterfaceStyle 2>/dev/null]]
+      local stdout = io.popen(cmd):read()
+      -- The command returns nothing on stdout when in light mode
+      if (stdout == nil) then mode = "light" else mode = "dark" end
+
+      vim.o.background = mode
       require('github-theme').setup({
-        theme_style = 'light',
+        theme_style = mode,
         keyword_style = 'NONE',
       })
     end
