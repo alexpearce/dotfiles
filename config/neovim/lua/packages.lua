@@ -45,7 +45,7 @@ require('packer').startup(function(use)
   }
   use 'nvim-lua/lsp-status.nvim'
   use {
-    'shadmansaleh/lualine.nvim',
+    'nvim-lualine/lualine.nvim',
     after = 'github-nvim-theme',
     requires = 'lsp-status.nvim',
     config = function()
