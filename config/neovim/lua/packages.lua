@@ -7,14 +7,6 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   vim.api.nvim_command('!git clone https://github.com/wbthomason/packer.nvim '.. install_path)
 end
 
--- Run PackerCompile whenever this file is written
-vim.api.nvim_exec([[
-  augroup Packer
-    autocmd!
-    autocmd BufWritePost packages.lua PackerCompile
-  augroup end
-]], false)
-
 require('packer').startup(function(use)
   -- Package management
   use 'wbthomason/packer.nvim'
@@ -133,7 +125,6 @@ require('packer').startup(function(use)
   -- Syntax highlighting
   use {
     'nvim-treesitter/nvim-treesitter',
-    branch = '0.5-compat',
     run = ':TSUpdate',
     config = function()
       require('nvim-treesitter.configs').setup({
@@ -142,16 +133,21 @@ require('packer').startup(function(use)
           'beancount',
           'cmake',
           'cpp',
+          'css',
           'dockerfile',
+          'dot',
           'elixir',
           'fish',
           'html',
+          'javascript',
           'json',
           'latex',
           'lua',
+          'make',
           'nix',
           'python',
           'regex',
+          'rst',
           'rust',
           'toml',
           'yaml',
@@ -175,7 +171,7 @@ require('packer').startup(function(use)
     after = 'nvim-lspconfig',
     config = function()
       pkg = require('null-ls')
-      pkg.config({
+      pkg.setup({
         sources = {
           -- Diagnositcs
           pkg.builtins.diagnostics.flake8,
@@ -184,7 +180,6 @@ require('packer').startup(function(use)
           pkg.builtins.formatting.black,
           pkg.builtins.formatting.isort,
           pkg.builtins.formatting.rustfmt,
-          pkg.builtins.formatting.shellcheck,
         }
       })
       require('language_servers')
