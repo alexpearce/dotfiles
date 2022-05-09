@@ -122,6 +122,7 @@
         gap = "git add -p";
         gb = "git branch";
         gc = "git commit";
+        gca = "git commit --amend";
         gcan = "git commit --amend --no-edit";
         gcm = "git commit -m";
         gcl = "git clone";
@@ -130,6 +131,8 @@
         gl = "git prettylog";
         gp = "git push";
         gpf = "git push -f";
+        gpl = "git pull";
+        gplp = "git pull --prune";
         gr = "git restore";
         grb = "git rebase";
         grba = "git rebase --abort";
@@ -230,7 +233,7 @@
           ui = true;
         };
         push = {
-          default = "simple";
+          default = "current";
         };
         pull = {
           ff = "only";
