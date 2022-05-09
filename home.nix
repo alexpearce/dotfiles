@@ -8,6 +8,7 @@
     # Specify packages not explicitly configured below
     packages = with pkgs; [
       entr
+      httpie
       hyperfine
       imagemagick
       jq
@@ -141,6 +142,7 @@
         gstx = "git stash drop";
         gsw = "git switch";
         gswc = "git switch -c";
+        h = "http";
         hme = "home-manager edit";
         hms = "home-manager switch";
         k = "kubectl";
