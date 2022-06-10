@@ -67,7 +67,7 @@ require('packer').startup(function(use)
 
       require('lualine').setup({
         options = {
-          theme = 'github',
+          theme = 'auto',
         },
         sections = {
           lualine_y = {"require('lsp-status').status()"}
@@ -94,7 +94,7 @@ require('packer').startup(function(use)
   -- Find anything
   use {
     'nvim-telescope/telescope.nvim',
-    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
+    requires = {{'nvim-lua/plenary.nvim'}},
     after = 'which-key.nvim',
     config = function()
       require('which-key').register(
