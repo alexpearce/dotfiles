@@ -8,6 +8,7 @@
     # Specify packages not explicitly configured below
     packages = with pkgs; [
       entr
+      fd
       httpie
       hyperfine
       imagemagick
@@ -53,6 +54,15 @@
         {
           name = "iterm2-shell-integration";
           src = ./config/fish/iterm2_shell_integration;
+        }
+        {
+          name = "fzf";
+          src = pkgs.fetchFromGitHub {
+            owner = "PatrickF1";
+            repo = "fzf.fish";
+            rev = "6d8e962f3ed84e42583cec1ec4861d4f0e6c4eb3";
+            sha256 = "sha256-0rnd8oJzLw8x/U7OLqoOMQpK81gRc7DTxZRSHxN9YlM";
+          };
         }
         {
           name = "fish-kubectl-completions";
@@ -192,6 +202,11 @@
           body = "nvim (rg -l $argv) +/\"$argv[-1]\"";
         };
       };
+    };
+
+    fzf = {
+      enable = true;
+      enableFishIntegration = false;
     };
 
     gh = {
