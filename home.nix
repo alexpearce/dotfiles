@@ -7,12 +7,14 @@
     homeDirectory = "/Users/apearce";
     # Specify packages not explicitly configured below
     packages = with pkgs; [
+      colima
       entr
       fd
       httpie
       hyperfine
       imagemagick
       jq
+      juju
       neovim
       nodejs
       pandoc
@@ -20,6 +22,7 @@
       tree
       tree-sitter
       youtube-dl
+      yq
     ];
     sessionVariables = {
       EDITOR = "nvim";
