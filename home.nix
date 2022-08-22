@@ -8,6 +8,7 @@
     # Specify packages not explicitly configured below
     packages = with pkgs; [
       colima
+      docker
       entr
       fd
       httpie
@@ -15,6 +16,7 @@
       imagemagick
       jq
       juju
+      kubectl
       neovim
       nodejs
       pandoc
