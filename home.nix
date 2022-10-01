@@ -282,7 +282,10 @@
       enable = true;
       settings = {
         theme = "onedark";
-        editor.lsp.display-messages = true;
+        editor = {
+          color-modes = true;
+          lsp.display-messages = true;
+        };
         keys.normal = {
           space.space = "file_picker";
           space.w = ":w";
