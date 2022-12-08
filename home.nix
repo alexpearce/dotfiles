@@ -283,6 +283,7 @@
       settings = {
         theme = "onedark";
         editor = {
+          bufferline = "multiple";
           color-modes = true;
           lsp.display-messages = true;
         };
