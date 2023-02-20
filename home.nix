@@ -27,7 +27,7 @@
       yq
     ];
     sessionVariables = {
-      EDITOR = "nvim";
+      EDITOR = "hx";
     };
     stateVersion = "21.11";
   };
@@ -181,9 +181,10 @@
           argumentNames = "hidden";
           body = ''
             if test -n "$hidden"
+              # TODO can't find a way to toggle hidden files in Helix yet
               nvim -c 'lua require(\'telescope.builtin\').find_files({hidden = true})'
             else
-              nvim -c 'lua require(\'telescope.builtin\').find_files()'
+              hx .
             end
           '';
         };
@@ -242,7 +243,6 @@
       };
       extraConfig = {
         core = {
-          editor = "nvim";
           # If git uses `ssh` from Nix the macOS-specific configuration in
           # `~/.ssh/config` won't be seen as valid
           # https://github.com/NixOS/nixpkgs/issues/15686#issuecomment-865928923
@@ -288,7 +288,6 @@
           lsp.display-messages = true;
         };
         keys.normal = {
-          space.space = "file_picker";
           space.w = ":w";
           space.q = ":q";
           space.x = ":x";
