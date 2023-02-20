@@ -144,7 +144,7 @@
         gds = "git diff --staged";
         gl = "git prettylog";
         gp = "git push";
-        gpf = "git push -f";
+        gpf = "git push --force-with-lease";
         gpl = "git pull";
         gplp = "git pull --prune";
         gr = "git restore";
@@ -159,6 +159,7 @@
         gstx = "git stash drop";
         gsw = "git switch";
         gswc = "git switch -c";
+        gswm = "git switch main";
         h = "http";
         hme = "home-manager edit";
         hms = "home-manager switch";
@@ -250,6 +251,12 @@
         };
         color = {
           ui = true;
+        };
+        diff = {
+          colorMoved = "default";
+        };
+        merge = {
+          conflictstyle = "zdiff3";
         };
         push = {
           default = "current";
