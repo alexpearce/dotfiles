@@ -161,8 +161,8 @@
         gswc = "git switch -c";
         gswm = "git switch main";
         h = "http";
-        hme = "home-manager edit";
-        hms = "home-manager switch";
+        hme = "home-manager --flake ~/.config/nixpkgs edit";
+        hms = "home-manager --flake ~/.config/nixpkgs switch";
         k = "kubectl";
         ka = "kubectl apply -f";
         kcgc = "kubectl config get-contexts";
@@ -282,6 +282,16 @@
         "*.pyc"
         ".envrc"
         "environment.yaml"
+      ];
+      includes = [
+        {
+          contents = {
+            user = {
+              email = "alex@mystic.ai";
+            };
+          };
+          condition = "gitdir:~/Mystic/";
+        }
       ];
     };
 

@@ -12,36 +12,26 @@ blog post][nix-post].
 
 ## Usage
 
-Install [Nix][nix] and then install [home-manager][home-manager]. You should be
-able to run the `home-manager` program in a shell.
+Install [Nix][nix], enable Nix Flake support, and then install [home-manager]
+[home-manager]. You should be able to run the `nix flake` command and the
+`home-manager` program in a shell.
 
-Next, clone this repository to `~/.config/nixpkgs`.
+Next, clone this repository. We'll use `~/Code/dotfiles`.
 
 ```shell
-$ git clone git@github.com:alexpearce/dotfiles.git ~/.config/nixpkgs
+$ git clone git@github.com:alexpearce/dotfiles.git ~/Code/dotfiles
 ```
 
-This will place the [`home.nix`](home.nix) file in the location home-manager
-expects. The home-manager profile can then be built and activated:
+The home-manager profile can then be built and activated:
 
 ```shell
-$ home-manager switch
+$ home-manager switch --flake ~/Code/dotfiles#apearwin
 ```
 
-To update home-manager:
+To update dependencies:
 
 ```shell
-$ nix-channel --update nixpkgs
-unpacking channels...
-$ nix-env -u home-manager
-```
-
-To update home-manager-managed packages:
-
-```shell
-$ nix-channel --update nixpkgs
-unpacking channels...
-$ home-manager switch
+$ nix flake update ~/Code/dotfiles
 ```
 
 ### Fish
