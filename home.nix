@@ -298,7 +298,7 @@
     helix = {
       enable = true;
       settings = {
-        theme = "onedark";
+        theme = "onelight";
         editor = {
           bufferline = "multiple";
           color-modes = true;
