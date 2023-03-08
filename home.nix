@@ -15,16 +15,12 @@
       hyperfine
       imagemagick
       jq
-      juju
-      kubectl
       neovim
       nodejs
       pandoc
       ripgrep
       tree
       tree-sitter
-      youtube-dl
-      yq
     ];
     sessionVariables = {
       EDITOR = "hx";
