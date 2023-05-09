@@ -65,15 +65,6 @@
             sha256 = "sha256-0rnd8oJzLw8x/U7OLqoOMQpK81gRc7DTxZRSHxN9YlM";
           };
         }
-        {
-          name = "fish-kubectl-completions";
-          src = pkgs.fetchFromGitHub {
-            owner = "evanlucas";
-            repo = "fish-kubectl-completions";
-            rev = "ced676392575d618d8b80b3895cdc3159be3f628";
-            sha256 = "sha256-OYiYTW+g71vD9NWOcX1i2/TaQfAg+c2dJZ5ohwWSDCc";
-          };
-        }
         # Need this when using Fish as a default macOS shell in order to pick
         # up ~/.nix-profile/bin
         {
@@ -159,14 +150,6 @@
         h = "http";
         hme = "home-manager --flake ~/.config/nixpkgs edit";
         hms = "home-manager --flake ~/.config/nixpkgs switch";
-        k = "kubectl";
-        ka = "kubectl apply -f";
-        kcgc = "kubectl config get-contexts";
-        kcuc = "kubectl config use-context";
-        kd = "kubectl describe";
-        kg = "kubectl get";
-        kl = "kubectl logs";
-        kr = "kubectl run -i --tty";
         m = "make";
         n = "nvim";
         o = "open";
