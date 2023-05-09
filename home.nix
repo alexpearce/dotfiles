@@ -266,10 +266,10 @@
         {
           contents = {
             user = {
-              email = "alex@mystic.ai";
+              email = "alex.pearce@multiverse.io";
             };
           };
-          condition = "gitdir:~/Mystic/";
+          condition = "gitdir:~/Multiverse/";
         }
       ];
     };
