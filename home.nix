@@ -261,6 +261,7 @@
         "*.pyc"
         ".envrc"
         "environment.yaml"
+        ".direnv"
       ];
       includes = [
         {
