@@ -265,8 +265,15 @@
       includes = [
         {
           contents = {
+            commit = {
+              gpgsign = true;
+            };
+            gpg = {
+              format = "ssh";
+            };
             user = {
               email = "alex.pearce@multiverse.io";
+              signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINDfqmONBNsg0/E8VBzLiIpf5aP+pQIl++DAHtPYY2Dz";
             };
           };
           condition = "gitdir:~/Multiverse/";
