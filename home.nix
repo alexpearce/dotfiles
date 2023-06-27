@@ -15,7 +15,6 @@
       hyperfine
       imagemagick
       jq
-      neovim
       nodejs
       pandoc
       ripgrep
@@ -105,8 +104,6 @@
       '';
       shellAliases = {
         ipython = "ipython --no-banner";
-        nvim = "nvim -p";
-        vim = "vim -p";
         rm = "rm -i";
         cp = "cp -i";
         mv = "mv -i";
@@ -151,18 +148,18 @@
         hme = "home-manager --flake ~/.config/nixpkgs edit";
         hms = "home-manager --flake ~/.config/nixpkgs switch";
         m = "make";
-        n = "nvim";
         o = "open";
         p = "python3";
       };
       functions = {
         ctrlp = {
-          description = "Launch Neovim file finder from the shell";
+          description = "Launch Helix file finder from the shell";
           argumentNames = "hidden";
           body = ''
             if test -n "$hidden"
               # TODO can't find a way to toggle hidden files in Helix yet
-              nvim -c 'lua require(\'telescope.builtin\').find_files({hidden = true})'
+              echo 'Hidden searching not yet supported.'
+              exit 1
             else
               hx .
             end
@@ -182,10 +179,6 @@
         mkdcd = {
           description = "Make a directory tree and enter it";
           body = "mkdir -p $argv[1]; and cd $argv[1]";
-        };
-        nvimrg = {
-          description = "Open files matched by ripgrep with Neovim";
-          body = "nvim (rg -l $argv) +/\"$argv[-1]\"";
         };
       };
     };
@@ -318,12 +311,4 @@
   xdg.configFile."nix/nix.conf".text = ''
     experimental-features = nix-command flakes
   '';
-
-  # FIXME The init.vim unconditionally installed by this module conflicts with
-  # our init.lua, so we cannot use the module for now and must install the
-  # configuration explicitly
-  xdg.configFile.nvim = {
-    source = ./config/neovim;
-    recursive = true;
-  };
 }
