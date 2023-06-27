@@ -24,7 +24,7 @@
     sessionVariables = {
       EDITOR = "hx";
     };
-    stateVersion = "21.11";
+    stateVersion = "23.11";
   };
 
   programs = {
