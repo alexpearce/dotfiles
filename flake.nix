@@ -9,19 +9,42 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
-    let
-      system = "aarch64-darwin";
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+  }: let
+    makeHomeManagerConfiguration = {
+      system,
+      username,
+      homeDirectory ? "/Users/${username}",
+    }: let
       pkgs = nixpkgs.legacyPackages.${system};
     in
-    {
-      formatter.${system} = pkgs.nixpkgs-fmt;
-      homeConfigurations.apearwin = home-manager.lib.homeManagerConfiguration {
+      home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
         modules = [
           ./home.nix
+          {
+            home = {
+              inherit homeDirectory username;
+              stateVersion = "23.11";
+            };
+          }
         ];
       };
+  in {
+    formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.alejandra;
+    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
+    homeConfigurations.apearwin = makeHomeManagerConfiguration {
+      system = "aarch64-darwin";
+      username = "apearce";
     };
+    homeConfigurations.apearwin-ci = makeHomeManagerConfiguration {
+      system = "x86_64-linux";
+      username = "runner";
+      homeDirectory = "/home/runner";
+    };
+  };
 }

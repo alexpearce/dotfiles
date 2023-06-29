@@ -1,10 +1,9 @@
-{ config, pkgs, ... }:
-
 {
-
+  config,
+  pkgs,
+  ...
+}: {
   home = {
-    username = "apearce";
-    homeDirectory = "/Users/apearce";
     # Specify packages not explicitly configured below
     packages = with pkgs; [
       colima
@@ -24,7 +23,6 @@
     sessionVariables = {
       EDITOR = "hx";
     };
-    stateVersion = "23.11";
   };
 
   programs = {

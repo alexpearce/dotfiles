@@ -8,4 +8,8 @@ jobs:
     - uses: DeterminateSystems/nix-installer-action@main
     - uses: DeterminateSystems/magic-nix-cache-action@main
     - name: Install home-manager and realise home.nix
-      run: nix run home-manager/master -- switch --flake .#apearwin
+      run: |
+        # Create profile folders home-manager expects to exist.
+        nix profile list
+        # Move the nix.conf file created by magic-nix-cache rather than fail.
+        nix run home-manager/master -- switch --flake .#apearwin-ci -b backup
