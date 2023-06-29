@@ -41,12 +41,6 @@ I like to set [fish][fish] as my default shell. On macOS this means:
    `fish` binary at `~/.nix-profile/bin/fish`.
 2. Setting the default shell with `chsh -s ~/.nix-profile/bin/fish`.
 
-### Neovim
-
-On its first run [Neovim][neovim] will install the [packer.nvim][packer]
-package management plugin. Restart Neovim and install the other packages with
-`:PackerInstall`.
-
 ### iTerm2
 
 The [iTerm2][iterm2] profile can be installed with:
