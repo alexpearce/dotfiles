@@ -24,7 +24,7 @@ $ git clone git@github.com:alexpearce/dotfiles.git ~/Code/dotfiles
 The home-manager profile can then be built and activated:
 
 ```shell
-$ nix run home-manager/master -- switch --flake ~/Code/dotfiles#apearwin
+$ nix run home-manager/master --switch --flake ~/Code/dotfiles#apearwin
 ```
 
 To update dependencies:
