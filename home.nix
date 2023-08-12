@@ -96,8 +96,8 @@
         iterm2_shell_integration
 
         # Pick up conda installation
-        if test -x /Users/apearce/.mambaforge/bin/conda
-          eval /Users/apearce/.mambaforge/bin/conda "shell.fish" "hook" $argv | source
+        if test -x ~/.mambaforge/bin/conda
+          eval ~/.mambaforge/bin/conda "shell.fish" "hook" $argv | source
         end
       '';
       shellAliases = {

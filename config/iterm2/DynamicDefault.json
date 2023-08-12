@@ -365,7 +365,7 @@
       "Character Encoding": 4,
       "Close Sessions On End": true,
       "Columns": 95,
-      "Command": "\/Users\/apearce\/.nix-profile\/bin\/fish",
+      "Command": "\/Users\/apearwin\/.nix-profile\/bin\/fish",
       "Cursor Boost": 0,
       "Cursor Boost (Dark)": 0,
       "Cursor Boost (Light)": 0,
@@ -432,7 +432,7 @@
       "Default Bookmark": "No",
       "Description": "Default (dynamic)",
       "Disable Window Resizing": true,
-      "Dynamic Profile Filename": "/Users/apearce/Library/Application Support/iTerm2/DynamicProfiles/DynamicDefault.json",
+      "Dynamic Profile Filename": "/Users/apearwin/Library/Application Support/iTerm2/DynamicProfiles/DynamicDefault.json",
       "Flashing Bell": false,
       "Foreground Color": {
         "Blue Component": 0.1803921568627451,
@@ -666,7 +666,7 @@
       "Vertical Spacing": 1,
       "Visual Bell": true,
       "Window Type": 0,
-      "Working Directory": "/Users/apearce"
+      "Working Directory": "/Users/apearwin"
     }
   ]
 }

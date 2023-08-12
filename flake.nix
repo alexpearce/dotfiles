@@ -39,7 +39,7 @@
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
     homeConfigurations.apearwin = makeHomeManagerConfiguration {
       system = "aarch64-darwin";
-      username = "apearce";
+      username = "apearwin";
     };
     homeConfigurations.apearwin-ci = makeHomeManagerConfiguration {
       system = "x86_64-linux";
