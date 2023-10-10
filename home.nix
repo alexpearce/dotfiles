@@ -50,10 +50,6 @@
       enable = true;
       plugins = [
         {
-          name = "iterm2-shell-integration";
-          src = ./config/fish/iterm2_shell_integration;
-        }
-        {
           name = "fzf";
           src = pkgs.fetchFromGitHub {
             owner = "PatrickF1";
@@ -91,13 +87,23 @@
         set fish_color_escape white
         set fish_color_autosuggestion brblack
       '';
+      # Send OSC 133 escape sequences to signal prompt and ouput start and end.
       interactiveShellInit = ''
-        # Activate the iTerm 2 shell integration
-        iterm2_shell_integration
+        function terminal_integration_preprompt --on-event fish_prompt
+          printf "\033]133;A;\007"
+        end
 
-        # Pick up conda installation
-        if test -x ~/.mambaforge/bin/conda
-          eval ~/.mambaforge/bin/conda "shell.fish" "hook" $argv | source
+        # TODO not used yet.
+        function terminal_integration_postprompt
+          printf "\033]133;B;\007"
+        end
+
+        function terminal_integration_preexec --on-event fish_preexec
+          printf "\033]133;C;\007"
+        end
+
+        function terminal_integration_postexec --on-event fish_postexec
+          printf "\033]133;D;\007"
         end
       '';
       shellAliases = {
@@ -296,8 +302,109 @@
       enable = true;
       enableFishIntegration = true;
       settings = {
-        add_newline = true;
+        elixir.disabled = true;
+        nodejs.disabled = true;
+        nix_shell.disabled = true;
+        package.disabled = true;
       };
+    };
+
+    wezterm = {
+      enable = true;
+      extraConfig = ''
+      -- https://wezfurlong.org/wezterm/config/lua/window/get_appearance.html
+      function color_scheme_for_appearance(appearance)
+        if appearance:find 'Dark' then
+          return 'OneDark (base16)'
+        else
+          return 'One Light (base16)'
+        end
+      end
+
+      wezterm.on('window-config-reloaded', function(window, pane)
+        local overrides = window:get_config_overrides() or {}
+        local appearance = window:get_appearance()
+        local color_scheme = color_scheme_for_appearance(appearance)
+        if overrides.color_scheme ~= color_scheme then
+          overrides.color_scheme = color_scheme
+          window:set_config_overrides(overrides)
+        end
+      end)
+
+      return {
+        bold_brightens_ansi_colors = "BrightAndBold",
+        color_scheme = "One Light (base16)",
+        default_prog = { "/Users/alex.pearce/.nix-profile/bin/fish" },
+        font = wezterm.font("JetBrains Mono"),
+        font_size = 14.0,
+        keys = {
+          -- Vim-style hjkl navigation between panes.
+          {
+            key = "h",
+            mods = "CMD|OPT",
+            action = wezterm.action.ActivatePaneDirection("Left"),
+          },
+          {
+            key = "j",
+            mods = "CMD|OPT",
+            action = wezterm.action.ActivatePaneDirection("Down"),
+          },
+          {
+            key = "k",
+            mods = "CMD|OPT",
+            action = wezterm.action.ActivatePaneDirection("Up"),
+          },
+          {
+            key = "l",
+            mods = "CMD|OPT",
+            action = wezterm.action.ActivatePaneDirection("Right"),
+          },
+          -- iTerm-style cmd-d/cmd-shift-d pane splitting.
+          {
+            key = "d",
+            mods = "CMD",
+            action = wezterm.action.SplitPane({direction = "Right"})
+          },
+          {
+            key = "d",
+            mods = "CMD|SHIFT",
+            action = wezterm.action.SplitPane({direction = "Down"})
+          },
+          -- iTerm-style cmd-shift-enter pane zoom toggle.
+          {
+            key = "Enter",
+            mods = "CMD|SHIFT",
+            action = wezterm.action.TogglePaneZoomState,
+          },
+          -- Scroll between prompts.
+          {
+            key = "UpArrow",
+            mods = "CMD|SHIFT",
+            action = wezterm.action.ScrollToPrompt(-1),
+          },
+          {
+            key = "DownArrow",
+            mods = "CMD|SHIFT",
+            action = wezterm.action.ScrollToPrompt(1),
+          },
+          -- Type a hash symbol.
+          {
+            key = "3",
+            mods = "OPT",
+            action = wezterm.action.SendString("#"),
+          },
+        },
+        hide_tab_bar_if_only_one_tab = true,
+        mouse_bindings = {
+          {
+            event = { Down = { streak = 3, button = 'Left' } },
+            action = wezterm.action.SelectTextAtMouseCursor 'SemanticZone',
+            mods = 'NONE',
+          },
+        },
+        use_fancy_tab_bar = true,
+      }
+      '';
     };
 
     zoxide = {
