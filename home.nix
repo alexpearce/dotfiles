@@ -264,7 +264,7 @@
               format = "ssh";
             };
             user = {
-              email = "alex.pearce@multiverse.io";
+              email = "alex.pearwin@multiverse.io";
               signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINDfqmONBNsg0/E8VBzLiIpf5aP+pQIl++DAHtPYY2Dz";
             };
           };
