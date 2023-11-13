@@ -256,8 +256,6 @@
         ".DS_Store"
         "Icon"
         "*.pyc"
-        ".envrc"
-        "environment.yaml"
         ".direnv"
       ];
       includes = [
