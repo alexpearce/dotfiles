@@ -302,6 +302,7 @@
         editor = {
           bufferline = "multiple";
           color-modes = true;
+          line-number = "relative";
           lsp.display-messages = true;
         };
         keys.normal = {
@@ -310,6 +311,12 @@
           space.x = ":x";
         };
       };
+      languages.language = [
+        {
+          name = "elixir";
+          auto-format = true;
+        }
+      ];
     };
 
     home-manager.enable = true;
