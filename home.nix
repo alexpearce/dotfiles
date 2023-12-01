@@ -212,10 +212,28 @@
       };
       delta = {
         enable = true;
+        # Custom `delta` executable whichs sets light/dark feature
+        # depending on OS appearance.
+        package = pkgs.writeShellApplication {
+          name = "delta";
+          runtimeInputs = [pkgs.delta];
+          text = ''
+            features=$(defaults read -globalDomain AppleInterfaceStyle > /dev/null 2>&1 && printf dark-mode || printf light-mode)
+            env DELTA_FEATURES="$features" ${pkgs.delta}/bin/delta "$@"
+          '';
+        };
         options = {
+          light-mode = {
+            light = true;
+            syntax-theme = "GitHub";
+          };
+          dark-mode = {
+            dark = true;
+            syntax-theme = "OneHalfDark";
+          };
+          features = "light-mode";
           navigate = true;
           line-numbers = true;
-          syntax-theme = "GitHub";
         };
       };
       extraConfig = {
