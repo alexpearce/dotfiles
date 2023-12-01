@@ -41,17 +41,6 @@ I like to set [fish][fish] as my default shell. On macOS this means:
    `fish` binary at `~/.nix-profile/bin/fish`.
 2. Setting the default shell with `chsh -s ~/.nix-profile/bin/fish`.
 
-### iTerm2
-
-The [iTerm2][iterm2] profile can be installed with:
-
-```shell
-$ ln -s (realpath config/iterm2/DynamicDefault.json) ~/Library/Application\ Support/iTerm2/DynamicProfiles/
-```
-
-It depends on the [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) variant
-of the [IBM Plex Mono](https://www.ibm.com/plex/) fonts.
-
 ## License
 
 [MIT](http://opensource.org/licenses/MIT).
@@ -60,9 +49,6 @@ of the [IBM Plex Mono](https://www.ibm.com/plex/) fonts.
 [nix-installer]: https://github.com/DeterminateSystems/nix-installer
 [home-manager]: https://github.com/nix-community/home-manager
 [fish]: https://fishshell.com/
-[neovim]: https://neovim.io/
-[packer]: https://github.com/wbthomason/packer.nvim
-[iterm2]: https://iterm2.com/
 
 [nix-post]: https://alexpearce.me/2021/07/managing-dotfiles-with-nix/
 [stow-post]: https://alexpearce.me/2016/02/managing-dotfiles-with-stow/
