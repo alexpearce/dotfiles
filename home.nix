@@ -151,6 +151,7 @@
         h = "http";
         hme = "home-manager --flake ~/.config/nixpkgs edit";
         hms = "home-manager --flake ~/.config/nixpkgs switch";
+        iexm = "iex -S mix";
         m = "make";
         o = "open";
         p = "python3";
