@@ -149,8 +149,8 @@
         gswc = "git switch -c";
         gswm = "git switch main";
         h = "http";
-        hme = "home-manager --flake ~/.config/nixpkgs edit";
-        hms = "home-manager --flake ~/.config/nixpkgs switch";
+        hme = "home-manager --flake ~/Code/dotfiles edit";
+        hms = "home-manager --flake ~/Code/dotfiles switch";
         iexm = "iex -S mix";
         m = "make";
         o = "open";
@@ -330,6 +330,7 @@
         nodejs.disabled = true;
         nix_shell.disabled = true;
         package.disabled = true;
+        docker_context.disabled = true;
       };
     };
 
