@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -13,13 +13,13 @@
     self,
     nixpkgs,
     home-manager,
-  }: let
+  } @ inputs: let
     makeHomeManagerConfiguration = {
       system,
       username,
       homeDirectory ? "/Users/${username}",
     }: let
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {inherit system;};
     in
       home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
@@ -50,5 +50,25 @@
       username = "runner";
       homeDirectory = "/home/runner";
     };
+    nixosConfigurations.testbench = let
+      system = "aarch64-linux";
+    in
+      nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = inputs;
+        modules = [
+          ./configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.apearwin = makeHomeManagerConfiguration {
+              inherit system;
+              username = "apearwin";
+              homeDirectory = "/home/apearwin";
+            };
+          }
+        ];
+      };
   };
 }
