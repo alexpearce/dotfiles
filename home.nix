@@ -363,6 +363,12 @@
         font = wezterm.font("JetBrains Mono"),
         font_size = 14.0,
         keys = {
+          -- Close panes with shift+w.
+          {
+            key = "w",
+            mods = "CMD|SHIFT",
+            action = wezterm.action.CloseCurrentPane { confirm = true },
+          },
           -- Vim-style hjkl navigation between panes.
           {
             key = "h",
