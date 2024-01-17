@@ -3,6 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -12,6 +16,7 @@
   outputs = {
     self,
     nixpkgs,
+    nix-darwin,
     home-manager,
   }: let
     makeHomeManagerConfiguration = {
@@ -35,6 +40,14 @@
         ];
       };
   in {
+    # `nix run nix-darwin -- switch --flake (pwd)`
+    darwinConfigurations.MULTIVLAP1087 = nix-darwin.lib.darwinSystem {
+      system = "aarch64-darwin";
+      modules = [
+        ./macos.nix
+        home-manager.darwinModules.home-manager
+      ];
+    };
     formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.alejandra;
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
     homeConfigurations.apearwin = makeHomeManagerConfiguration {
