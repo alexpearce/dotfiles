@@ -41,10 +41,6 @@
       system = "aarch64-darwin";
       username = "apearwin";
     };
-    homeConfigurations.apearwin-work = makeHomeManagerConfiguration {
-      system = "aarch64-darwin";
-      username = "alex.pearce";
-    };
     homeConfigurations.apearwin-ci = makeHomeManagerConfiguration {
       system = "x86_64-linux";
       username = "runner";
