@@ -136,6 +136,7 @@
         gpl = "git pull";
         gplp = "git pull --prune";
         gr = "git restore";
+        grs = "git restore --staged";
         grb = "git rebase";
         grba = "git rebase --abort";
         grbc = "git rebase --continue";
