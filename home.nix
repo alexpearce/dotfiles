@@ -337,104 +337,104 @@
     wezterm = {
       enable = true;
       extraConfig = ''
-      -- https://wezfurlong.org/wezterm/config/lua/window/get_appearance.html
-      function color_scheme_for_appearance(appearance)
-        if appearance:find 'Dark' then
-          return 'OneDark (base16)'
-        else
-          return 'One Light (base16)'
+        -- https://wezfurlong.org/wezterm/config/lua/window/get_appearance.html
+        function color_scheme_for_appearance(appearance)
+          if appearance:find 'Dark' then
+            return 'OneDark (base16)'
+          else
+            return 'One Light (base16)'
+          end
         end
-      end
 
-      wezterm.on('window-config-reloaded', function(window, pane)
-        local overrides = window:get_config_overrides() or {}
-        local appearance = window:get_appearance()
-        local color_scheme = color_scheme_for_appearance(appearance)
-        if overrides.color_scheme ~= color_scheme then
-          overrides.color_scheme = color_scheme
-          window:set_config_overrides(overrides)
-        end
-      end)
+        wezterm.on('window-config-reloaded', function(window, pane)
+          local overrides = window:get_config_overrides() or {}
+          local appearance = window:get_appearance()
+          local color_scheme = color_scheme_for_appearance(appearance)
+          if overrides.color_scheme ~= color_scheme then
+            overrides.color_scheme = color_scheme
+            window:set_config_overrides(overrides)
+          end
+        end)
 
-      return {
-        bold_brightens_ansi_colors = "BrightAndBold",
-        color_scheme = "One Light (base16)",
-        default_prog = { "/Users/${config.home.username}/.nix-profile/bin/fish" },
-        font = wezterm.font("JetBrains Mono"),
-        font_size = 14.0,
-        keys = {
-          -- Close panes with shift+w.
-          {
-            key = "w",
-            mods = "CMD|SHIFT",
-            action = wezterm.action.CloseCurrentPane { confirm = true },
+        return {
+          bold_brightens_ansi_colors = "BrightAndBold",
+          color_scheme = "One Light (base16)",
+          default_prog = { "/Users/${config.home.username}/.nix-profile/bin/fish" },
+          font = wezterm.font("JetBrains Mono"),
+          font_size = 14.0,
+          keys = {
+            -- Close panes with shift+w.
+            {
+              key = "w",
+              mods = "CMD|SHIFT",
+              action = wezterm.action.CloseCurrentPane { confirm = true },
+            },
+            -- Vim-style hjkl navigation between panes.
+            {
+              key = "h",
+              mods = "CMD|OPT",
+              action = wezterm.action.ActivatePaneDirection("Left"),
+            },
+            {
+              key = "j",
+              mods = "CMD|OPT",
+              action = wezterm.action.ActivatePaneDirection("Down"),
+            },
+            {
+              key = "k",
+              mods = "CMD|OPT",
+              action = wezterm.action.ActivatePaneDirection("Up"),
+            },
+            {
+              key = "l",
+              mods = "CMD|OPT",
+              action = wezterm.action.ActivatePaneDirection("Right"),
+            },
+            -- iTerm-style cmd-d/cmd-shift-d pane splitting.
+            {
+              key = "d",
+              mods = "CMD",
+              action = wezterm.action.SplitPane({direction = "Right"})
+            },
+            {
+              key = "d",
+              mods = "CMD|SHIFT",
+              action = wezterm.action.SplitPane({direction = "Down"})
+            },
+            -- iTerm-style cmd-shift-enter pane zoom toggle.
+            {
+              key = "Enter",
+              mods = "CMD|SHIFT",
+              action = wezterm.action.TogglePaneZoomState,
+            },
+            -- Scroll between prompts.
+            {
+              key = "UpArrow",
+              mods = "CMD|SHIFT",
+              action = wezterm.action.ScrollToPrompt(-1),
+            },
+            {
+              key = "DownArrow",
+              mods = "CMD|SHIFT",
+              action = wezterm.action.ScrollToPrompt(1),
+            },
+            -- Type a hash symbol.
+            {
+              key = "3",
+              mods = "OPT",
+              action = wezterm.action.SendString("#"),
+            },
           },
-          -- Vim-style hjkl navigation between panes.
-          {
-            key = "h",
-            mods = "CMD|OPT",
-            action = wezterm.action.ActivatePaneDirection("Left"),
+          hide_tab_bar_if_only_one_tab = true,
+          mouse_bindings = {
+            {
+              event = { Down = { streak = 3, button = 'Left' } },
+              action = wezterm.action.SelectTextAtMouseCursor 'SemanticZone',
+              mods = 'NONE',
+            },
           },
-          {
-            key = "j",
-            mods = "CMD|OPT",
-            action = wezterm.action.ActivatePaneDirection("Down"),
-          },
-          {
-            key = "k",
-            mods = "CMD|OPT",
-            action = wezterm.action.ActivatePaneDirection("Up"),
-          },
-          {
-            key = "l",
-            mods = "CMD|OPT",
-            action = wezterm.action.ActivatePaneDirection("Right"),
-          },
-          -- iTerm-style cmd-d/cmd-shift-d pane splitting.
-          {
-            key = "d",
-            mods = "CMD",
-            action = wezterm.action.SplitPane({direction = "Right"})
-          },
-          {
-            key = "d",
-            mods = "CMD|SHIFT",
-            action = wezterm.action.SplitPane({direction = "Down"})
-          },
-          -- iTerm-style cmd-shift-enter pane zoom toggle.
-          {
-            key = "Enter",
-            mods = "CMD|SHIFT",
-            action = wezterm.action.TogglePaneZoomState,
-          },
-          -- Scroll between prompts.
-          {
-            key = "UpArrow",
-            mods = "CMD|SHIFT",
-            action = wezterm.action.ScrollToPrompt(-1),
-          },
-          {
-            key = "DownArrow",
-            mods = "CMD|SHIFT",
-            action = wezterm.action.ScrollToPrompt(1),
-          },
-          -- Type a hash symbol.
-          {
-            key = "3",
-            mods = "OPT",
-            action = wezterm.action.SendString("#"),
-          },
-        },
-        hide_tab_bar_if_only_one_tab = true,
-        mouse_bindings = {
-          {
-            event = { Down = { streak = 3, button = 'Left' } },
-            action = wezterm.action.SelectTextAtMouseCursor 'SemanticZone',
-            mods = 'NONE',
-          },
-        },
-        use_fancy_tab_bar = true,
-      }
+          use_fancy_tab_bar = true,
+        }
       '';
     };
 
