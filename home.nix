@@ -332,6 +332,10 @@
         nix_shell.disabled = true;
         package.disabled = true;
         docker_context.disabled = true;
+        git_branch.format = "[$branch(:$remote_branch)]($style) ";
+        git_branch.style = "bold black";
+        git_status.style = "bold black";
+        character.success_symbol = "[❯](bold black)";
       };
     };
 
