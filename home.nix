@@ -448,4 +448,11 @@
       enableFishIntegration = true;
     };
   };
+
+  # Requires telling Hammerspoon to look for configuration in the right place:
+  #   defaults write org.hammerspoon.Hammerspoon MJConfigFile "${XDG_CONFIG_HOME:-$HOME/.config}/hammerspoon/init.lua"
+  xdg.configFile.hammerspoon = {
+    source = ./hammerspoon;
+    recursive = true;
+  };
 }
