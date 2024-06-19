@@ -11,6 +11,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -18,7 +22,8 @@
     nixpkgs,
     nix-darwin,
     home-manager,
-  }: let
+    disko,
+  } @ inputs: let
     makeHomeManagerConfiguration = {
       system,
       username,
@@ -40,6 +45,7 @@
         ];
       };
   in {
+    formatter.aarch64-linux = nixpkgs.legacyPackages.aarch64-linux.alejandra;
     formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.alejandra;
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
     homeConfigurations.apearwin = makeHomeManagerConfiguration {
@@ -50,6 +56,14 @@
       system = "x86_64-linux";
       username = "runner";
       homeDirectory = "/home/runner";
+    };
+    nixosConfigurations.vm-utm = nixpkgs.lib.nixosSystem {
+      system = "aarch64-linux";
+      specialArgs = {inherit inputs;};
+      modules = [
+        ./linux.nix
+        home-manager.nixosModules.home-manager
+      ];
     };
     darwinConfigurations.pearwin-laptop = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
