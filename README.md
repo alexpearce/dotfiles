@@ -41,6 +41,26 @@ I like to set [fish][fish] as my default shell. On macOS this means:
    `fish` binary at `~/.nix-profile/bin/fish`.
 2. Setting the default shell with `chsh -s ~/.nix-profile/bin/fish`.
 
+### nix-darwin
+
+As an alternative to using home-manager alone, the configurations supports using
+it with nix-darwin.
+
+The initial setup requires moving the Nix configuration file created by the
+Determinate Systems installer out of the way, so that nix-darwin can manage it
+for us.
+
+```
+sudo mv /etc/nix/nix.conf{,.before-nix-darwin}
+nix --extra-experimental-features 'nix-command flakes' run nix-darwin -- switch --flake (pwd)
+```
+
+Subsequent rebuilds, after configuration changes, are simpler.
+
+```
+darwin-rebuild switch --flake (pwd)
+```
+
 ## License
 
 [MIT](http://opensource.org/licenses/MIT).
