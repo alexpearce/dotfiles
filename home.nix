@@ -363,7 +363,7 @@
         return {
           bold_brightens_ansi_colors = "BrightAndBold",
           color_scheme = "One Light (base16)",
-          default_prog = { "/Users/${config.home.username}/.nix-profile/bin/fish" },
+          default_prog = { "${config.home.profileDirectory}/bin/fish" },
           font = wezterm.font("JetBrains Mono"),
           font_size = 14.0,
           keys = {
