@@ -41,6 +41,27 @@ I like to set [fish][fish] as my default shell. On macOS this means:
    `fish` binary at `~/.nix-profile/bin/fish`.
 2. Setting the default shell with `chsh -s ~/.nix-profile/bin/fish`.
 
+
+### nix-darwin
+
+As an alternative to using home-manager alone, the configuration supports using
+it with [nix-darwin][nix-darwin].
+
+The initial setup requires moving the Nix configuration file created by the
+Determinate Systems installer out of the way, so that nix-darwin can manage it
+for us.
+
+```
+sudo mv /etc/nix/nix.conf{,.before-nix-darwin}
+nix --extra-experimental-features 'nix-command flakes' run nix-darwin -- switch --flake (pwd)
+```
+
+Subsequent rebuilds, after configuration changes, are simpler.
+
+```
+darwin-rebuild switch --flake (pwd)
+```
+
 ## License
 
 [MIT](http://opensource.org/licenses/MIT).
@@ -49,6 +70,7 @@ I like to set [fish][fish] as my default shell. On macOS this means:
 [nix-installer]: https://github.com/DeterminateSystems/nix-installer
 [home-manager]: https://github.com/nix-community/home-manager
 [fish]: https://fishshell.com/
+[nix-darwin]: https://github.com/LnL7/nix-darwin
 
 [nix-post]: https://alexpearce.me/2021/07/managing-dotfiles-with-nix/
 [stow-post]: https://alexpearce.me/2016/02/managing-dotfiles-with-stow/
