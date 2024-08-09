@@ -437,6 +437,7 @@
               mods = 'NONE',
             },
           },
+          scrollback_lines = 100000,
           use_fancy_tab_bar = true,
         }
       '';
