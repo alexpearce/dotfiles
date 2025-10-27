@@ -24,22 +24,11 @@ in {
   };
 
   fonts.packages = [
-    (pkgs.nerdfonts.override {
-      fonts = [
-        "JetBrainsMono"
-      ];
-    })
+    pkgs.nerd-fonts.jetbrains-mono
   ];
 
-  nix.extraOptions = ''
-    # Settings copied from those written by
-    # https://github.com/DeterminateSystems/nix-installer, version 0.11.0.
-    extra-nix-path = nixpkgs=flake:nixpkgs
-    bash-prompt-prefix = (nix:$name)\040
-    experimental-features = nix-command flakes auto-allocate-uids
-    build-users-group = nixbld
-  '';
-  services.nix-daemon.enable = true;
+  # Our Nix installation is managed by the Determinate Systems installer.
+  nix.enable = false;
 
   system.stateVersion = 4;
 }

@@ -29,13 +29,25 @@
     bat = {
       enable = true;
       config = {
-        theme = "GitHub";
+        theme = "base16";
         italic-text = "always";
+      };
+    };
+
+    delta = {
+      enable = true;
+      enableGitIntegration = true;
+      options = {
+        navigate = true;
+        line-numbers = true;
       };
     };
 
     direnv = {
       enable = true;
+      config = {
+        global.hide_env_diff = true;
+      };
       nix-direnv = {
         enable = true;
       };
@@ -204,40 +216,40 @@
       };
     };
 
+    ghostty = {
+      enable = true;
+      # Ghostty package is broken on macOS, must install app manually.
+      package = null;
+      settings = {
+        theme = "Rose Pine Dawn";
+        command = "${config.home.profileDirectory}/bin/fish";
+        # Move between panes with cmd+opt+{h,j,k,l}.
+        keybind = [
+          "cmd+opt+h=goto_split:left"
+          "cmd+opt+j=goto_split:bottom"
+          "cmd+opt+k=goto_split:top"
+          "cmd+opt+l=goto_split:right"
+          # Close the current surface with cmd+shift+w.
+          "global:cmd+shift+w=close_surface"
+        ];
+        font-family = "Iosevka Term";
+        font-feature = "+dlig";
+        font-style = "Medium";
+        font-style-bold = "Bold";
+        font-style-italic = "Medium Italic";
+        font-style-bold-italic = "Bold Italic";
+        font-size = 16;
+        # 256 MiB.
+        scrollback-limit = 268435456;
+      };
+    };
+
     git = {
       enable = true;
-      userName = "Alex Pearwin";
-      userEmail = "alex@pearwin.com";
-      aliases = {
-        prettylog = "log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all";
-      };
-      delta = {
-        enable = true;
-        # Custom `delta` executable whichs sets light/dark feature
-        # depending on OS appearance.
-        package = pkgs.writeShellApplication {
-          name = "delta";
-          runtimeInputs = [pkgs.delta];
-          text = ''
-            features=$(defaults read -globalDomain AppleInterfaceStyle > /dev/null 2>&1 && printf dark-mode || printf light-mode)
-            env DELTA_FEATURES="$features" ${pkgs.delta}/bin/delta "$@"
-          '';
+      settings = {
+        alias = {
+          prettylog = "log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all";
         };
-        options = {
-          light-mode = {
-            light = true;
-            syntax-theme = "GitHub";
-          };
-          dark-mode = {
-            dark = true;
-            syntax-theme = "OneHalfDark";
-          };
-          features = "light-mode";
-          navigate = true;
-          line-numbers = true;
-        };
-      };
-      extraConfig = {
         core = {
           # If git uses `ssh` from Nix the macOS-specific configuration in
           # `~/.ssh/config` won't be seen as valid
@@ -262,6 +274,8 @@
         init = {
           defaultBranch = "main";
         };
+        user.email = "alex@pearwin.com";
+        user.name = "Alex Pearwin";
         # Clone git repos with URLs like "gh:alexpearce/dotfiles"
         url."git@github.com:" = {
           insteadOf = "gh:";
@@ -282,7 +296,7 @@
     helix = {
       enable = true;
       settings = {
-        theme = "onelight";
+        theme = "rose_pine_dawn";
         editor = {
           bufferline = "multiple";
           color-modes = true;
@@ -315,115 +329,7 @@
         package.disabled = true;
         docker_context.disabled = true;
         git_branch.format = "[$branch(:$remote_branch)]($style) ";
-        git_branch.style = "bold black";
-        git_status.style = "bold black";
-        character.success_symbol = "[❯](bold black)";
       };
-    };
-
-    wezterm = {
-      enable = true;
-      extraConfig = ''
-        -- https://wezfurlong.org/wezterm/config/lua/window/get_appearance.html
-        function color_scheme_for_appearance(appearance)
-          if appearance:find 'Dark' then
-            return 'OneDark (base16)'
-          else
-            return 'One Light (base16)'
-          end
-        end
-
-        wezterm.on('window-config-reloaded', function(window, pane)
-          local overrides = window:get_config_overrides() or {}
-          local appearance = window:get_appearance()
-          local color_scheme = color_scheme_for_appearance(appearance)
-          if overrides.color_scheme ~= color_scheme then
-            overrides.color_scheme = color_scheme
-            window:set_config_overrides(overrides)
-          end
-        end)
-
-        return {
-          bold_brightens_ansi_colors = "BrightAndBold",
-          color_scheme = "One Light (base16)",
-          default_prog = { "${config.home.profileDirectory}/bin/fish" },
-          font = wezterm.font("JetBrains Mono"),
-          font_size = 14.0,
-          keys = {
-            -- Close panes with shift+w.
-            {
-              key = "w",
-              mods = "CMD|SHIFT",
-              action = wezterm.action.CloseCurrentPane { confirm = true },
-            },
-            -- Vim-style hjkl navigation between panes.
-            {
-              key = "h",
-              mods = "CMD|OPT",
-              action = wezterm.action.ActivatePaneDirection("Left"),
-            },
-            {
-              key = "j",
-              mods = "CMD|OPT",
-              action = wezterm.action.ActivatePaneDirection("Down"),
-            },
-            {
-              key = "k",
-              mods = "CMD|OPT",
-              action = wezterm.action.ActivatePaneDirection("Up"),
-            },
-            {
-              key = "l",
-              mods = "CMD|OPT",
-              action = wezterm.action.ActivatePaneDirection("Right"),
-            },
-            -- iTerm-style cmd-d/cmd-shift-d pane splitting.
-            {
-              key = "d",
-              mods = "CMD",
-              action = wezterm.action.SplitPane({direction = "Right"})
-            },
-            {
-              key = "d",
-              mods = "CMD|SHIFT",
-              action = wezterm.action.SplitPane({direction = "Down"})
-            },
-            -- iTerm-style cmd-shift-enter pane zoom toggle.
-            {
-              key = "Enter",
-              mods = "CMD|SHIFT",
-              action = wezterm.action.TogglePaneZoomState,
-            },
-            -- Scroll between prompts.
-            {
-              key = "UpArrow",
-              mods = "CMD|SHIFT",
-              action = wezterm.action.ScrollToPrompt(-1),
-            },
-            {
-              key = "DownArrow",
-              mods = "CMD|SHIFT",
-              action = wezterm.action.ScrollToPrompt(1),
-            },
-            -- Type a hash symbol.
-            {
-              key = "3",
-              mods = "OPT",
-              action = wezterm.action.SendString("#"),
-            },
-          },
-          hide_tab_bar_if_only_one_tab = true,
-          mouse_bindings = {
-            {
-              event = { Down = { streak = 3, button = 'Left' } },
-              action = wezterm.action.SelectTextAtMouseCursor 'SemanticZone',
-              mods = 'NONE',
-            },
-          },
-          scrollback_lines = 100000,
-          use_fancy_tab_bar = true,
-        }
-      '';
     };
 
     zoxide = {

@@ -17,7 +17,7 @@ leader:bind("", "h", function() hs.application.frontmostApplication():hide() lea
 leader:bind("", "f", function() hs.application.launchOrFocus("Firefox") leader:exit() end, nil)
 leader:bind("", "o", function() hs.application.launchOrFocus("Obsidian") leader:exit() end, nil)
 leader:bind("", "s", function() hs.application.launchOrFocus("Slack") leader:exit() end, nil)
-leader:bind("", "t", function() hs.application.launchOrFocus("WezTerm") leader:exit() end, nil)
+leader:bind("", "t", function() hs.application.launchOrFocus("Ghostty") leader:exit() end, nil)
 
 -- Window management.
 hs.loadSpoon("WindowHalfsAndThirds")
