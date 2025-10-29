@@ -1,7 +1,9 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   username = "apearwin";
   homeDirectory = "/Users/${username}";
-in {
+in
+{
   users.users."${username}" = {
     home = homeDirectory;
   };
@@ -15,7 +17,7 @@ in {
     useGlobalPkgs = true;
     useUserPackages = true;
     users."${username}" = {
-      imports = [./home.nix];
+      imports = [ ./home-manager ];
       home = {
         inherit homeDirectory username;
         stateVersion = "23.11";

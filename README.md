@@ -47,19 +47,14 @@ I like to set [fish][fish] as my default shell. On macOS this means:
 As an alternative to using home-manager alone, the configuration supports using
 it with [nix-darwin][nix-darwin].
 
-The initial setup requires moving the Nix configuration file created by the
-Determinate Systems installer out of the way, so that nix-darwin can manage it
-for us.
-
 ```
-sudo mv /etc/nix/nix.conf{,.before-nix-darwin}
-nix --extra-experimental-features 'nix-command flakes' run nix-darwin -- switch --flake (pwd)
+sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake (pwd)
 ```
 
 Subsequent rebuilds, after configuration changes, are simpler.
 
 ```
-darwin-rebuild switch --flake (pwd)
+sudo darwin-rebuild switch --flake (pwd)
 ```
 
 ## License

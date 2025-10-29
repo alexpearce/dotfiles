@@ -1,6 +1,15 @@
 name: "Test Home Manager configuration."
 on: [push]
 jobs:
+  linting:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: DeterminateSystems/nix-installer-action@main
+    - uses: DeterminateSystems/magic-nix-cache-action@main
+    - name: Nix formatting
+      run: nix fmt -- --ci
+
   tests:
     runs-on: ubuntu-latest
     steps:

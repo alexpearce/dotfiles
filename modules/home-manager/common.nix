@@ -2,12 +2,10 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   home = {
-    # Specify packages not explicitly configured below
     packages = with pkgs; [
-      colima
-      docker
       entr
       fd
       httpie
@@ -16,10 +14,12 @@
       jq
       nodejs
       pandoc
+      python3
       ripgrep
       tree
       tree-sitter
     ];
+
     sessionVariables = {
       EDITOR = "hx";
     };
@@ -65,19 +65,8 @@
           src = pkgs.fetchFromGitHub {
             owner = "PatrickF1";
             repo = "fzf.fish";
-            rev = "6d8e962f3ed84e42583cec1ec4861d4f0e6c4eb3";
-            sha256 = "sha256-0rnd8oJzLw8x/U7OLqoOMQpK81gRc7DTxZRSHxN9YlM";
-          };
-        }
-        # Need this when using Fish as a default macOS shell in order to pick
-        # up ~/.nix-profile/bin
-        {
-          name = "nix-env";
-          src = pkgs.fetchFromGitHub {
-            owner = "lilyball";
-            repo = "nix-env.fish";
-            rev = "00c6cc762427efe08ac0bd0d1b1d12048d3ca727";
-            sha256 = "1hrl22dd0aaszdanhvddvqz3aq40jp9zi2zn0v1hjnf7fx4bgpma";
+            rev = "8920367cf85eee5218cc25a11e209d46e2591e7a";
+            sha256 = "sha256-T8KYLA/r/gOKvAivKRoeqIwE2pINlxFQtZJHpOy9GMM=";
           };
         }
       ];
@@ -98,27 +87,7 @@
         set fish_color_escape white
         set fish_color_autosuggestion brblack
       '';
-      # Send OSC 133 escape sequences to signal prompt and ouput start and end.
-      interactiveShellInit = ''
-        function terminal_integration_preprompt --on-event fish_prompt
-          printf "\033]133;A;\007"
-        end
-
-        # TODO not used yet.
-        function terminal_integration_postprompt
-          printf "\033]133;B;\007"
-        end
-
-        function terminal_integration_preexec --on-event fish_preexec
-          printf "\033]133;C;\007"
-        end
-
-        function terminal_integration_postexec --on-event fish_postexec
-          printf "\033]133;D;\007"
-        end
-      '';
       shellAliases = {
-        ipython = "ipython --no-banner";
         rm = "rm -i";
         cp = "cp -i";
         mv = "mv -i";
@@ -129,7 +98,6 @@
       # An abbreviation will expand after <space> or <Enter> is hit
       shellAbbrs = {
         b = "bat";
-        ip = "ipython";
         g = "git";
         ga = "git add";
         gap = "git add -p";
@@ -161,8 +129,6 @@
         gswc = "git switch -c";
         gswm = "git switch main";
         h = "http";
-        hme = "home-manager --flake ~/Code/dotfiles edit";
-        hms = "home-manager --flake ~/Code/dotfiles switch";
         iexm = "iex -S mix";
         m = "make";
         o = "open";
@@ -218,10 +184,8 @@
 
     ghostty = {
       enable = true;
-      # Ghostty package is broken on macOS, must install app manually.
-      package = null;
       settings = {
-        theme = "Rose Pine Dawn";
+        theme = "TokyoNight Moon";
         command = "${config.home.profileDirectory}/bin/fish";
         # Move between panes with cmd+opt+{h,j,k,l}.
         keybind = [
@@ -296,7 +260,7 @@
     helix = {
       enable = true;
       settings = {
-        theme = "rose_pine_dawn";
+        theme = "tokyonight_moon";
         editor = {
           bufferline = "multiple";
           color-modes = true;
@@ -336,12 +300,5 @@
       enable = true;
       enableFishIntegration = true;
     };
-  };
-
-  # Requires telling Hammerspoon to look for configuration in the right place:
-  #   defaults write org.hammerspoon.Hammerspoon MJConfigFile "${XDG_CONFIG_HOME:-$HOME/.config}/hammerspoon/init.lua"
-  xdg.configFile.hammerspoon = {
-    source = ../hammerspoon;
-    recursive = true;
   };
 }
