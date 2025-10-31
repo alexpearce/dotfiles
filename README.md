@@ -57,10 +57,6 @@ Subsequent rebuilds, after configuration changes, are simpler.
 sudo darwin-rebuild switch --flake (pwd)
 ```
 
-## License
-
-[MIT](http://opensource.org/licenses/MIT).
-
 [nix]: https://nixos.org/
 [nix-installer]: https://github.com/DeterminateSystems/nix-installer
 [home-manager]: https://github.com/nix-community/home-manager
