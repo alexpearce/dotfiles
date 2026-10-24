@@ -2,6 +2,8 @@
   config,
   pkgs,
   lib,
+  # Only present when Home Manager is embedded in nix-darwin.
+  osConfig ? null,
   ...
 }:
 let
@@ -15,6 +17,12 @@ in
         docker
       ];
     };
+
+    programs.fish.interactiveShellInit = lib.optionalString (osConfig != null) ''
+      if test -r ${osConfig.age.secrets.opencode.path}
+        set -gx OPENROUTER_API_KEY (string trim < ${osConfig.age.secrets.opencode.path})
+      end
+    '';
 
     programs = {
       fish = {

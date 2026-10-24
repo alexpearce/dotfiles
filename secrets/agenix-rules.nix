@@ -11,9 +11,14 @@ let
   );
 
   kazooie = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMHN9Xv3cmHDrToDzjoBCgP4thIzMwl/Tg4b60pLBaH4";
+  pearwin-laptop = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJIlmdBr/aP5r3wjEucJxZiahG+VmT/zBJ3DF7hLgqM3";
 
-  trusted = me ++ [ kazooie ];
+  trusted = me ++ [
+    kazooie
+    pearwin-laptop
+  ];
 in
 {
+  "opencode.age".publicKeys = trusted;
   "pearwinternet.age".publicKeys = trusted;
 }

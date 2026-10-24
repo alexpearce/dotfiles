@@ -260,6 +260,11 @@
 
     home-manager.enable = true;
 
+    opencode = {
+      enable = true;
+      settings.model = "openrouter/deepseek/deepseek-v4.1-flash";
+    };
+
     starship = {
       enable = true;
       enableFishIntegration = true;

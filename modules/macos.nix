@@ -8,6 +8,12 @@ in
     home = homeDirectory;
   };
 
+  age.secrets.opencode = {
+    file = ../secrets/opencode.age;
+    owner = username;
+    mode = "0400";
+  };
+
   # Make nix available to default macOS shell.
   programs.zsh.enable = true;
   # Expose nix-provided paths to fish.

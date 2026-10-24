@@ -82,6 +82,7 @@
       darwinConfigurations.pearwin-laptop = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
+          agenix.darwinModules.default
           home-manager.darwinModules.home-manager
           ./modules/macos.nix
         ];
