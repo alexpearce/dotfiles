@@ -262,7 +262,7 @@
 
     opencode = {
       enable = true;
-      settings.model = "openrouter/deepseek/deepseek-v4.1-flash";
+      settings.model = "openrouter/deepseek/deepseek-v4.1-flash-1017";
     };
 
     starship = {
