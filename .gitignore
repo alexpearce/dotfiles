@@ -1,0 +1,5 @@
+.direnv/
+__pycache__/
+*.pyc
+result
+result-*

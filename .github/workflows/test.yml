@@ -1,24 +1,17 @@
-name: "Test Home Manager configuration."
-on: [push]
+name: Check
+on: [push, pull_request]
 jobs:
-  linting:
+  checks:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: DeterminateSystems/nix-installer-action@main
-    - uses: DeterminateSystems/magic-nix-cache-action@main
-    - name: Nix formatting
-      run: nix fmt -- --ci
-
-  tests:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - uses: DeterminateSystems/nix-installer-action@main
-    - uses: DeterminateSystems/magic-nix-cache-action@main
-    - name: Install home-manager and realise home.nix
-      run: |
-        # Create profile folders home-manager expects to exist.
-        nix profile list
-        # Move the nix.conf file created by magic-nix-cache rather than fail.
-        nix run home-manager/master -- switch --flake .#apearwin-ci -b backup
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - name: Nix formatting
+        run: nix fmt -- --ci
+      - name: Evaluate all systems and Home Manager profiles
+        run: nix flake check --all-systems --no-build
+      - name: Module composition regression tests
+        run: python3 -m unittest discover -s tests
+      - name: Build the Linux Home Manager profile
+        run: nix build --no-link .#checks.x86_64-linux.home-apearwin-ci
