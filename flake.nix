@@ -1,12 +1,10 @@
 {
-  description = "NixOS, nix-darwin, and Home Manager configuration for my machines";
+  description = "Machine configuration";
 
   inputs = {
-    # System packages and an independently overridable package set for tools.
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs-ai.follows = "nixpkgs";
     nixpkgs-kazooie.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # Retain the existing dependency pins followed by disko and Jovian.
     nixpkgs-os-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     flake-parts = {

@@ -1,4 +1,4 @@
-# Asus ROG Xbox Ally X: a handheld gaming device, nothing else.
+# Asus ROG Xbox Ally X: a handheld gaming device.
 #
 # Deploy with `colmena apply --on kazooie`.
 { config, inputs, ... }:
